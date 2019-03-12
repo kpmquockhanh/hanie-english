@@ -1,0 +1,1 @@
+{!! $configs[5]->content !!}
