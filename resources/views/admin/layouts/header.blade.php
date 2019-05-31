@@ -1,284 +1,169 @@
-<!-- Start Header Top Area -->
-<div class="header-top-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="logo-area" style="width: 50px;">
-                    <a href="#"><img src="{{ asset('faviconnn.ico') }}" alt="" /></a>
-                </div>
-            </div>
-            {{--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
-                {{--<div class="header-top-menu">--}}
-                    {{--<ul class="nav navbar-nav notika-top-nav">--}}
-                        {{--<li class="nav-item dropdown">--}}
-                            {{--<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-search"></i></span></a>--}}
-                            {{--<div role="menu" class="dropdown-menu search-dd animated flipInX">--}}
-                                {{--<div class="search-input">--}}
-                                    {{--<i class="notika-icon notika-left-arrow"></i>--}}
-                                    {{--<input type="text" />--}}
+<!-- Main Header -->
+<header class="main-header">
+
+    <!-- Logo -->
+    <a href="/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Admin</b>{{ env('APP_NAME') }}</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 4 messages</li>
+                        <li>
+                            <!-- inner menu: contains the messages -->
+                            <ul class="menu">
+                                <li><!-- start message -->
+                                    <a href="#">
+                                        <div class="pull-left">
+                                            <!-- User Image -->
+                                            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                                        </div>
+                                        <!-- Message title and timestamp -->
+                                        <h4>
+                                            Support Team
+                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <!-- The message -->
+                                        <p>Why not buy a new awesome theme?</p>
+                                    </a>
+                                </li>
+                                <!-- end message -->
+                            </ul>
+                            <!-- /.menu -->
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li>
+                <!-- /.messages-menu -->
+
+                <!-- Notifications Menu -->
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 10 notifications</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                            <ul class="menu">
+                                <li><!-- start notification -->
+                                    <a href="#">
+                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                    </a>
+                                </li>
+                                <!-- end notification -->
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                    </ul>
+                </li>
+                <!-- Tasks Menu -->
+                <li class="dropdown tasks-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-danger">9</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 9 tasks</li>
+                        <li>
+                            <!-- Inner menu: contains the tasks -->
+                            <ul class="menu">
+                                <li><!-- Task item -->
+                                    <a href="#">
+                                        <!-- Task title and progress text -->
+                                        <h3>
+                                            Design some buttons
+                                            <small class="pull-right">20%</small>
+                                        </h3>
+                                        <!-- The progress bar -->
+                                        <div class="progress xs">
+                                            <!-- Change the css width attribute to simulate progress -->
+                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">20% Complete</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!-- end task item -->
+                            </ul>
+                        </li>
+                        <li class="footer">
+                            <a href="#">View all tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- User Account Menu -->
+                <li class="dropdown user user-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- The user image in the navbar-->
+                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                        <span class="hidden-xs">{{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->name }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- The user image in the menu -->
+                        <li class="user-header">
+                            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+
+                            <p>
+                                {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->name }} - Web Developer
+                                <small>Admin since {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->created_at->format('M Y') }}</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        {{--<li class="user-body">--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-xs-4 text-center">--}}
+                                    {{--<a href="#">Followers</a>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-xs-4 text-center">--}}
+                                    {{--<a href="#">Sales</a>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-xs-4 text-center">--}}
+                                    {{--<a href="#">Friends</a>--}}
                                 {{--</div>--}}
                             {{--</div>--}}
+                            {{--<!-- /.row -->--}}
                         {{--</li>--}}
-                        {{--<li class="nav-item dropdown">--}}
-                            {{--<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-mail"></i></span></a>--}}
-                            {{--<div role="menu" class="dropdown-menu message-dd animated zoomIn">--}}
-                                {{--<div class="hd-mg-tt">--}}
-                                    {{--<h2>Messages</h2>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-message-info">--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/1.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>David Belle</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/2.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Jonathan Morris</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/4.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Fredric Mitchell</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/1.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>David Belle</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/2.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Glenn Jecobs</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-mg-va">--}}
-                                    {{--<a href="#">View All</a>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-alarm"></i></span><div class="spinner4 spinner-4"></div><div class="ntd-ctn"><span>3</span></div></a>--}}
-                            {{--<div role="menu" class="dropdown-menu message-dd notification-dd animated zoomIn">--}}
-                                {{--<div class="hd-mg-tt">--}}
-                                    {{--<h2>Notification</h2>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-message-info">--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/1.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>David Belle</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/2.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Jonathan Morris</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/4.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Fredric Mitchell</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/1.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>David Belle</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img">--}}
-                                                {{--<img src="img/post/2.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Glenn Jecobs</h3>--}}
-                                                {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-mg-va">--}}
-                                    {{--<a href="#">View All</a>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span><div class="spinner4 spinner-4"></div><div class="ntd-ctn"><span>2</span></div></a>--}}
-                            {{--<div role="menu" class="dropdown-menu message-dd task-dd animated zoomIn">--}}
-                                {{--<div class="hd-mg-tt">--}}
-                                    {{--<h2>Tasks</h2>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-message-info hd-task-info">--}}
-                                    {{--<div class="skill">--}}
-                                        {{--<div class="progress">--}}
-                                            {{--<div class="lead-content">--}}
-                                                {{--<p>HTML5 Validation Report</p>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="progress-bar wow fadeInLeft" data-progress="95%" style="width: 95%;" data-wow-duration="1.5s" data-wow-delay="1.2s"> <span>95%</span>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="progress">--}}
-                                            {{--<div class="lead-content">--}}
-                                                {{--<p>Google Chrome Extension</p>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="progress-bar wow fadeInLeft" data-progress="85%" style="width: 85%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>85%</span> </div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="progress">--}}
-                                            {{--<div class="lead-content">--}}
-                                                {{--<p>Social Internet Projects</p>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="progress-bar wow fadeInLeft" data-progress="75%" style="width: 75%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>75%</span> </div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="progress">--}}
-                                            {{--<div class="lead-content">--}}
-                                                {{--<p>Bootstrap Admin</p>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="progress-bar wow fadeInLeft" data-progress="93%" style="width: 65%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>65%</span> </div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="progress progress-bt">--}}
-                                            {{--<div class="lead-content">--}}
-                                                {{--<p>Youtube App</p>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="progress-bar wow fadeInLeft" data-progress="55%" style="width: 55%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>55%</span> </div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-mg-va">--}}
-                                    {{--<a href="#">View All</a>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-chat"></i></span></a>--}}
-                            {{--<div role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">--}}
-                                {{--<div class="hd-mg-tt">--}}
-                                    {{--<h2>Chat</h2>--}}
-                                {{--</div>--}}
-                                {{--<div class="search-people">--}}
-                                    {{--<i class="notika-icon notika-left-arrow"></i>--}}
-                                    {{--<input type="text" placeholder="Search People" />--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-message-info">--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img chat-img">--}}
-                                                {{--<img src="img/post/1.jpg" alt="" />--}}
-                                                {{--<div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>David Belle</h3>--}}
-                                                {{--<p>Available</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img chat-img">--}}
-                                                {{--<img src="img/post/2.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Jonathan Morris</h3>--}}
-                                                {{--<p>Last seen 3 hours ago</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img chat-img">--}}
-                                                {{--<img src="img/post/4.jpg" alt="" />--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Fredric Mitchell</h3>--}}
-                                                {{--<p>Last seen 2 minutes ago</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img chat-img">--}}
-                                                {{--<img src="img/post/1.jpg" alt="" />--}}
-                                                {{--<div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>David Belle</h3>--}}
-                                                {{--<p>Available</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<a href="#">--}}
-                                        {{--<div class="hd-message-sn">--}}
-                                            {{--<div class="hd-message-img chat-img">--}}
-                                                {{--<img src="img/post/2.jpg" alt="" />--}}
-                                                {{--<div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="hd-mg-ctn">--}}
-                                                {{--<h3>Glenn Jecobs</h3>--}}
-                                                {{--<p>Available</p>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-                                {{--<div class="hd-mg-va">--}}
-                                    {{--<a href="#">View All</a>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                <li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>
+            </ul>
         </div>
-    </div>
-</div>
-<!-- End Header Top Area -->
-@include('admin.layouts.main-menu')
-@include('admin.layouts.mobile-menu')
+    </nav>
+</header>

@@ -1,81 +1,86 @@
+<!-- Main Footer -->
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+        Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+</footer>
 
-<!-- jquery
-    ============================================ -->
-<script src="/dashboard/js/vendor/jquery-1.12.4.min.js"></script>
-<!-- bootstrap JS
-    ============================================ -->
-<script src="/dashboard/js/bootstrap.min.js"></script>
-<!-- wow JS
-    ============================================ -->
-<script src="/dashboard/js/wow.min.js"></script>
-<!-- price-slider JS
-    ============================================ -->
-<script src="/dashboard/js/jquery-price-slider.js"></script>
-<!-- owl.carousel JS
-    ============================================ -->
-<script src="/dashboard/js/owl.carousel.min.js"></script>
-<!-- scrollUp JS
-    ============================================ -->
-<script src="/dashboard/js/jquery.scrollUp.min.js"></script>
-<!-- meanmenu JS
-    ============================================ -->
-<script src="/dashboard/js/meanmenu/jquery.meanmenu.js"></script>
-<!-- counterup JS
-    ============================================ -->
-<script src="/dashboard/js/counterup/jquery.counterup.min.js"></script>
-<script src="/dashboard/js/counterup/waypoints.min.js"></script>
-<script src="/dashboard/js/counterup/counterup-active.js"></script>
-<!-- mCustomScrollbar JS
-    ============================================ -->
-<script src="/dashboard/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<!-- jvectormap JS
-    ============================================ -->
-<script src="/dashboard/js/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="/dashboard/js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/dashboard/js/jvectormap/jvectormap-active.js"></script>
-<!-- sparkline JS
-    ============================================ -->
-<script src="/dashboard/js/sparkline/jquery.sparkline.min.js"></script>
-<script src="/dashboard/js/sparkline/sparkline-active.js"></script>
-<!-- sparkline JS
-    ============================================ -->
-<script src="/dashboard/js/flot/jquery.flot.js"></script>
-<script src="/dashboard/js/flot/jquery.flot.resize.js"></script>
-<script src="/dashboard/js/flot/curvedLines.js"></script>
-<script src="/dashboard/js/flot/flot-active.js"></script>
-<!-- knob JS
-    ============================================ -->
-<script src="/dashboard/js/knob/jquery.knob.js"></script>
-<script src="/dashboard/js/knob/jquery.appear.js"></script>
-<script src="/dashboard/js/knob/knob-active.js"></script>
-<!-- icheck JS
-    ============================================ -->
-<script src="/dashboard/js/icheck/icheck.min.js"></script>
-<script src="/dashboard/js/icheck/icheck-active.js"></script>
-<!--  wave JS
-    ============================================ -->
-<script src="/dashboard/js/wave/waves.min.js"></script>
-<script src="/dashboard/js/wave/wave-active.js"></script>
-<!--  todo JS
-    ============================================ -->
-<script src="/dashboard/js/todo/jquery.todo.js"></script>
-<!-- Login JS
-		============================================ -->
-<script src="/dashboard/js/login/login-action.js"></script>
-<!-- plugins JS
-    ============================================ -->
-<script src="/dashboard/js/plugins.js"></script>
-<!--  Chat JS
-    ============================================ -->
-<script src="/dashboard/js/chat/moment.min.js"></script>
-<script src="/dashboard/js/chat/jquery.chat.js"></script>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!-- Home tab content -->
+        <div class="tab-pane active" id="control-sidebar-home-tab">
+            <h3 class="control-sidebar-heading">Recent Activity</h3>
+            <ul class="control-sidebar-menu">
+                <li>
+                    <a href="javascript:;">
+                        <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-{{--<script src="/dashboard/js/data-table/jquery.dataTables.min.js"></script>--}}
-{{--<script src="/dashboard/js/data-table/data-table-act.js"></script>--}}
+                        <div class="menu-info">
+                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-<!-- main JS
-    ============================================ -->
-<script src="/dashboard/js/main.js"></script>
-<!-- tawk chat JS
-    ============================================ -->
-{{--<script src="/dashboard/js/tawk-chat.js"></script>--}}
+                            <p>Will be 23 on April 24th</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.control-sidebar-menu -->
+
+            <h3 class="control-sidebar-heading">Tasks Progress</h3>
+            <ul class="control-sidebar-menu">
+                <li>
+                    <a href="javascript:;">
+                        <h4 class="control-sidebar-subheading">
+                            Custom Template Design
+                            <span class="pull-right-container">
+                    <span class="label label-danger pull-right">70%</span>
+                  </span>
+                        </h4>
+
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.control-sidebar-menu -->
+
+        </div>
+        <!-- /.tab-pane -->
+        <!-- Stats tab content -->
+        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+        <!-- /.tab-pane -->
+        <!-- Settings tab content -->
+        <div class="tab-pane" id="control-sidebar-settings-tab">
+            <form method="post">
+                <h3 class="control-sidebar-heading">General Settings</h3>
+
+                <div class="form-group">
+                    <label class="control-sidebar-subheading">
+                        Report panel usage
+                        <input type="checkbox" class="pull-right" checked>
+                    </label>
+
+                    <p>
+                        Some information about this general settings option
+                    </p>
+                </div>
+                <!-- /.form-group -->
+            </form>
+        </div>
+        <!-- /.tab-pane -->
+    </div>
+</aside>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>

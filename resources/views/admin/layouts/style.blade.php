@@ -1,57 +1,26 @@
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Admin dashboard</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- favicon
-    ============================================ -->
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('faviconnn.ico') }}">
-<!-- Google Fonts
-    ============================================ -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-<!-- Bootstrap CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/bootstrap.min.css">
-<!-- Bootstrap CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/font-awesome.min.css">
-<!-- owl.carousel CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/owl.carousel.css">
-<link rel="stylesheet" href="/dashboard/css/owl.theme.css">
-<link rel="stylesheet" href="/dashboard/css/owl.transitions.css">
-<!-- meanmenu CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/meanmenu/meanmenu.min.css">
-<!-- animate CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/animate.css">
-<!-- normalize CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/normalize.css">
-<!-- mCustomScrollbar CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/scrollbar/jquery.mCustomScrollbar.min.css">
-<!-- jvectormap CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/jvectormap/jquery-jvectormap-2.0.3.css">
-<!-- notika icon CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/notika-custom-icon.css">
-<!-- wave CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/wave/waves.min.css">
-<!-- main CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/main.css">
-<!-- style CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/style.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}">
+<!-- Ionicons -->
+<link rel="stylesheet" href="{{ asset('node_modules/ionicons/dist/css/ionicons.min.css') }}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+      page. However, you can choose any other skin. Make sure you
+      apply the skin class to the body tag so the changes take effect. -->
+<link rel="stylesheet" href="{{ asset('dist/css/skins/skin-green.min.css') }}">
 
-<link rel="stylesheet" href="/dashboard/css/jquery.dataTables.min.css">
-<!-- responsive CSS
-    ============================================ -->
-<link rel="stylesheet" href="/dashboard/css/responsive.css">
-<!-- modernizr JS
-    ============================================ -->
-<script src="/dashboard/js/vendor/modernizr-2.8.3.min.js"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Google Font -->
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

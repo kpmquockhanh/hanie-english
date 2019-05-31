@@ -16,5 +16,11 @@ class AdminSeed extends Seeder
             'name' => 'Administrator',
             'password' => bcrypt('admin1234'),
         ]);
+        \App\Admin::query()->create([
+            'username' => 'admin',
+            'name' => 'Administrator',
+            'password' => bcrypt('admin1234'),
+        ]);
+
     }
 }

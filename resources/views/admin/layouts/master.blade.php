@@ -1,22 +1,44 @@
-
-<!doctype html>
-<html class="no-js" lang="">
-
+<!DOCTYPE html>
+<html lang="vi">
 <head>
+    <title>{{ env('APP_NAME') }} | @yield('title', 'unnamed')</title>
     @include('admin.layouts.style')
     @yield('style')
 </head>
+<body class="hold-transition skin-green fixed">
+<div class="wrapper">
 
-<body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-@include('admin.layouts.header')
+    @include('admin.layouts.header')
+    @include('admin.layouts.sidebar')
 
-@yield('content')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                @yield('page-header', 'Page Header')
+                <small>@yield('option-des', 'Optional description')</small>
+            </h1>
+            {{--<ol class="breadcrumb">--}}
+            {{--<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>--}}
+            {{--<li class="active">Here</li>--}}
+            {{--</ol>--}}
+        </section>
 
-@include('admin.layouts.footer')
+        <!-- Main content -->
+        <section class="content container-fluid">
+            @yield('content')
+        </section>
+        <!-- /.content -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    @include('admin.layouts.footer')
+</div>
+<!-- ./wrapper -->
+
+@include('admin.layouts.script')
 @yield('script')
 </body>
-
 </html>

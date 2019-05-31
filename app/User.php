@@ -2,10 +2,24 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ * @package App
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $username
+ * @property string $password
+ * @property string $avatar
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ *
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password',
+        'name', 'username', 'password', 'avatar'
     ];
 
     /**

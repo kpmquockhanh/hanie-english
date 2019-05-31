@@ -98,7 +98,7 @@ class TeacherController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'word' => ['required', 'string'],
             'position' => ['required', 'string'],
-//            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:2000'],
+            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:2000'],
         ]);
         $teacher = Teacher::query()->findOrFail($id);
 
@@ -116,7 +116,7 @@ class TeacherController extends Controller
         }
         $teacher->update($data);
 
-        return redirect(route('teachers.edit', ['id' => $teacher->id]));
+        return redirect(route('teachers.index'));
     }
 
     /**
