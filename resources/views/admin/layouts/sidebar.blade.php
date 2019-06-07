@@ -33,34 +33,35 @@
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ route('admin.index') }}">
-                    <i class="fa fa-home"></i>
-                    <span>Home</span></a>
+                <i class="fa fa-home"></i>
+                <span>Home</span></a>
 
             <li class=""><a href="{{ route('admin.config') }}">
                 <i class="fa fa-gear"></i>
                 <span>Config landingpage</span></a>
             </li>
             <li class=""><a href="{{ route('teachers.index') }}">
-                    <i class="fa fa-gear"></i>
-                    <span>Teachers</span></a>
+                <i class="fa fa-user"></i>
+                <span>Teachers</span></a>
             </li>
             <li class=""><a href="{{ route('phones.index') }}">
-                    <i class="fa fa-gear"></i>
-                    <span>Phones</span></a>
+                <i class="fa fa-phone"></i>
+                <span>Phones</span></a>
             </li>
-            {{--<li class="treeview">--}}
-                {{--<a href="#">--}}
-                    {{--<i class="fa fa-link"></i>--}}
-                    {{--<span>Teachers</span>--}}
-                    {{--<span class="pull-right-container">--}}
-                        {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                    {{--</span>--}}
-                {{--</a>--}}
-                {{--<ul class="treeview-menu">--}}
-                    {{--<li><a href="{{ route('teachers.index') }}">Teachers list</a></li>--}}
-                    {{--<li><a href="{{ route('teacher') }}">Link in level 2</a></li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Course system</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('questions.index') }}">Questions</a></li>
+                    <li><a href="{{ route('answers.index') }}">Answers</a></li>
+                    <li><a href="{{ route('users.index') }}">Users</a></li>
+                </ul>
+            </li>
             {{--<li class="treeview">--}}
                 {{--<a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>--}}
                     {{--<span class="pull-right-container">--}}

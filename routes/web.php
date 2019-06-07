@@ -32,6 +32,9 @@ Route::prefix('admin')->group(function() {
 
         Route::resource('teachers','TeacherController');
         Route::resource('phones','PhoneController');
+        Route::resource('questions','QuestionController');
+        Route::resource('answers','AnswerController');
+        Route::resource('users','UserController');
     });
 
 });

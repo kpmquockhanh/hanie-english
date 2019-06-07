@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <title>{{ env('APP_NAME') }} | @yield('title', 'unnamed')</title>
+    @if (request()->segment(2))
+        <title>{{ env('APP_NAME') }} | @yield('title', ucfirst((request()->segment(3)?request()->segment(3).' ':'').request()->segment(2)))</title>
+    @else
+        <title>{{ env('APP_NAME') }}</title>
+    @endif
     @include('admin.layouts.style')
     @yield('style')
 </head>
@@ -16,8 +20,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                @yield('page-header', 'Page Header')
-                <small>@yield('option-des', 'Optional description')</small>
+                {{ ucfirst(request()->segment(2)) }}
+                <small>@yield('option-des', ucfirst((request()->segment(3)?request()->segment(3).' ':'').request()->segment(2)))</small>
             </h1>
             {{--<ol class="breadcrumb">--}}
             {{--<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>--}}

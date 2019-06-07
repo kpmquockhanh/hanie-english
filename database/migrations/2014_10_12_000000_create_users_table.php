@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('avatar', 100)->nullable();
-            $table->enum('status', [0,1])->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
