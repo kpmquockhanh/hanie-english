@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function() {
     });
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/', 'Admincontroller@index')->name('admin.index');
+        Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('/config', 'ConfigController@index')->name('admin.config');
         Route::post('/config/update', 'ConfigController@update')->name('admin.config.update');
 
