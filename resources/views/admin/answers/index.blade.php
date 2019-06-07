@@ -1,7 +1,5 @@
 @extends('admin.layouts.master')
 
-@section('page-header', 'Teachers')
-@section('option-des', 'Danh sách giáo viên')
 @section('style')
     <style>
         td {
@@ -19,35 +17,32 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
+            @include('admin.layouts.flash-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
+                    <th>Content</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if (!$teachers->count())
+                @if (!$answers->count())
                     <tr>
-                        <td colspan="6" class="text-center">No data</td>
+                        <td colspan="5" class="text-center">No data</td>
                     </tr>
                 @endif
-                @foreach ($teachers as $teacher)
+                @foreach ($answers as $item)
                     <tr>
-                        <td>{{ $teacher->id }}</td>
-                        <td>{{ $teacher->name }}</td>
-                        <td>{{ $teacher->word }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->content }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->updated_at }}</td>
                         <td>
-                            <img src="{{ $teacher->image }}" alt="" style="height: 60px;">
-                        </td>
-                        <td>{{ $teacher->position }}</td>
-                        <td>
-                            <a href="{{ route('teachers.edit', ['id' => $teacher->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                            <form action="{{ route('teachers.destroy', ['id' => $teacher->id]) }}" style="display: inline;" method="post">
+                            <a href="{{ route('answers.edit', ['id' => $item->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route('answers.destroy', ['id' => $item->id]) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger" style="padding: 2px 10px;"><i class="fa fa-trash"></i></button>
@@ -59,10 +54,9 @@
                 <tfoot>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
+                    <th>Content</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>

@@ -1,7 +1,5 @@
 @extends('admin.layouts.master')
 
-@section('page-header', 'Teachers')
-@section('option-des', 'Danh sách giáo viên')
 @section('style')
     <style>
         td {
@@ -19,35 +17,40 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example2" class="table table-bordered table-hover">
+            @include('admin.layouts.flash-message')
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
+                    <th>Username</th>
+                    <th>Avatar</th>
+                    <th>Status</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if (!$teachers->count())
+                @if (!$users->count())
                     <tr>
-                        <td colspan="6" class="text-center">No data</td>
+                        <td colspan="8" class="text-center">No data</td>
                     </tr>
                 @endif
-                @foreach ($teachers as $teacher)
+                @foreach ($users as $item)
                     <tr>
-                        <td>{{ $teacher->id }}</td>
-                        <td>{{ $teacher->name }}</td>
-                        <td>{{ $teacher->word }}</td>
-                        <td>
-                            <img src="{{ $teacher->image }}" alt="" style="height: 60px;">
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->username }}</td>
+                        <td width="7%" height="10%">
+                            <img src="{{ $item->avatar ? asset($item->avatar) : asset('dist/img/user2-160x160.jpg') }}" alt="" style="width: 100%;">
                         </td>
-                        <td>{{ $teacher->position }}</td>
+                        <td class="text-{{ $item->status ?'success':'danger' }}">{{ $item->status_name }}</td>
+                        <td>{{ $item->created_at->diffForHumans() }}</td>
+                        <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>
-                            <a href="{{ route('teachers.edit', ['id' => $teacher->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                            <form action="{{ route('teachers.destroy', ['id' => $teacher->id]) }}" style="display: inline;" method="post">
+                            <a href="{{ route(request()->segment(2).'.edit', ['id' => $item->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route(request()->segment(2).'.destroy', ['id' => $item->id]) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger" style="padding: 2px 10px;"><i class="fa fa-trash"></i></button>
@@ -60,15 +63,20 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
+                    <th>Username</th>
+                    <th>Avatar</th>
+                    <th>Status</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
         </div>
         <!-- /.box-body -->
+        <div class="box-footer">
+            {{ $users->links() }}
+        </div>
     </div>
     <!-- /.box -->
 @stop

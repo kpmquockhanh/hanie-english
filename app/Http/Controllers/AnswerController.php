@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AnswerController extends Controller
 {
@@ -14,7 +15,9 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+        $answers = Answer::all();
+
+        return view('admin.answers.index', compact('answers'));
     }
 
     /**
@@ -24,7 +27,7 @@ class AnswerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.answers.create');
     }
 
     /**
@@ -35,7 +38,18 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'content' => 'required'
+            ]
+        );
+
+        $createData = $request->only(['content']);
+
+        Answer::query()->create($createData);
+
+        return redirect(route('answers.index'))->with('success', 'Created successfully!');
     }
 
     /**
@@ -57,7 +71,7 @@ class AnswerController extends Controller
      */
     public function edit(Answer $answer)
     {
-        //
+        return view('admin.answers.edit', compact('answer'));
     }
 
     /**
@@ -69,7 +83,21 @@ class AnswerController extends Controller
      */
     public function update(Request $request, Answer $answer)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'content' => 'required'
+            ]
+        );
+
+        $updateData = $request->only(['content']);
+
+        if ($answer->content === $request->get('content')) {
+            return redirect(route('answers.index'))->with('info', 'Updated successfully! No changes');
+        }
+        $answer->update($updateData);
+
+        return redirect(route('answers.index'))->with('success', 'Updated successfully!');
     }
 
     /**
@@ -80,6 +108,11 @@ class AnswerController extends Controller
      */
     public function destroy(Answer $answer)
     {
-        //
+        try {
+            $answer->delete();
+            return redirect(route('answers.index'))->with('success', 'Deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect(route('answers.index'))->with('error', 'Deleted error!');
+        }
     }
 }

@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $username
  * @property string $password
  * @property string $avatar
+ * @property boolean $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
@@ -30,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password', 'avatar'
+        'name', 'username', 'password', 'avatar', 'status'
     ];
 
     /**
@@ -50,4 +51,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    private $statusName = [
+        'Pending',
+        'Active',
+    ];
+    public function getStatusNameAttribute() {
+        return array_get($this->statusName, $this->status);
+    }
 }
