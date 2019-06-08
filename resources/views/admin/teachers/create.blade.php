@@ -26,13 +26,8 @@
             @csrf
             <div class="row">
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    @if ($errors->first())
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
-                                <div class="alert alert-danger">{{ $errors->first() }}</div>
-                            </div>
-                        </div>
-                    @endif
+                    @include('admin.layouts.flash-message')
+                    @include('admin.layouts.error-message')
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="form-group ic-cmp-int">
                             <div class="form-ic-cmp">

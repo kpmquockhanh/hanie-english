@@ -48,6 +48,10 @@
                 <i class="fa fa-phone"></i>
                 <span>Phones</span></a>
             </li>
+            <li class=""><a href="{{ route('courses.index') }}">
+                    <i class="fa fa-book"></i>
+                    <span>Courses</span></a>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-book"></i>

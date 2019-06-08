@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Lesson;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('admin.courses.index', compact('courses'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.courses.create');
     }
 
     /**
@@ -35,7 +37,17 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:100'],
+        ]);
+
+        $data = $request->only([
+            'name', 'description'
+        ]);
+
+        Course::query()->create($data);
+
+        return redirect(route('courses.index'))->with('success', 'Created successfully!');
     }
 
     /**
@@ -46,7 +58,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('admin.courses.show', compact('course'));
     }
 
     /**
@@ -57,7 +69,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        $course = Course::query()->findOrFail($course->id);
+
+        return view('admin.courses.edit', compact('course'));
     }
 
     /**
@@ -69,7 +83,17 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:100'],
+        ]);
+
+        $data = $request->only([
+            'name', 'description'
+        ]);
+
+        $course->update($data);
+
+        return redirect(route('courses.index'))->with('success', 'Updated successfully!');
     }
 
     /**
@@ -80,6 +104,11 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        try {
+            Course::destroy($course->id);
+            return redirect(route('courses.index'))->with('success', 'Deleted successfully!');
+        } catch (\Exception $exp) {
+            return redirect(route('courses.index'))->with('error', 'Deleted error!');
+        }
     }
 }

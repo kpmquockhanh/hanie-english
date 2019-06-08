@@ -18,6 +18,7 @@
         <!-- /.box-header -->
         <div class="box-body">
             @include('admin.layouts.flash-message')
+            @include('admin.layouts.error-message')
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>

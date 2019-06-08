@@ -1,43 +1,58 @@
 @extends('admin.layouts.master')
-@section('page-header', 'Phones')
-@section('option-des', 'Danh sách số điện thoại')
+@section('page-header', 'Courses')
+@section('option-des', 'Danh sách khóa học')
 @section('style')
     <style>
-        td {
-            vertical-align: middle !important;
+        .dash-circle{
+            width: 10vw;
+            height: 10vw;
+            background: #eee;
+            margin: 20px auto;
+            border-radius: 50%;
+            /* border: 3px dashed white; */
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 1px 1px 5px;
         }
     </style>
 @stop
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Phone list <a href="{{ route('phones.create') }}" class="btn-sm btn-success" style="margin-left: 5px;"><i class="fa fa-plus"></i></a></h3>
+            <h3 class="box-title">Courses list <a href="{{ route('courses.create') }}" class="btn-sm btn-success" style="margin-left: 5px;"><i class="fa fa-plus"></i></a></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
+            @include('admin.layouts.flash-message')
+            @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Phone number</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if (!$phones->count())
+                @if (!$courses->count())
                     <tr>
                         <td colspan="5" class="text-center">No data</td>
                     </tr>
                 @endif
-                @foreach ($phones as $phone)
+                @foreach ($courses as $course)
                     <tr>
-                        <td>{{ $phone->id }}</td>
-                        <td>{{ $phone->name }}</td>
-                        <td>{{ $phone->phone_number }}</td>
+                        <td>{{ $course->id }}</td>
+                        <td>{{ $course->name }}</td>
+                        <td>{!! str_limit($course->description) !!}</td>
                         <td>
-                            {{--                                            <a href="{{ route('phones.edit', ['id' => $phone->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>--}}
-                            <form action="{{ route('phones.destroy', ['id' => $phone->id]) }}" style="display: inline;" method="post">
+                            <a href="{{ route('courses.show', $course->id) }}" class="btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('courses.edit', $course->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route('courses.destroy', ['id' => $course->id]) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger"><i class="fa fa-trash"></i></button>
@@ -50,7 +65,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Phone number</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>

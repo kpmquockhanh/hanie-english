@@ -13,10 +13,27 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $answers = Answer::all();
+        $query = $request->q;
+        $except = $request->e;
+        $answers = Answer::query()->orderByDesc('id');
+        if ($request->ajax()) {
+            $answers->select([
+                'id',
+                'content as text'
+            ]);
+            if ($except != null) {
+                $answers->whereKeyNot($except);
+            }
+            if (!$query) {
+                return response()->json(['results' => $answers->take(10)->get()]);
+            }
 
+            $answers->where('content', 'like', "%$query%");
+            return response()->json(['results' => $answers->get()]);
+        }
+        $answers = $answers->get();
         return view('admin.answers.index', compact('answers'));
     }
 
