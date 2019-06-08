@@ -58,7 +58,7 @@ class TeacherController extends Controller
 
         Teacher::query()->create($data);
 
-        return redirect(route('teachers.index'));
+        return redirect(route('teachers.index'))->with('success', 'Created successfully!');
     }
 
     /**
@@ -98,7 +98,7 @@ class TeacherController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'word' => ['required', 'string'],
             'position' => ['required', 'string'],
-            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:2000'],
+            'image' => ['mimes:jpeg,jpg,png', 'max:2000'],
         ]);
         $teacher = Teacher::query()->findOrFail($id);
 
@@ -116,7 +116,7 @@ class TeacherController extends Controller
         }
         $teacher->update($data);
 
-        return redirect(route('teachers.index'));
+        return redirect(route('teachers.index'))->with('success', 'Update successfully!');
     }
 
     /**
@@ -127,8 +127,13 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        Teacher::destroy($id);
+        try {
+            Teacher::destroy($id);
 
-        return redirect(route('teachers.index'));
+            return redirect(route('teachers.index'))->with('success', 'Deleted successfully!');
+        } catch (\Exception $exception) {
+            return redirect(route('teachers.index'))->with('error', 'Deleted error!');
+        }
+
     }
 }
