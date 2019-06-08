@@ -19,6 +19,8 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
+            @include('admin.layouts.flash-message')
+            @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -26,7 +28,7 @@
                     <th>Content</th>
                     <th>Explain</th>
                     <th>Right answer</th>
-                    <th>Wrong answers</th>
+                    {{--<th>Wrong answer ids</th>--}}
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Action</th>
@@ -43,12 +45,12 @@
                         <td>{{ $question->id }}</td>
                         <td>{{ $question->content }}</td>
                         <td>{{ $question->explain }}</td>
-                        <td>{{ $question->explain }}</td>
-                        <td>{{ $question->explain }}</td>
+                        <td><i>{{ $question->rightAnswer->content }}</i></td>
+{{--                        <td>{{ implode(',', json_decode($question->wrong_answer_ids)) }}</td>--}}
                         <td>{{ $question->created_at->diffForHumans() }}</td>
                         <td>{{ $question->updated_at->diffForHumans() }}</td>
                         <td>
-                            <a href="{{ route('question.edit', ['id' => $question->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ route('questions.edit', ['id' => $question->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('questions.destroy', ['id' => $question->id]) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
@@ -64,7 +66,7 @@
                     <th>Content</th>
                     <th>Explain</th>
                     <th>Right answer</th>
-                    <th>Wrong answers</th>
+                    {{--<th>Wrong answers</th>--}}
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Action</th>

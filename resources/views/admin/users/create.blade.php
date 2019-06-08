@@ -26,6 +26,7 @@
         <!-- /.box-header -->
         <form action="{{ route(request()->segment(2).'.store') }}" method="post" class="" enctype="multipart/form-data">
             <div class="box-body">
+                @include('admin.layouts.flash-message')
                 @include('admin.layouts.error-message')
                 @csrf
                 <div class="row">

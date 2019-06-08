@@ -26,4 +26,15 @@ class Question extends Model
         'right_answer_id',
         'wrong_answer_ids'
     ];
+
+    public function rightAnswer()
+    {
+        return $this->belongsTo(Answer::class, 'right_answer_id');
+    }
+
+    public function wrongAnswers()
+    {
+        return $this->belongsToMany(Answer::class);
+    }
+
 }

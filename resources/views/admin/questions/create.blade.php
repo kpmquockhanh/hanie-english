@@ -27,6 +27,7 @@
         <!-- /.box-header -->
         <form action="{{ route(request()->segment(2).'.store') }}" method="post" class="" enctype="multipart/form-data">
             <div class="box-body">
+                @include('admin.layouts.flash-message')
                 @include('admin.layouts.error-message')
                 @csrf
                 <div class="row">
@@ -41,15 +42,14 @@
                     <div class="col-lg-5">
                         <div class="form-group">
                             <label>Right answer</label>
-                            <select class="form-control right-answer" hidden>
+                            <select class="form-control right-answer" name="right_answer_id" hidden>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="form-group">
                             <label>Wrong answers</label>
-                            <select multiple class="form-control wrong-answers" hidden>
-                                <option></option>
+                            <select multiple class="form-control wrong-answers" name="wrong_answer_ids[]" hidden>
                             </select>
                         </div>
                     </div>
@@ -116,47 +116,5 @@
 
     </script>
     <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
-    <script>
-        $('.right-answer').select2({
-            placeholder: 'Select an option',
-            ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-                url: "{{ route('answers.index') }}",
-                dataType: 'json',
-                quietMillis: 250,
-                delay: 250,
-                data: function (params) {
-                    const query = {
-                        q: params.term,
-                        page: params.page || 1
-                    };
-
-                    return query;
-                },
-                cache: true
-            },
-            width: 'resolve'
-
-        });
-        $('.wrong-answers').select2({
-            placeholder: 'Select an option',
-            allowClear: true,
-            maximumSelectionLength: 3,
-            width: 'resolve',
-            ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-                url: "{{ route('answers.index') }}",
-                dataType: 'json',
-                quietMillis: 250,
-                delay: 250,
-                data: function (params) {
-                    const query = {
-                        q: params.term,
-                        page: params.page || 1
-                    };
-
-                    return query;
-                },
-                cache: true
-            },
-        });
-    </script>
+    @include('admin.questions.scripts')
 @stop

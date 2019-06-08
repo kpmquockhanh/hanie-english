@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::all();
+        $questions = Question::with('rightAnswer')->get();
 
         return view('admin.questions.index', compact('questions'));
     }
@@ -37,7 +38,29 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'content' => 'required',
+                'explain' => 'required',
+                'right_answer_id' => 'required',
+                'wrong_answer_ids' => 'required|array',
+                'wrong_answer_ids.*' => 'different:right_answer_id'
+            ]
+        );
+
+        $createData = $request->only([
+            'content',
+            'explain',
+            'right_answer_id',
+            'wrong_answer_ids'
+        ]);
+
+
+        $createData['wrong_answer_ids'] = json_encode($request->wrong_answer_ids);
+        Question::query()->create($createData);
+
+        return redirect(route('questions.index'))->with('success', 'Created successfully!');
     }
 
     /**
@@ -59,7 +82,8 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        $wrongAnswers = Answer::query()->whereIn('id', json_decode($question->wrong_answer_ids))->get();
+        return view('admin.questions.edit', compact('question', 'wrongAnswers'));
     }
 
     /**
@@ -71,7 +95,30 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'content' => 'required',
+                'explain' => 'required',
+                'right_answer_id' => 'required',
+                'wrong_answer_ids' => 'required|array',
+                'wrong_answer_ids.*' => 'different:right_answer_id'
+            ]
+        );
+
+        $updateData = $request->only([
+            'content',
+            'explain',
+            'right_answer_id',
+            'wrong_answer_ids'
+        ]);
+
+        $updateData['wrong_answer_ids'] = json_encode($updateData['wrong_answer_ids']);
+
+        $createData['wrong_answer_ids'] = json_encode($request->wrong_answer_ids);
+        $question->update($updateData);
+
+        return redirect(route('questions.index'))->with('success', 'Updated successfully!');
     }
 
     /**
@@ -82,6 +129,11 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        try {
+            $question->delete();
+            return redirect(route('questions.index'))->with('success', 'Deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect(route('questions.index'))->with('error', 'Deleted error!');
+        }
     }
 }

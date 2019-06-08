@@ -15,16 +15,23 @@ class AnswerController extends Controller
      */
     public function index(Request $request)
     {
-        $q = $request->q;
-        $answers = Answer::query()->where('content', 'like', "%$q%");
+        $query = $request->q;
+        $except = $request->e;
+        $answers = Answer::query()->orderByDesc('id');
         if ($request->ajax()) {
-            if (!$q) {
-                return response()->json(['results' => null]);
-            }
-            return response()->json(['results' => $answers->select([
+            $answers->select([
                 'id',
                 'content as text'
-            ])->get()]);
+            ]);
+            if ($except != null) {
+                $answers->whereKeyNot($except);
+            }
+            if (!$query) {
+                return response()->json(['results' => $answers->take(10)->get()]);
+            }
+
+            $answers->where('content', 'like', "%$query%");
+            return response()->json(['results' => $answers->get()]);
         }
         $answers = $answers->get();
         return view('admin.answers.index', compact('answers'));
@@ -124,10 +131,5 @@ class AnswerController extends Controller
         } catch (\Exception $e) {
             return redirect(route('answers.index'))->with('error', 'Deleted error!');
         }
-    }
-
-    public function list(Request $request)
-    {
-        return response()->json(123);
     }
 }
