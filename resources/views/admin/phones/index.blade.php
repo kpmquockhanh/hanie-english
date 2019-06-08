@@ -38,8 +38,8 @@
                         <td>{{ $phone->name }}</td>
                         <td>{{ $phone->phone_number }}</td>
                         <td>
-                            {{--                                            <a href="{{ route('phones.edit', ['id' => $phone->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>--}}
-                            <form action="{{ route('phones.destroy', ['id' => $phone->id]) }}" style="display: inline;" method="post">
+                            <a href="{{ route('phones.edit', $phone->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route('phones.destroy', $phone->id) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger"><i class="fa fa-trash"></i></button>
