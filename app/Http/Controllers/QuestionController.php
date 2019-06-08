@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Question;
+use App\QuestionCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -41,6 +43,7 @@ class QuestionController extends Controller
         $this->validate(
             $request,
             [
+                'categories' => 'required|array',
                 'content' => 'required',
                 'explain' => 'required',
                 'right_answer_id' => 'required',
@@ -58,7 +61,16 @@ class QuestionController extends Controller
 
 
         $createData['wrong_answer_ids'] = json_encode($request->wrong_answer_ids);
-        Question::query()->create($createData);
+        $categoryIds = $request->categories;
+        DB::transaction(function () use ($createData, $categoryIds) {
+            $question = Question::query()->create($createData);
+            foreach ($categoryIds as $categoryId) {
+                QuestionCategory::query()->create([
+                    'question_id' => $question->id,
+                    'category_id' => $categoryId
+                ]);
+            }
+        });
 
         return redirect(route('questions.index'))->with('success', 'Created successfully!');
     }
@@ -82,6 +94,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
+        $question = $question->load('categories');
         $wrongAnswers = Answer::query()->whereIn('id', json_decode($question->wrong_answer_ids))->get();
         return view('admin.questions.edit', compact('question', 'wrongAnswers'));
     }
@@ -115,9 +128,17 @@ class QuestionController extends Controller
 
         $updateData['wrong_answer_ids'] = json_encode($updateData['wrong_answer_ids']);
 
-        $createData['wrong_answer_ids'] = json_encode($request->wrong_answer_ids);
-        $question->update($updateData);
+        $categoryIds = $request->categories;
 
+        DB::transaction(function () use ($updateData, $categoryIds, $question) {
+            $question->update($updateData);
+            foreach ($categoryIds as $categoryId) {
+                QuestionCategory::query()->updateOrCreate([
+                    'question_id' => $question->id,
+                    'category_id' => $categoryId
+                ]);
+            }
+        });
         return redirect(route('questions.index'))->with('success', 'Updated successfully!');
     }
 

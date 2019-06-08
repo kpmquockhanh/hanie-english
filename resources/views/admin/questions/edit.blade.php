@@ -35,6 +35,22 @@
                         <div class="form-group">
                             <label>Content</label>
                             <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content', $question->content) }}">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Categories</label>
+                            <select multiple class="form-control categories" name="categories[]" hidden>
+                                @foreach ($question->categories as $category)
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Content</label>
+                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content', $question->content) }}">
                         </div>
                     </div>
                 </div>

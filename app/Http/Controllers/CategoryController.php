@@ -12,9 +12,24 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $categories = Category::query();
+        if ($request->ajax()) {
+            $query = $request->q;
+            $categories->select([
+                'id',
+                'name as text'
+            ]);
+            if (!$query) {
+                return response()->json(['results' => $categories->take(10)->get()]);
+            }
+
+            $categories->where('content', 'like', "%$query%");
+            return response()->json(['results' => $categories->get()]);
+        }
+        $categories = $categories->paginate(10);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,18 +39,30 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+            ]
+        );
+
+        $createData = $request->only([
+            'name',
+        ]);
+
+        Category::query()->create($createData);
+
+        return redirect(route('categories.index'))->with('success', 'Created successfully!');
     }
 
     /**
@@ -57,19 +84,31 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+            ]
+        );
+
+        $updateData = $request->only([
+            'name',
+        ]);
+
+        Category::query()->update($updateData);
+
+        return redirect(route('categories.index'))->with('success', 'Updated successfully!');
     }
 
     /**
@@ -80,6 +119,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+            return redirect(route('categories.index'))->with('success', 'Deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect(route('categories.index'))->with('error', 'Deleted error!');
+        }
     }
 }
