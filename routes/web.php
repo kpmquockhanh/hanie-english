@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function() {
         Route::resource('questions','QuestionController');
         Route::resource('answers','AnswerController');
         Route::resource('users','UserController');
+        Route::resource('courses', 'CourseController');
         Route::resource('categories','CategoryController');
     });
 
