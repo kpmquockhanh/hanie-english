@@ -39,25 +39,16 @@ class PhoneController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
-            'word' => ['required', 'string'],
-            'position' => ['required', 'string'],
-            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:2000'],
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10']
         ]);
 
         $data = $request->only([
-            'name', 'word', 'position'
+            'name', 'phone_number'
         ]);
-
-        if ($image = $request->file('image'))
-        {
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move('uploads', $name);
-            $data['image'] = '/uploads/'.$name;
-        }
 
         Phone::query()->create($data);
 
-        return redirect(route('phones.index'));
+        return redirect(route('phones.index'))->with('success', 'Created successfully!');
     }
 
     /**
@@ -77,11 +68,11 @@ class PhoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Phone $phone)
     {
-        $teacher = Phone::query()->findOrFail($id);
+        $phone = Phone::query()->findOrFail($phone->id);
 
-        return view('admin.phones.edit', compact('teacher'));
+        return view('admin.phones.edit', compact('phone'));
     }
 
     /**
@@ -91,31 +82,20 @@ class PhoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Phone $phone)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
-            'word' => ['required', 'string'],
-            'position' => ['required', 'string'],
-//            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:2000'],
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10']
         ]);
-        $teacher = Phone::query()->findOrFail($id);
 
         $data = $request->only([
-            'name', 'word', 'position'
+            'name', 'phone_number'
         ]);
 
-        if ($image = $request->file('image'))
-        {
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move('uploads', $name);
-            $data['image'] = '/uploads/'.$name;
-            Phone::delete($teacher->image);
+        $phone->update($data);
 
-        }
-        $teacher->update($data);
-
-        return redirect(route('phones.edit', ['id' => $teacher->id]));
+        return redirect(route('phones.index'))->with('success', 'Updated successfully!');
     }
 
     /**
@@ -126,8 +106,13 @@ class PhoneController extends Controller
      */
     public function destroy($id)
     {
-        Phone::destroy($id);
+        try {
+            Phone::destroy($id);
 
-        return redirect(route('phones.index'));
+            return redirect(route('phones.index'))->with('success', 'Deleted successfully!');
+        } catch (\Exception $exception) {
+            return redirect(route('phones.index'))->with('error', 'Deleted error!');
+        }
+
     }
 }
