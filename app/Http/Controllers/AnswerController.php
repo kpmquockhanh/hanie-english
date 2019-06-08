@@ -13,10 +13,20 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $answers = Answer::all();
-
+        $q = $request->q;
+        $answers = Answer::query()->where('content', 'like', "%$q%");
+        if ($request->ajax()) {
+            if (!$q) {
+                return response()->json(['results' => null]);
+            }
+            return response()->json(['results' => $answers->select([
+                'id',
+                'content as text'
+            ])->get()]);
+        }
+        $answers = $answers->get();
         return view('admin.answers.index', compact('answers'));
     }
 
@@ -114,5 +124,10 @@ class AnswerController extends Controller
         } catch (\Exception $e) {
             return redirect(route('answers.index'))->with('error', 'Deleted error!');
         }
+    }
+
+    public function list(Request $request)
+    {
+        return response()->json(123);
     }
 }

@@ -23,31 +23,33 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
+                    <th>Content</th>
+                    <th>Explain</th>
+                    <th>Right answer</th>
+                    <th>Wrong answers</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @if (!$questions->count())
                     <tr>
-                        <td colspan="6" class="text-center">No data</td>
+                        <td colspan="8" class="text-center">No data</td>
                     </tr>
                 @endif
                 @foreach ($questions as $question)
                     <tr>
                         <td>{{ $question->id }}</td>
-                        <td>{{ $question->name }}</td>
-                        <td>{{ $question->word }}</td>
+                        <td>{{ $question->content }}</td>
+                        <td>{{ $question->explain }}</td>
+                        <td>{{ $question->explain }}</td>
+                        <td>{{ $question->explain }}</td>
+                        <td>{{ $question->created_at->diffForHumans() }}</td>
+                        <td>{{ $question->updated_at->diffForHumans() }}</td>
                         <td>
-                            <img src="{{ $question->image }}" alt="" style="height: 60px;">
-                        </td>
-                        <td>{{ $question->position }}</td>
-                        <td>
-                            <a href="{{ route('teachers.edit', ['id' => $question->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                            <form action="{{ route('teachers.destroy', ['id' => $question->id]) }}" style="display: inline;" method="post">
+                            <a href="{{ route('question.edit', ['id' => $question->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route('questions.destroy', ['id' => $question->id]) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger" style="padding: 2px 10px;"><i class="fa fa-trash"></i></button>
@@ -59,10 +61,12 @@
                 <tfoot>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
+                    <th>Content</th>
+                    <th>Explain</th>
+                    <th>Right answer</th>
+                    <th>Wrong answers</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
