@@ -37,4 +37,7 @@ class Question extends Model
         return $this->belongsToMany(Answer::class);
     }
 
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'question_categories');
+    }
 }

@@ -12,10 +12,23 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::query()->paginate(5);
+        $categories = Category::query();
+        if ($request->ajax()) {
+            $query = $request->q;
+            $categories->select([
+                'id',
+                'name as text'
+            ]);
+            if (!$query) {
+                return response()->json(['results' => $categories->take(10)->get()]);
+            }
 
+            $categories->where('content', 'like', "%$query%");
+            return response()->json(['results' => $categories->get()]);
+        }
+        $categories = $categories->paginate(10);
         return view('admin.categories.index', compact('categories'));
     }
 

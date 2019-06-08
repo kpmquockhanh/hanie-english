@@ -31,6 +31,14 @@
                 @include('admin.layouts.error-message')
                 @csrf
                 <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Categories</label>
+                            <select multiple class="form-control categories" name="categories[]" hidden></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Content</label>

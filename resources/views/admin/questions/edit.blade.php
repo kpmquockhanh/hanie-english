@@ -31,6 +31,18 @@
                 @csrf
                 {{ method_field('PUT') }}
                 <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Categories</label>
+                            <select multiple class="form-control categories" name="categories[]" hidden>
+                                @foreach ($question->categories as $category)
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Content</label>
