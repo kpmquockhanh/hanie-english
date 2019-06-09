@@ -3,20 +3,8 @@
 @section('option-des', 'Danh sách khóa học')
 @section('style')
     <style>
-        .dash-circle{
-            width: 10vw;
-            height: 10vw;
-            background: #eee;
-            margin: 20px auto;
-            border-radius: 50%;
-            /* border: 3px dashed white; */
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            overflow: hidden;
-            box-shadow: 1px 1px 5px;
+        td {
+            vertical-align: middle !important;
         }
     </style>
 @stop
