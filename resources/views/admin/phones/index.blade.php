@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Phones')
-@section('option-des', 'Danh sách số điện thoại')
+@section('option-des', 'Phones')
 @section('style')
     <style>
         td {

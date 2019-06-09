@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
-
 @section('page-header', 'Teachers')
-@section('option-des', 'Danh sách giáo viên')
+@section('option-des', 'Teachers')
 @section('style')
     <style>
         td {
