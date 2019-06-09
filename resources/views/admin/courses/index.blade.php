@@ -72,6 +72,9 @@
             </table>
         </div>
         <!-- /.box-body -->
+        <div class="box-footer">
+            {{ $courses->links() }}
+        </div>
     </div>
     <!-- /.box -->
 @stop
