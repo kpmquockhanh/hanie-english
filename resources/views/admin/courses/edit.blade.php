@@ -1,10 +1,10 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Courses')
-@section('option-des', "Sửa thông tin khóa học $course->name")
+@section('option-des', "Edit courses")
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">Edit courses</h3>
+            <h3 class="box-title">Edit courses {{$course->name}}</h3>
         </div>
         <form action="{{ route('courses.update', $course->id) }}" method="post" class="">
             @csrf

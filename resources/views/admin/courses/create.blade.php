@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Courses')
-@section('option-des', 'Thêm khóa học')
+@section('option-des', 'Create courses')
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
