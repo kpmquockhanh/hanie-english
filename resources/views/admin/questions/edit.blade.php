@@ -31,10 +31,6 @@
                 @csrf
                 {{ method_field('PUT') }}
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label>Content</label>
-                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content', $question->content) }}">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>Categories</label>
