@@ -1,10 +1,10 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Courses')
-@section('option-des', "Thông tin khóa học $course->name")
+@section('option-des', "Information course")
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">Information courses</h3>
+            <h3 class="box-title">Information course {{$course->name}}</h3>
         </div>
         <div class="box-body">
 
