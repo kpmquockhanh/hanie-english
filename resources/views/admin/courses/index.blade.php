@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Courses')
-@section('option-des', 'Danh sách khóa học')
+@section('option-des', 'Courses')
 @section('style')
     <style>
         td {
