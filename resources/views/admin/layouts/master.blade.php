@@ -2,7 +2,11 @@
 <html lang="vi">
 <head>
     @if (request()->segment(2))
-        <title>{{ env('APP_NAME') }} | @yield('title', ucfirst((request()->segment(3)?request()->segment(3).' ':'').request()->segment(2)))</title>
+        <title>{{ env('APP_NAME') }} | @yield('title', ucfirst((request()->segment(3)
+        ?request()->segment(4) === 'edit'
+            ?'Update '
+            :request()->segment(3)
+            .' ':'').request()->segment(2)))</title>
     @else
         <title>{{ env('APP_NAME') }}</title>
     @endif

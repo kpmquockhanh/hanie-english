@@ -31,10 +31,6 @@
                 @include('admin.layouts.error-message')
                 @csrf
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label>Content</label>
-                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content') }}">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>Categories</label>
@@ -43,20 +39,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-5">
-                        <div class="form-group">
-                            <label>Right answer</label>
-                            <select class="form-control right-answer" name="right_answer_id" hidden>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="form-group">
-                            <label>Wrong answers</label>
-                            <select multiple class="form-control wrong-answers" name="wrong_answer_ids[]" hidden>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Content</label>
