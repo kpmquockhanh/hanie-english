@@ -1,10 +1,10 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Courses')
-@section('option-des', 'Create courses')
+@section('option-des', 'Create course')
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">Create courses</h3>
+            <h3 class="box-title">Create course</h3>
         </div>
         <form action="{{ route('courses.store') }}" method="post" class="">
             @csrf
