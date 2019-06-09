@@ -2,7 +2,7 @@
     $('.categories').select2({
         placeholder: 'Select an option',
         allowClear: true,
-        maximumSelectionLength: 3,
+        // maximumSelectionLength: 3,
         width: 'resolve',
         ajax: {
             url: "{{ route('categories.index') }}",

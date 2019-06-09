@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Category;
 use App\Question;
 use App\QuestionCategory;
 use Illuminate\Http\Request;
@@ -131,7 +132,12 @@ class QuestionController extends Controller
 
         $categoryIds = $request->categories;
 
-        DB::transaction(function () use ($updateData, $categoryIds, $question) {
+        $currentCategories = $question->categories->map(function ($item) {
+            return $item->id;
+        });
+
+        $removeIds = array_diff($currentCategories->toArray(), $categoryIds);
+        DB::transaction(function () use ($updateData, $categoryIds, $question, $removeIds) {
             $question->update($updateData);
             foreach ($categoryIds as $categoryId) {
                 QuestionCategory::query()->updateOrCreate([
@@ -139,6 +145,10 @@ class QuestionController extends Controller
                     'category_id' => $categoryId
                 ]);
             }
+            QuestionCategory::query()
+                ->whereIn('category_id', $removeIds)
+                ->where('question_id', $question->id)
+                ->delete();
         });
         return redirect(route('questions.index'))->with('success', 'Updated successfully!');
     }
