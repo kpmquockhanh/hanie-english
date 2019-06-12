@@ -14,10 +14,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::query()->paginate(5);
+        $users = User::query();
 
+        if ($q = $request->q) {
+            $users->where('id', $q);
+            $users->orWhere('username', 'like', "%$q%");
+        }
+        $users = $users->paginate(5);
         return view('admin.users.index', compact('users'));
     }
 
