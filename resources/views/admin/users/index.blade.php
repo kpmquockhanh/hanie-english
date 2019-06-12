@@ -10,10 +10,27 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">{{ ucfirst(request()->segment(2)) }} list
-                <a href="{{ route(request()->segment(2).'.create') }}" class="btn-sm btn-success" style="margin-left: 5px;">
-                    <i class="fa fa-plus"></i>
-                </a></h3>
+            <h3 class="box-title row" style="display: flex; align-items: center">
+                <div class="col-lg-4">
+                    {{ ucfirst(request()->segment(2)) }} list
+                    <a href="{{ route(request()->segment(2).'.create') }}" class="btn-sm btn-success" style="margin-left: 5px;">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+                <form action="" class="col-lg-8">
+                    <div class="input-group input-group-sm pull-right">
+                        <input type="text" class="form-control" name="q" value="{{ request('q') }}">
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-info btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                            <a href="{{ route('users.index') }}" class="btn btn-success btn-flat">
+                            <i class="fa fa-align-justify"></i>
+                        </a>
+                    </span>
+                    </div>
+                </form>
+            </h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
