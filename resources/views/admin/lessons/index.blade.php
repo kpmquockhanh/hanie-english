@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
-@section('page-header', 'Phones')
-@section('option-des', 'Phones')
+@section('page-header', 'Lessons')
+@section('option-des', 'Lessons')
 @section('style')
     <style>
         td {
@@ -11,7 +11,11 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Phone list <a href="{{ route('phones.create') }}" class="btn-sm btn-success" style="margin-left: 5px;"><i class="fa fa-plus"></i></a></h3>
+            <h3 class="box-title">{{ ucfirst(request()->segment(2)) }} list
+                <a href="{{ route(request()->segment(2).'.create') }}" class="btn btn-xs btn-success" style="margin-left: 5px;">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -21,25 +25,29 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Phone number</th>
+                    <th>Course name</th>
+                    <th>Lesson name</th>
+                    <th>Video title</th>
+                    <th>Original name title</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if (!$phones->count())
+                @if (!$lessons->count())
                     <tr>
                         <td colspan="5" class="text-center">No data</td>
                     </tr>
                 @endif
-                @foreach ($phones as $phone)
+                @foreach ($lessons as $lesson)
                     <tr>
-                        <td>{{ $phone->id }}</td>
-                        <td>{{ $phone->name }}</td>
-                        <td>{{ $phone->phone_number }}</td>
+                        <td>{{ $lesson->id }}</td>
+                        <td>{{ $lesson->course->name }}</td>
+                        <td>{{ $lesson->name }}</td>
+                        <td>{{ $lesson->video->title }}</td>
+                        <td>{{ $lesson->video->original_name }}</td>
                         <td>
-                            <a href="{{ route('phones.edit', $phone->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                            <form action="{{ route('phones.destroy', $phone->id) }}" style="display: inline;" method="post">
+                            <a href="{{ route(request()->segment(2).'.edit', $lesson->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route(request()->segment(2).'.destroy', $lesson->id) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger"><i class="fa fa-trash"></i></button>
@@ -52,13 +60,15 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Phone number</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
         </div>
         <!-- /.box-body -->
+        <div class="box-footer">
+            {{ $lessons->links() }}
+        </div>
     </div>
     <!-- /.box -->
 @stop
