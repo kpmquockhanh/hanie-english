@@ -14,7 +14,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::query()->paginate();
+
+        return view('admin.videos.index', compact('videos'));
     }
 
     /**
@@ -24,7 +26,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.videos.create');
     }
 
     /**
