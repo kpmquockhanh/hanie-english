@@ -66,7 +66,7 @@
                     <div class="col-lg-12">
                         <div class="form-group" style="display: flex; align-items: center">
                             <label for="status-checkbox" style="margin: 0 5px 0 5px;">Active?</label>
-                            <input type="checkbox" id="status-checkbox" class="minimal" {{ $user->status ? 'checked' :'' }}>
+                            <input type="checkbox" id="status-checkbox" class="minimal" {{ $user->status ? 'checked' :'' }} name="status">
                         </div>
                     </div>
                 </div>

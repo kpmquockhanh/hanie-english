@@ -35,8 +35,10 @@ Route::prefix('admin')->group(function() {
         Route::resource('questions','QuestionController');
         Route::resource('answers','AnswerController');
         Route::resource('users','UserController');
+        Route::post('users/make-courses','UserController@makeCourses')->name('users.make-course');
         Route::resource('courses', 'CourseController');
         Route::resource('categories','CategoryController');
+        Route::resource('user-course','UserCourseController');
     });
 
 });
