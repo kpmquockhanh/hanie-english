@@ -21,8 +21,17 @@ class Lesson extends Model
 {
     protected $fillable = [
         'course_id',
-        'video_id',
         'name',
         'description'
     ];
+
+    public function video()
+    {
+        return $this->hasOne('App\Video');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
+    }
 }

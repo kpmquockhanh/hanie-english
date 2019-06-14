@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'LandingPageController@index')->name('landing_page');
 Route::get('/store-phone', 'LandingPageController@storePhone')->name('landing.store.phone');
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->group(function () {
     Route::namespace('AdminAuth')->group(function () {
         Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
         Route::post('login', 'LoginController@login');
@@ -29,17 +29,15 @@ Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('/config', 'ConfigController@index')->name('admin.config');
         Route::post('/config/update', 'ConfigController@update')->name('admin.config.update');
-
-        Route::resource('teachers','TeacherController');
-        Route::resource('phones','PhoneController');
-        Route::resource('questions','QuestionController');
-        Route::resource('answers','AnswerController');
-        Route::resource('users','UserController');
+        Route::resource('teachers', 'TeacherController');
+        Route::resource('phones', 'PhoneController');
+        Route::resource('questions', 'QuestionController');
+        Route::resource('answers', 'AnswerController');
+        Route::resource('users', 'UserController');
         Route::resource('courses', 'CourseController');
-        Route::resource('categories','CategoryController');
-        Route::resource('videos', 'VideoController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('lessons', 'LessonController');
     });
-
 });
 
 $this->get('logout', 'Auth\LoginController@logout');

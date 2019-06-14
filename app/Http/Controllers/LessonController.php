@@ -14,7 +14,9 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        $lessons = Lesson::query()->paginate();
+
+        return view('admin.lessons.index', compact('lessons'));
     }
 
     /**
@@ -24,7 +26,7 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.lessons.create');
     }
 
     /**
