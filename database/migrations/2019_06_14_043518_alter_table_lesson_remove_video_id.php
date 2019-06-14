@@ -14,7 +14,7 @@ class AlterTableLessonRemoveVideoId extends Migration
     public function up()
     {
         Schema::table('lessons', function (Blueprint $table) {
-            //
+            $table->dropColumn('video_id');
         });
     }
 
