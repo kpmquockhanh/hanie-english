@@ -53,7 +53,7 @@ class User extends Authenticatable
     ];
 
     private $statusName = [
-        'Pending',
+        'Deactivate',
         'Active',
     ];
     public function getStatusNameAttribute() {

@@ -1,22 +1,5 @@
 @extends('admin.layouts.master')
 @section('style')
-    <style>
-        .dash-circle{
-            width: 10vw;
-            height: 10vw;
-            background: #eee;
-            margin: 20px auto;
-            border-radius: 50%;
-            /* border: 3px dashed white; */
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            overflow: hidden;
-            box-shadow: 1px 1px 5px;
-        }
-    </style>
     <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 @stop
 @section('content')
