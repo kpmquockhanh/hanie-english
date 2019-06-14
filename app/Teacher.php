@@ -22,4 +22,10 @@ class Teacher extends Model
     protected $fillable = [
         'name', 'word', 'position', 'image'
     ];
+
+    public function getUrlImageAttribute()
+    {
+        $url = env('AWS_URL');
+        return "$url$this->image";
+    }
 }

@@ -59,4 +59,10 @@ class User extends Authenticatable
     public function getStatusNameAttribute() {
         return array_get($this->statusName, $this->status);
     }
+
+    public function getUrlAvatarAttribute()
+    {
+        $url = env('AWS_URL');
+        return "$url/$this->avatar";
+    }
 }

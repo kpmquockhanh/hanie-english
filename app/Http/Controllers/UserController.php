@@ -7,6 +7,7 @@ use App\UserCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -67,9 +68,9 @@ class UserController extends Controller
 
         if ($image = $request->file('avatar'))
         {
-            $disk = 'uploads/users/';
+            $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move($disk, $name);
+            Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');
             $createData['avatar'] = $disk.$name;
         }
         User::query()->create($createData);
@@ -136,10 +137,10 @@ class UserController extends Controller
 
         if ($image = $request->file('avatar'))
         {
-            $disk = 'uploads/users/';
+            $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move($disk, $name);
-            File::delete($user->avatar);
+            Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');
+            Storage::disk('s3')->delete($user->avatar);
             $updateData['avatar'] = $disk.$name;
         }
         $user->update($updateData);
@@ -157,6 +158,7 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+            Storage::disk('s3')->delete($user->avatar);
             return redirect(route('users.index'))->with('success', 'Deleted successfully!');
         } catch (\Exception $e) {
             return redirect(route('users.index'))->with('error', 'Deleted error!');

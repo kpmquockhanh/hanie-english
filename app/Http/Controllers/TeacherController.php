@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -52,8 +53,9 @@ class TeacherController extends Controller
         if ($image = $request->file('image'))
         {
             $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move('uploads', $name);
-            $data['image'] = '/uploads/'.$name;
+            Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
+//            $image->move('uploads', $name);
+            $data['image'] = '/avatars/'.$name;
         }
 
         Teacher::query()->create($data);
@@ -92,7 +94,7 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teacher)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
@@ -100,8 +102,6 @@ class TeacherController extends Controller
             'position' => ['required', 'string'],
             'image' => ['mimes:jpeg,jpg,png', 'max:2000'],
         ]);
-        $teacher = Teacher::query()->findOrFail($id);
-
         $data = $request->only([
             'name', 'word', 'position'
         ]);
@@ -109,9 +109,12 @@ class TeacherController extends Controller
         if ($image = $request->file('image'))
         {
             $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move('uploads', $name);
+            Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
+//            $image->move('uploads', $name);
             $data['image'] = '/uploads/'.$name;
-            File::delete($teacher->image);
+
+            Storage::disk('s3')->delete($teacher->image);
+//            File::delete($teacher->image);
 
         }
         $teacher->update($data);
@@ -125,11 +128,11 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
         try {
-            Teacher::destroy($id);
-
+            $teacher->delete();
+            Storage::disk('s3')->delete($teacher->image);
             return redirect(route('teachers.index'))->with('success', 'Deleted successfully!');
         } catch (\Exception $exception) {
             return redirect(route('teachers.index'))->with('error', 'Deleted error!');
