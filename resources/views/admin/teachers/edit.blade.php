@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="dash-circle">
-                            <img id="preview-img" src="{{ asset($teacher->image)??asset('dashboard/img/avatar.svg') }}" alt="" style="width: 100%;">
+                            <img id="preview-img" src="{{ asset($teacher->url_image)??asset('dashboard/img/avatar.svg') }}" alt="" style="width: 100%;">
                         </div>
                         <input type="file" id="image" name="image" hidden style="display: none;"/>
                     </div>
