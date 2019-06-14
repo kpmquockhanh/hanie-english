@@ -43,7 +43,7 @@
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->word }}</td>
                         <td>
-                            <img src="{{ $teacher->image }}" alt="" style="height: 60px;">
+                            <img src="{{ $teacher->url_image }}" alt="" style="height: 60px;">
                         </td>
                         <td>{{ $teacher->position }}</td>
                         <td>

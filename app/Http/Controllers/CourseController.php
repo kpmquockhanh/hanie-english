@@ -13,9 +13,34 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::query()->paginate();
+        $courses = Course::query();
+
+        if ($request->ajax()) {
+            $query = $request->get('query');
+            $except = $request->get('except');
+            $courses->select([
+                'id',
+                'name as text'
+            ]);
+
+            if ($except != null) {
+                $courses->whereNotIn('id', $except);
+            }
+            if ($query) {
+                $courses->where('name', 'like', "%$query%");
+            }
+
+            return response()->json(['results' => $courses->get()->map(function ($item) {
+                return [
+                  'id' => $item->id,
+                  'text' => $item->text.' '."($item->id)",
+                ];
+            })]);
+        }
+
+        $courses = $courses->paginate(5);
         return view('admin.courses.index', compact('courses'));
     }
 
@@ -39,6 +64,7 @@ class CourseController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
+            'description' => 'required'
         ]);
 
         $data = $request->only([

@@ -58,10 +58,12 @@
                 @foreach ($users as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
+                        <td>
+                            <a href="{{ route('users.show', ['id' => $item->id]) }}">{{ $item->name }}</a>
+                        </td>
                         <td>{{ $item->username }}</td>
                         <td width="7%" height="10%">
-                            <img src="{{ $item->avatar ? asset($item->avatar) : asset('dist/img/user2-160x160.jpg') }}" alt="" style="width: 100%;">
+                            <img src="{{ $item->url_avatar ? asset($item->url_avatar) : asset('dist/img/user2-160x160.jpg') }}" alt="" style="width: 100%;">
                         </td>
                         <td class="text-{{ $item->status ?'success':'danger' }}">{{ $item->status_name }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>

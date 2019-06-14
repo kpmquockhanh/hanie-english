@@ -29,6 +29,7 @@
                     <th>Lesson name</th>
                     <th>Video title</th>
                     <th>Original name title</th>
+                    <th>Video</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -45,6 +46,11 @@
                         <td>{{ $lesson->name }}</td>
                         <td>{{ $lesson->video->title }}</td>
                         <td>{{ $lesson->video->original_name }}</td>
+                        <td>
+                            <video  width="200" controls>
+                                <source src="{{$lesson->video->url_path}}" type="video/mp4">
+                            </video>
+                        </td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', $lesson->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route(request()->segment(2).'.destroy', $lesson->id) }}" style="display: inline;" method="post">

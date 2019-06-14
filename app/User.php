@@ -53,10 +53,16 @@ class User extends Authenticatable
     ];
 
     private $statusName = [
-        'Pending',
+        'Deactivate',
         'Active',
     ];
     public function getStatusNameAttribute() {
         return array_get($this->statusName, $this->status);
+    }
+
+    public function getUrlAvatarAttribute()
+    {
+        $url = env('AWS_URL');
+        return "$url/$this->avatar";
     }
 }

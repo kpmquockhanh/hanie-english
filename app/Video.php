@@ -35,4 +35,10 @@ class Video extends Model
     {
         return $this->hasOne('App\Lesson');
     }
+
+    public function getUrlPathAttribute()
+    {
+        $url = env('AWS_URL');
+        return "$url$this->path";
+    }
 }
