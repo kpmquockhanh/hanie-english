@@ -41,10 +41,24 @@ Route::prefix('admin')->group(function () {
         Route::resource('lessons', 'LessonController');
     });
 });
+Route::prefix('user')->group(function () {
+    Route::namespace('UserAuth')->group(function () {
+        Route::get('login', 'LoginController@showLoginForm')->name('user.login');
+        Route::post('login', 'LoginController@login');
+        Route::post('logout', 'LoginController@logout')->name('user.logout');
+        Route::get('logout', 'LoginController@logout');
+        Route::get('register', 'RegisterController@showRegistrationForm')->name('user.register');
+        Route::post('register', 'RegisterController@register');
+    });
 
-$this->get('logout', 'Auth\LoginController@logout');
+    Route::middleware('auth:user')->group(function () {
+        Route::get('/', 'DashboardController@index')->name('dashboard.index');
+    });
+
+});
 
 
-Auth::routes();
+//$this->get('logout', 'Auth\LoginController@logout');
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

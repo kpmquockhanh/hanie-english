@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="dash-circle">
-                            <img id="preview-img" src="{{ $user->avatar ? asset($user->avatar) : asset('dist/img/user2-160x160.jpg') }}" alt="" style="width: 100%;">
+                            <img id="preview-img" src="{{ $user->avatar ? $user->url_avatar : asset('dist/img/user2-160x160.jpg') }}" alt="" style="width: 100%;">
                         </div>
                     </div>
                 </div>

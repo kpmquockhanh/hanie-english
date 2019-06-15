@@ -36,7 +36,7 @@
                 <tbody>
                 @if (!$lessons->count())
                     <tr>
-                        <td colspan="5" class="text-center">No data</td>
+                        <td colspan="7" class="text-center">No data</td>
                     </tr>
                 @endif
                 @foreach ($lessons as $lesson)
@@ -47,9 +47,7 @@
                         <td>{{ $lesson->video->title }}</td>
                         <td>{{ $lesson->video->original_name }}</td>
                         <td>
-                            <video  width="200" controls>
-                                <source src="{{$lesson->video->url_path}}" type="video/mp4">
-                            </video>
+                            <a href="{{ $lesson->video->url_path }}" target="_blank">Link video</a>
                         </td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', $lesson->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
@@ -65,7 +63,11 @@
                 <tfoot>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th>Course name</th>
+                    <th>Lesson name</th>
+                    <th>Video title</th>
+                    <th>Video name</th>
+                    <th>Video</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
