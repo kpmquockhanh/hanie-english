@@ -56,8 +56,8 @@ class Handler extends ExceptionHandler
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)
             : redirect()->guest($exception->redirectTo()
-                ?? $isAdmin
+                ?? ($isAdmin
                     ? route('admin.login')
-                    : route('login'));
+                    : route('user.login')));
     }
 }
