@@ -73,11 +73,11 @@ class LessonController extends Controller
         ]);
         if ($video = $request->file('video'))
         {
+            $dataVideo['disk'] = 'videos';
             $name = time().'.'.$video->getClientOriginalExtension();
-            Storage::disk('s3')->put('videos/'.$name, file_get_contents($video), 'public');
+            Storage::disk('s3')->put($dataVideo['disk'].'/'.$name, file_get_contents($video), 'public');
             $dataVideo['original_name'] = $video->getClientOriginalName();
-            $dataVideo['disk'] = '/videos';
-            $dataVideo['path'] = '/videos/'.$name;
+            $dataVideo['path'] = $name;
         }
 
         DB::transaction(function () use ($data, $dataVideo){
