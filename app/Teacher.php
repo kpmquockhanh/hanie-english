@@ -26,6 +26,6 @@ class Teacher extends Model
     public function getUrlImageAttribute()
     {
         $url = env('AWS_URL');
-        return "$url$this->image";
+        return "$url/$this->image";
     }
 }

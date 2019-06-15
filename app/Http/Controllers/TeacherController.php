@@ -55,7 +55,7 @@ class TeacherController extends Controller
             $name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
 //            $image->move('uploads', $name);
-            $data['image'] = '/avatars/'.$name;
+            $data['image'] = 'avatars/'.$name;
         }
 
         Teacher::query()->create($data);
@@ -111,7 +111,7 @@ class TeacherController extends Controller
             $name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
 //            $image->move('uploads', $name);
-            $data['image'] = '/uploads/'.$name;
+            $data['image'] = 'avatars/'.$name;
 
             Storage::disk('s3')->delete($teacher->image);
 //            File::delete($teacher->image);
