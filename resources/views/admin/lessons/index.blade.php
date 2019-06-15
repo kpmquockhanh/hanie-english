@@ -28,7 +28,7 @@
                     <th>Course name</th>
                     <th>Lesson name</th>
                     <th>Video title</th>
-                    <th>Original name title</th>
+                    <th>Video name</th>
                     <th>Video</th>
                     <th>Action</th>
                 </tr>

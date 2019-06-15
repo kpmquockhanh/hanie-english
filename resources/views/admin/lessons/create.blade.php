@@ -66,29 +66,12 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
-                                    <label for="original_name">Original name</label>
-                                </div>
-                                <div class="nk-int-st">
-                                    <input type="text" name="original_name" class="form-control"
-                                           placeholder="Original name" value="{{ old('original_name') }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
                                     <label for="video">Video</label>
                                 </div>
                                 <div class="nk-int-st">
-                                    <div class="dash-video">
-                                        <video controls style="width: 50%;">
-                                            <source id="preview-video" src=""
-                                                    type="video/mp4">
-                                        </video>
-                                    </div>
-                                    <input type="file" name="video" id="video" class="form-control"
+                                    <input type="file" name="video"
                                            placeholder="File video"
-                                           value="{{ old('video') }}" hidden style="display: none">
+                                           value="{{ old('video') }}" accept="video/*">
                                 </div>
                             </div>
                         </div>
@@ -112,27 +95,4 @@
         CKEDITOR.replace('description');
     </script>
     @include('admin.lessons.scripts')
-    <script>
-        function readURL(input) {
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#preview-video').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#video").change(function () {
-            readURL(this);
-        });
-        $('.dash-video').click(function (e) {
-            e.preventDefault();
-            $('#video').trigger('click');
-        });
-
-    </script>
 @stop
