@@ -61,7 +61,6 @@ class LessonController extends Controller
                 'course_id' => 'required',
                 'name' => 'required',
                 'title' => 'required',
-                'original_name' => 'required',
                 'video' => 'required|mimes:mp4',
             ]
         );
@@ -70,12 +69,13 @@ class LessonController extends Controller
         ]);
 
         $dataVideo = $request->only([
-            'title', 'original_name'
+            'title'
         ]);
         if ($video = $request->file('video'))
         {
             $name = time().'.'.$video->getClientOriginalExtension();
             Storage::disk('s3')->put('videos/'.$name, file_get_contents($video), 'public');
+            $dataVideo['original_name'] = $video->getClientOriginalName();
             $dataVideo['disk'] = '/videos';
             $dataVideo['path'] = '/videos/'.$name;
         }
@@ -126,7 +126,6 @@ class LessonController extends Controller
                 'course_id' => 'required',
                 'name' => 'required',
                 'title' => 'required',
-                'original_name' => 'required',
                 'video' => 'mimes:mp4',
             ]
         );
@@ -135,12 +134,13 @@ class LessonController extends Controller
         ]);
 
         $dataVideo = $request->only([
-            'title', 'original_name'
+            'title'
         ]);
         if ($video = $request->file('video'))
         {
             $name = time().'.'.$video->getClientOriginalExtension();
             Storage::disk('s3')->put('videos/'.$name, file_get_contents($video), 'public');
+            $dataVideo['original_name'] = $video->getClientOriginalName();
             $dataVideo['disk'] = '/videos';
             $dataVideo['path'] = '/videos/'.$name;
             Storage::disk('s3')->delete($lesson->video->path);
