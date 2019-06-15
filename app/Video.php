@@ -39,6 +39,6 @@ class Video extends Model
     public function getUrlPathAttribute()
     {
         $url = env('AWS_URL');
-        return "$url$this->path";
+        return "$url/$this->disk/$this->path";
     }
 }
