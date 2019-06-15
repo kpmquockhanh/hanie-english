@@ -28,5 +28,17 @@ class Video extends Model
         'path',
         'converted_for_download_at',
         'converted_for_stream_at',
+        'lesson_id'
     ];
+
+    public function lesson()
+    {
+        return $this->hasOne('App\Lesson');
+    }
+
+    public function getUrlPathAttribute()
+    {
+        $url = env('AWS_URL');
+        return "$url$this->path";
+    }
 }

@@ -58,6 +58,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('courses.index') }}">Courses</a></li>
+                    <li><a href="{{ route('lessons.index') }}">Lessons</a></li>
                     <li><a href="{{ route('questions.index') }}">Questions</a></li>
                     <li><a href="{{ route('answers.index') }}">Answers</a></li>
                     <li><a href="{{ route('users.index') }}">Users</a></li>
