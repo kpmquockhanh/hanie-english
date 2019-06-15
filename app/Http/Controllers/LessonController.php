@@ -138,12 +138,13 @@ class LessonController extends Controller
         ]);
         if ($video = $request->file('video'))
         {
+            $dataVideo['disk'] = 'videos';
             $name = time().'.'.$video->getClientOriginalExtension();
-            Storage::disk('s3')->put('videos/'.$name, file_get_contents($video), 'public');
+            Storage::disk('s3')->put($dataVideo['disk'].'/'.$name, file_get_contents($video), 'public');
             $dataVideo['original_name'] = $video->getClientOriginalName();
-            $dataVideo['disk'] = '/videos';
-            $dataVideo['path'] = '/videos/'.$name;
-            Storage::disk('s3')->delete($lesson->video->path);
+            $dataVideo['path'] = $name;
+
+            Storage::disk('s3')->delete($lesson->video->disk.'/'.$lesson->video->path);
         }
 
         DB::transaction(function () use ($data, $dataVideo, $lesson){
@@ -165,7 +166,7 @@ class LessonController extends Controller
         try {
             DB::transaction(function () use ($lesson) {
                 $lesson->delete();
-                Storage::disk('s3')->delete($lesson->video->path);
+                Storage::disk('s3')->delete($lesson->video->disk.'/'.$lesson->video->path);
                 Video::destroy($lesson->video->id);
             });
             return redirect(route('lessons.index'))->with('success', 'Deleted successfully!');
