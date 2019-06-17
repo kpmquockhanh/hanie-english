@@ -21,13 +21,12 @@
             @include('admin.layouts.error-message')
             <table class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$categories->count())
@@ -39,8 +38,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->created_at->diffForHumans() }}</td>
-                        <td>{{ $item->updated_at->diffForHumans() }}</td>
+                        <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', ['id' => $item->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route(request()->segment(2).'.destroy', ['id' => $item->id]) }}" style="display: inline;" method="post">
@@ -53,13 +51,12 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>

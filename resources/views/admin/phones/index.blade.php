@@ -19,12 +19,13 @@
             @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Phone number</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone number</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$phones->count())
@@ -37,6 +38,7 @@
                         <td>{{ $phone->id }}</td>
                         <td>{{ $phone->name }}</td>
                         <td>{{ $phone->phone_number }}</td>
+                        <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a href="{{ route('phones.edit', $phone->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('phones.destroy', $phone->id) }}" style="display: inline;" method="post">
@@ -49,12 +51,13 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Phone number</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone number</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>

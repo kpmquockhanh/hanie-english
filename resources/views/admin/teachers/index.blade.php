@@ -22,14 +22,15 @@
             @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Words</th>
+                        <th>Image</th>
+                        <th>Position</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$teachers->count())
@@ -46,6 +47,7 @@
                             <img src="{{ $teacher->url_image }}" alt="" style="height: 60px;">
                         </td>
                         <td>{{ $teacher->position }}</td>
+                        <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a href="{{ route('teachers.edit', ['id' => $teacher->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('teachers.destroy', ['id' => $teacher->id]) }}" style="display: inline;" method="post">
@@ -58,14 +60,15 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Words</th>
+                        <th>Image</th>
+                        <th>Position</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>
