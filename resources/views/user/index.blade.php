@@ -18,8 +18,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a href="" class="btn-sm btn-info">Study this course!</a>
-                        <a href="" class="btn-sm btn-success">Make a test</a>
+                        <a href="{{ route('dashboard.lessons', [$course->id]) }}" class="btn-sm btn-info">Enter!</a>
                         <a href="" class="btn-sm btn-outline-danger">Course detail</a>
                     </div>
                 </div>

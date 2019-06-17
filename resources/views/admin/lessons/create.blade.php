@@ -24,7 +24,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
-                                    <label for="course_id">Course name</label>
+                                    <label for="course_id">Course</label>
                                 </div>
                                 <div class="col-md-12" style="margin-left: -15px">
                                     <select class="form-control course" name="course_id" hidden></select>

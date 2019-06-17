@@ -54,5 +54,4 @@
         CKEDITOR.config.extraAllowedContent = 'iframe[*]';
         CKEDITOR.replace('description');
     </script>
-
 @endsection

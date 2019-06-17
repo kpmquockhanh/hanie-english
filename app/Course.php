@@ -25,7 +25,7 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany('App\Lesson');
+        return $this->hasMany(Lesson::class);
     }
 
     public function admin()
