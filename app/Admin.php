@@ -85,4 +85,9 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Category::class, 'created_by');
     }
+
+    public function examinations()
+    {
+        return $this->hasMany(Examination::class, 'created_by');
+    }
 }
