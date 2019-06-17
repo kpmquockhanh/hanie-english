@@ -18,6 +18,13 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
     protected $fillable = [
-        'name', 'phone_number'
+        'name',
+        'phone_number',
+        'created_by'
     ];
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
+    }
 }

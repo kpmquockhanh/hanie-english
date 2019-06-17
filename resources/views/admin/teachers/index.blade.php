@@ -47,7 +47,7 @@
                             <img src="{{ $teacher->url_image }}" alt="" style="height: 60px;">
                         </td>
                         <td>{{ $teacher->position }}</td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ $teacher->admin->name }}</td>
                         <td>
                             <a href="{{ route('teachers.edit', ['id' => $teacher->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('teachers.destroy', ['id' => $teacher->id]) }}" style="display: inline;" method="post">

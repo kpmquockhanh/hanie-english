@@ -38,7 +38,7 @@
                         <td>{{ $course->id }}</td>
                         <td>{{ $course->name }}</td>
                         <td>{!! str_limit($course->description) !!}</td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ $course->admin->name }}</td>
                         <td>
                             <a href="{{ route('courses.show', $course->id) }}" class="btn-sm btn-primary"><i class="fa fa-eye"></i></a>
                             <a href="{{ route('courses.edit', $course->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>

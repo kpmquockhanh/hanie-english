@@ -7,6 +7,7 @@ use App\Category;
 use App\Question;
 use App\QuestionCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
@@ -59,6 +60,7 @@ class QuestionController extends Controller
             'right_answer_id',
             'wrong_answer_ids'
         ]);
+        $createData['created_by'] = Auth::id();
 
 
         $createData['wrong_answer_ids'] = json_encode($request->wrong_answer_ids);
@@ -126,6 +128,7 @@ class QuestionController extends Controller
             'right_answer_id',
             'wrong_answer_ids'
         ]);
+        $updateData['created_by'] = Auth::id();
 
         $updateData['wrong_answer_ids'] = json_encode($updateData['wrong_answer_ids']);
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
@@ -49,9 +49,9 @@ class TeacherController extends Controller
         $data = $request->only([
             'name', 'word', 'position'
         ]);
+        $data['created_by'] = Auth::id();
 
-        if ($image = $request->file('image'))
-        {
+        if ($image = $request->file('image')) {
             $name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
 //            $image->move('uploads', $name);
@@ -105,9 +105,9 @@ class TeacherController extends Controller
         $data = $request->only([
             'name', 'word', 'position'
         ]);
+        $data['created_by'] = Auth::id();
 
-        if ($image = $request->file('image'))
-        {
+        if ($image = $request->file('image')) {
             $name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
 //            $image->move('uploads', $name);
@@ -137,6 +137,5 @@ class TeacherController extends Controller
         } catch (\Exception $exception) {
             return redirect(route('teachers.index'))->with('error', 'Deleted error!');
         }
-
     }
 }

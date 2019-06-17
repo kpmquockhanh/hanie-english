@@ -6,6 +6,7 @@ use App\Course;
 use App\Lesson;
 use App\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -67,12 +68,12 @@ class LessonController extends Controller
         $data = $request->only([
             'course_id', 'name', 'description'
         ]);
+        $data['created_by'] = Auth::id();
 
         $dataVideo = $request->only([
             'title'
         ]);
-        if ($video = $request->file('video'))
-        {
+        if ($video = $request->file('video')) {
             $dataVideo['disk'] = 'videos';
             $name = time().'.'.$video->getClientOriginalExtension();
             Storage::disk('s3')->put($dataVideo['disk'].'/'.$name, file_get_contents($video), 'public');
@@ -80,7 +81,7 @@ class LessonController extends Controller
             $dataVideo['path'] = $name;
         }
 
-        DB::transaction(function () use ($data, $dataVideo){
+        DB::transaction(function () use ($data, $dataVideo) {
             Lesson::query()->create($data);
             $dataVideo['lesson_id'] = Lesson::max('id');
             Video::query()->create($dataVideo);
@@ -132,12 +133,12 @@ class LessonController extends Controller
         $data = $request->only([
             'course_id', 'name', 'description'
         ]);
+        $data['created_by'] = Auth::id();
 
         $dataVideo = $request->only([
             'title'
         ]);
-        if ($video = $request->file('video'))
-        {
+        if ($video = $request->file('video')) {
             $dataVideo['disk'] = 'videos';
             $name = time().'.'.$video->getClientOriginalExtension();
             Storage::disk('s3')->put($dataVideo['disk'].'/'.$name, file_get_contents($video), 'public');
@@ -147,7 +148,7 @@ class LessonController extends Controller
             Storage::disk('s3')->delete($lesson->video->disk.'/'.$lesson->video->path);
         }
 
-        DB::transaction(function () use ($data, $dataVideo, $lesson){
+        DB::transaction(function () use ($data, $dataVideo, $lesson) {
             $lesson->update($data);
             $lesson->video->update($dataVideo);
         });

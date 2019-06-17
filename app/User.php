@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password', 'avatar', 'status'
+        'name', 'username', 'password', 'avatar', 'status', 'created_by'
     ];
 
     /**
@@ -56,7 +56,8 @@ class User extends Authenticatable
         'Deactivate',
         'Active',
     ];
-    public function getStatusNameAttribute() {
+    public function getStatusNameAttribute()
+    {
         return array_get($this->statusName, $this->status);
     }
 
@@ -64,5 +65,10 @@ class User extends Authenticatable
     {
         $url = env('AWS_URL');
         return "$url/$this->avatar";
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
     }
 }
