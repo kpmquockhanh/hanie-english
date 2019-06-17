@@ -20,7 +20,7 @@
                         </p>
 
                         <div class="testimonial-author">
-                            <img src="{{ asset($teacher->image) }}" alt="Author image">
+                            <img src="{{ asset($teacher->url_image) }}" alt="Author image">
                             <div class="author-info">
                                 {{ $teacher->name }}
                                 <span class="position">{{ $teacher->position }}</span>
