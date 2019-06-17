@@ -20,10 +20,12 @@
                             id="player"
                             class="video-js"
                             controls
+                            autoplay
                             preload="auto"
                             {{--poster="//vjs.zencdn.net/v/oceans.png"--}}
                             data-setup='{}' style="width: 100%;">
-                        <source src="https://hanie.s3-ap-northeast-1.amazonaws.com/videos/encoded/encoded.m3u8" type="application/x-mpegURL">
+                        {{--<source src="https://hanie.s3-ap-northeast-1.amazonaws.com/videos/encoded/encoded.m3u8" type="application/x-mpegURL">--}}
+                        <source src="{{ $lesson->video->url_path }}" type="video/mp4">
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a
                             web browser that
@@ -43,7 +45,18 @@
     <script src='{{ asset('node_modules/video.js/dist/video.min.js') }}'></script>
     <script src="{{ asset('node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js') }}"></script>
     <script>
-        var player = videojs('player');
-        // player.play();
+        var options = {
+            autoplay: true
+        };
+
+        const player = videojs('player', options);
+
+        player.on('error', function(e) {
+           alert();
+        });
+        player.ready(function(e) {
+            console.log('132123');
+            // alert();
+        });
     </script>
 @stop
