@@ -40,4 +40,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(Admin::class, 'created_by');
     }
+
+//    public function questions()
+//    {
+//        return $this->hasMany(Question::class);
+//    }
 }

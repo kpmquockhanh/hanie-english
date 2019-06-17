@@ -19,22 +19,21 @@ class LessonController extends Controller
      */
     public function index(Request $request)
     {
-        $lessons = Lesson::query()->paginate();
-        $courses = Course::query();
+        $lessons = Lesson::query();
         if ($request->ajax()) {
             $query = $request->q;
-            $courses->select([
+            $lessons->select([
                 'id',
                 'name as text'
             ]);
             if (!$query) {
-                return response()->json(['results' => $courses->take(10)->get()]);
+                return response()->json(['results' => $lessons->take(10)->get()]);
             }
 
-            $courses->where('content', 'like', "%$query%");
-            return response()->json(['results' => $courses->get()]);
+            $lessons->where('content', 'like', "%$query%");
+            return response()->json(['results' => $lessons->get()]);
         }
-
+        $lessons = $lessons->paginate();
         return view('admin.lessons.index', compact('lessons'));
     }
 

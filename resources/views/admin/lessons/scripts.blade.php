@@ -5,7 +5,7 @@
         // maximumSelectionLength: 3,
         width: 'resolve',
         ajax: {
-            url: "{{ route('lessons.index') }}",
+            url: "{{ route('courses.index') }}",
             dataType: 'json',
             quietMillis: 250,
             delay: 250,
