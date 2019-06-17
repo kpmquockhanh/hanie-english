@@ -30,6 +30,7 @@ class DashboardController extends Controller
 
     public function study(Lesson $lesson)
     {
+        $lesson->load('video');
 //        dd($lesson);
         return view('user.study', compact('lesson'));
     }
