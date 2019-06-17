@@ -50,7 +50,7 @@
                         <td>
                             <a href="{{ $lesson->video->url_path }}" target="_blank">Link video</a>
                         </td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ $lesson->admin->name }}</td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', $lesson->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route(request()->segment(2).'.destroy', $lesson->id) }}" style="display: inline;" method="post">

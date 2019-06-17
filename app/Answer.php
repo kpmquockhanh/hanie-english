@@ -17,5 +17,11 @@ class Answer extends Model
 {
     protected $fillable = [
         'content',
+        'created_by'
     ];
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Phone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PhoneController extends Controller
 {
@@ -45,6 +46,7 @@ class PhoneController extends Controller
         $data = $request->only([
             'name', 'phone_number'
         ]);
+        $data['created_by'] = Auth::id();
 
         Phone::query()->create($data);
 
@@ -92,6 +94,7 @@ class PhoneController extends Controller
         $data = $request->only([
             'name', 'phone_number'
         ]);
+        $data['created_by'] = Auth::id();
 
         $phone->update($data);
 
@@ -113,6 +116,5 @@ class PhoneController extends Controller
         } catch (\Exception $exception) {
             return redirect(route('phones.index'))->with('error', 'Deleted error!');
         }
-
     }
 }

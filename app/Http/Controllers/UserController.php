@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\UserCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -60,14 +61,14 @@ class UserController extends Controller
             'name',
             'username',
         ]);
+        $createData['created_by'] = Auth::id();
 
         if ($request->status === 'on') {
             $createData['status'] = 1;
         }
         $createData['password'] = Hash::make($request->get('password'));
 
-        if ($image = $request->file('avatar'))
-        {
+        if ($image = $request->file('avatar')) {
             $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');
@@ -127,6 +128,7 @@ class UserController extends Controller
         $updateData = $request->only([
             'name'
         ]);
+        $updateData['created_by'] = Auth::id();
         $updateData['status'] = 0;
         if ($request->status === 'on') {
             $updateData['status'] = 1;
@@ -135,8 +137,7 @@ class UserController extends Controller
             $updateData['password'] = Hash::make($request->get('password'));
         }
 
-        if ($image = $request->file('avatar'))
-        {
+        if ($image = $request->file('avatar')) {
             $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
             Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');

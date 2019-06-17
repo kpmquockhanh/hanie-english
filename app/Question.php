@@ -24,7 +24,8 @@ class Question extends Model
         'content',
         'explain',
         'right_answer_id',
-        'wrong_answer_ids'
+        'wrong_answer_ids',
+        'created_by'
     ];
 
     public function rightAnswer()
@@ -37,7 +38,13 @@ class Question extends Model
         return $this->belongsToMany(Answer::class);
     }
 
-    public function categories() {
+    public function categories()
+    {
         return $this->belongsToMany(Category::class, 'question_categories');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
     }
 }

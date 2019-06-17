@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -59,6 +60,7 @@ class CategoryController extends Controller
         $createData = $request->only([
             'name',
         ]);
+        $createData['created_by'] = Auth::id();
 
         Category::query()->create($createData);
 
@@ -105,6 +107,7 @@ class CategoryController extends Controller
         $updateData = $request->only([
             'name',
         ]);
+        $updateData['created_by'] = Auth::id();
 
         Category::query()->update($updateData);
 

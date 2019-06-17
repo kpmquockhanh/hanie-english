@@ -20,12 +20,21 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     protected $fillable = [
-        'name', 'word', 'position', 'image'
+        'name',
+        'word',
+        'position',
+        'image',
+        'created_by'
     ];
 
     public function getUrlImageAttribute()
     {
         $url = env('AWS_URL');
         return "$url/$this->image";
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
     }
 }

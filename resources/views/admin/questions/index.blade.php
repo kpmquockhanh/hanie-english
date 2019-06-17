@@ -45,7 +45,7 @@
                         <td>{{ $question->content }}</td>
                         <td>{{ $question->explain }}</td>
                         <td><i>{{ $question->rightAnswer->content }}</i></td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ $question->admin->name }}</td>
                         <td>
                             <a href="{{ route('questions.edit', ['id' => $question->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('questions.destroy', ['id' => $question->id]) }}" style="display: inline;" method="post">

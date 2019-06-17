@@ -22,7 +22,8 @@ class Lesson extends Model
     protected $fillable = [
         'course_id',
         'name',
-        'description'
+        'description',
+        'created_by'
     ];
 
     public function video()
@@ -33,5 +34,10 @@ class Lesson extends Model
     public function course()
     {
         return $this->belongsTo('App\Course');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
     }
 }

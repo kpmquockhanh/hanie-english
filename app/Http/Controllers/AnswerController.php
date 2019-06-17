@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AnswerController extends Controller
@@ -63,6 +64,7 @@ class AnswerController extends Controller
         );
 
         $createData = $request->only(['content']);
+        $createData['created_by'] = Auth::id();
 
         Answer::query()->create($createData);
 
@@ -108,6 +110,7 @@ class AnswerController extends Controller
         );
 
         $updateData = $request->only(['content']);
+        $updateData['created_by'] = Auth::id();
 
         if ($answer->content === $request->get('content')) {
             return redirect(route('answers.index'))->with('info', 'Updated successfully! No changes');

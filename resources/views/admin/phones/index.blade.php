@@ -38,7 +38,7 @@
                         <td>{{ $phone->id }}</td>
                         <td>{{ $phone->name }}</td>
                         <td>{{ $phone->phone_number }}</td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ $phone->admin->name }}</td>
                         <td>
                             <a href="{{ route('phones.edit', $phone->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('phones.destroy', $phone->id) }}" style="display: inline;" method="post">
