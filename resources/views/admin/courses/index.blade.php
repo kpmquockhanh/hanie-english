@@ -19,12 +19,13 @@
             @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$courses->count())
@@ -37,6 +38,7 @@
                         <td>{{ $course->id }}</td>
                         <td>{{ $course->name }}</td>
                         <td>{!! str_limit($course->description) !!}</td>
+                        <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a href="{{ route('courses.show', $course->id) }}" class="btn-sm btn-primary"><i class="fa fa-eye"></i></a>
                             <a href="{{ route('courses.edit', $course->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
@@ -50,12 +52,13 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>

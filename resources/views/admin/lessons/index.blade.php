@@ -23,15 +23,16 @@
             @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Course name</th>
-                    <th>Lesson name</th>
-                    <th>Video title</th>
-                    <th>Video name</th>
-                    <th>Video</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Course name</th>
+                        <th>Lesson name</th>
+                        <th>Video title</th>
+                        <th>Video name</th>
+                        <th>Video</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$lessons->count())
@@ -49,6 +50,7 @@
                         <td>
                             <a href="{{ $lesson->video->url_path }}" target="_blank">Link video</a>
                         </td>
+                        <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', $lesson->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route(request()->segment(2).'.destroy', $lesson->id) }}" style="display: inline;" method="post">
@@ -61,15 +63,16 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Course name</th>
-                    <th>Lesson name</th>
-                    <th>Video title</th>
-                    <th>Video name</th>
-                    <th>Video</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Course name</th>
+                        <th>Lesson name</th>
+                        <th>Video title</th>
+                        <th>Video name</th>
+                        <th>Video</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>

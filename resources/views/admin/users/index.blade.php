@@ -44,8 +44,7 @@
                     <th>Username</th>
                     <th>Avatar</th>
                     <th>Status</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
+                    <th>Created by</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -66,8 +65,7 @@
                             <img src="{{ $item->url_avatar ? asset($item->url_avatar) : asset('dist/img/user2-160x160.jpg') }}" alt="" style="width: 100%;">
                         </td>
                         <td class="text-{{ $item->status ?'success':'danger' }}">{{ $item->status_name }}</td>
-                        <td>{{ $item->created_at->diffForHumans() }}</td>
-                        <td>{{ $item->updated_at->diffForHumans() }}</td>
+                        <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', ['id' => $item->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route(request()->segment(2).'.destroy', ['id' => $item->id]) }}" style="display: inline;" method="post">
@@ -86,8 +84,7 @@
                     <th>Username</th>
                     <th>Avatar</th>
                     <th>Status</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
+                    <th>Created by</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
