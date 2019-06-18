@@ -51,12 +51,9 @@
 
         const player = videojs('player', options);
 
-        player.on('error', function(e) {
-           alert();
-        });
-        player.ready(function(e) {
-            console.log('132123');
-            // alert();
+        player.on('loadeddata', () => {
+           // Increment view count
+           //  alert('Increment view count!')
         });
     </script>
 @stop
