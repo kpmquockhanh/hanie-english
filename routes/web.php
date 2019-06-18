@@ -29,16 +29,17 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('/config', 'ConfigController@index')->name('admin.config');
         Route::post('/config/update', 'ConfigController@update')->name('admin.config.update');
-        Route::resource('teachers','TeacherController');
-        Route::resource('phones','PhoneController');
-        Route::resource('questions','QuestionController');
-        Route::resource('answers','AnswerController');
-        Route::resource('users','UserController');
-        Route::post('users/make-courses','UserController@makeCourses')->name('users.make-course');
+        Route::resource('teachers', 'TeacherController');
+        Route::resource('phones', 'PhoneController');
+        Route::resource('questions', 'QuestionController');
+        Route::resource('answers', 'AnswerController');
+        Route::resource('users', 'UserController');
+        Route::post('users/make-courses', 'UserController@makeCourses')->name('users.make-course');
         Route::resource('courses', 'CourseController');
-        Route::resource('categories','CategoryController');
-        Route::resource('user-course','UserCourseController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('user-course', 'UserCourseController');
         Route::resource('lessons', 'LessonController');
+        Route::resource('examinations', 'ExaminationController');
     });
 });
 Route::prefix('user')->group(function () {
@@ -55,6 +56,8 @@ Route::prefix('user')->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
         Route::get('lessons/{course}', 'DashboardController@listLessons')->name('dashboard.lessons');
         Route::get('study/{lesson}', 'DashboardController@study')->name('dashboard.study');
+        Route::get('study/{lesson}/examination', 'DashboardController@examination')->name('dashboard.examination');
+        Route::post('study/{lesson}/examination', 'DashboardController@submitExamination')->name('dashboard.examination');
     });
 
 });

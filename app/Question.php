@@ -47,4 +47,9 @@ class Question extends Model
     {
         return $this->belongsTo(Admin::class, 'created_by');
     }
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class);
+    }
 }

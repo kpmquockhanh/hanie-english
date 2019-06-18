@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use App\Category;
 use App\Question;
 use App\QuestionCategory;
 use Illuminate\Http\Request;
@@ -17,9 +16,22 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $questions = Question::with('rightAnswer')->get();
+        if ($request->ajax()) {
+            $query = $request->q;
+            $listQuestions = Question::query()->select([
+                'id',
+                'content as text'
+            ]);
+            if (!$query) {
+                return response()->json(['results' => $listQuestions->take(10)->get()]);
+            }
+
+            $listQuestions->where('content', 'like', "%$query%");
+            return response()->json(['results' => $listQuestions->get()]);
+        }
 
         return view('admin.questions.index', compact('questions'));
     }

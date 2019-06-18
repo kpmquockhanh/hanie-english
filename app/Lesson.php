@@ -41,8 +41,13 @@ class Lesson extends Model
         return $this->belongsTo(Admin::class, 'created_by');
     }
 
-//    public function questions()
-//    {
-//        return $this->hasMany(Question::class);
-//    }
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class);
+    }
+
+    public function examination()
+    {
+        return $this->hasOne(Examination::class, 'lesson_id');
+    }
 }
