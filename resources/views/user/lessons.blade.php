@@ -27,7 +27,9 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a href="{{ route('dashboard.study', [$lesson->id]) }}" class="btn-sm btn-success">Study this lesson</a>
+                        @if ($lesson->count < 3)
+                            <a href="{{ route('dashboard.study', [$lesson->id]) }}" class="btn-sm btn-success">Study this lesson</a>
+                        @endif
                         <a href="" class="btn-sm btn-info">Make a test</a>
                         {{--<a href="" class="btn-sm btn-danger">Cancel, be careful!</a>--}}
                     </div>

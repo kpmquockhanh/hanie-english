@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class Lesson
@@ -44,5 +45,15 @@ class Lesson extends Model
     public function questions()
     {
         return $this->belongsToMany(Question::class);
+    }
+
+    public function getCountAttribute()
+    {
+        if (Auth::guard('user')->check()) {
+            return UserLesson::getByUserAndLesson(Auth::guard('user')->id(), $this->id)
+                ->first()
+                ->count;
+        }
+        return 0;
     }
 }

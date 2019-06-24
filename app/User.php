@@ -63,8 +63,11 @@ class User extends Authenticatable
 
     public function getUrlAvatarAttribute()
     {
-        $url = env('AWS_URL');
-        return "$url/$this->avatar";
+        if ($this->avatar) {
+            $url = env('AWS_URL');
+            return "$url/$this->avatar";
+        }
+        return null;
     }
 
     public function admin()

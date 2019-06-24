@@ -44,18 +44,22 @@
 @section('script')
     <script src='{{ asset('node_modules/video.js/dist/video.min.js') }}'></script>
     <script src="{{ asset('node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js') }}"></script>
+    <script src="{{ asset('node_modules/axios/dist/axios.min.js') }}"></script>
     <script>
         var options = {
-            autoplay: true
+            autoplay: false
         };
 
         const player = videojs('player', options);
 
         player.on('error', function(e) {
-           alert();
+           console.log(e)
         });
         player.ready(function(e) {
-            console.log('132123');
+            axios.post('{{ route('dashboard.processLesson') }}', {
+                user_id: '{{ \Illuminate\Support\Facades\Auth::guard('user')->id() }}',
+                lesson_id: '{{ $lesson->id }}',
+            })
             // alert();
         });
     </script>

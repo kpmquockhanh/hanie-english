@@ -48,6 +48,15 @@
                 <i class="fa fa-phone"></i>
                 <span>Phones</span></a>
             </li>
+            <li>
+                <a href="{{ route('courses.index') }}"><i class="fa fa-book"></i><span>Courses</span></a>
+            </li>
+            <li><a href="{{ route('lessons.index') }}"><i class="fa fa-graduation-cap"></i>Lessons</a></li>
+            <li><a href="{{ route('questions.index') }}"><i class="fa fa-question"></i>Questions</a></li>
+            <li><a href="{{ route('answers.index') }}"><i class="fa fa-reply"></i>Answers</a></li>
+            <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i>Users</a></li>
+            <li><a href="{{ route('categories.index') }}"><i class="fa fa-file"></i>Categories</a></li>
+            <li><a href="{{ route('examinations.index') }}"><i class="fa fa-send"></i>Examinations</a></li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-book"></i>
@@ -57,13 +66,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('courses.index') }}">Courses</a></li>
-                    <li><a href="{{ route('lessons.index') }}">Lessons</a></li>
-                    <li><a href="{{ route('questions.index') }}">Questions</a></li>
-                    <li><a href="{{ route('answers.index') }}">Answers</a></li>
-                    <li><a href="{{ route('users.index') }}">Users</a></li>
-                    <li><a href="{{ route('categories.index') }}">Categories</a></li>
-                    <li><a href="{{ route('examinations.index') }}">Examinations</a></li>
+
                 </ul>
             </li>
             {{--<li class="treeview">--}}

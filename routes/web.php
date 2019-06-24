@@ -56,6 +56,7 @@ Route::prefix('user')->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
         Route::get('lessons/{course}', 'DashboardController@listLessons')->name('dashboard.lessons');
         Route::get('study/{lesson}', 'DashboardController@study')->name('dashboard.study');
+        Route::post('processLesson/', 'DashboardController@incrementCount')->name('dashboard.processLesson');
     });
 
 });
