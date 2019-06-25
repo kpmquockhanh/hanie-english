@@ -25,8 +25,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Course name</th>
                         <th>Lesson name</th>
+                        <th>Course name</th>
                         <th>Video title</th>
                         <th>Video name</th>
                         <th>Video</th>
@@ -43,8 +43,8 @@
                 @foreach ($lessons as $lesson)
                     <tr>
                         <td>{{ $lesson->id }}</td>
-                        <td>{{ $lesson->course->name }}</td>
                         <td>{{ $lesson->name }}</td>
+                        <td>{{ $lesson->course->name }}</td>
                         <td>{{ $lesson->video->title }}</td>
                         <td>{{ $lesson->video->original_name }}</td>
                         <td>

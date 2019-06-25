@@ -42,7 +42,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('examinations', 'ExaminationController');
     });
 });
-Route::prefix('user')->group(function () {
+Route::prefix('user')->middleware('user.active')->group(function () {
     Route::namespace('UserAuth')->group(function () {
         Route::get('login', 'LoginController@showLoginForm')->name('user.login');
         Route::post('login', 'LoginController@login');

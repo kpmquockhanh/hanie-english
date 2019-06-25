@@ -20,12 +20,21 @@
                             <select multiple class="form-control categories" name="categories[]" hidden></select>
                         </div>
                     </div>
+                    <div class="col-lg-2">
+                        <label for="">Your category not exists?</label>
+                        <div>
+                            <a href="{{ route('categories.create') }}" target="_blank" class="btn-sm btn-success">
+                                <i class="fa fa-plus"></i>
+                                Add a category
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Content</label>
-                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content') }}">
+                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content') }}" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -58,7 +67,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Explain</label>
-                            <input type="text" name="explain" class="form-control" placeholder="Explain" value="{{ old('explain') }}">
+                            <input type="text" name="explain" class="form-control" placeholder="Explain" value="{{ old('explain') }}" autocomplete="off">
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Examination;
 use App\Lesson;
 use App\Video;
 use Illuminate\Http\Request;
@@ -21,8 +22,9 @@ class LessonController extends Controller
     {
         $lessons = Lesson::query();
         if ($request->ajax()) {
+            $usedExam = Examination::query()->pluck('lesson_id')->toArray();
             $query = $request->q;
-            $lessons->select([
+            $lessons->whereNotIn('id', $usedExam)->select([
                 'id',
                 'name as text'
             ]);
