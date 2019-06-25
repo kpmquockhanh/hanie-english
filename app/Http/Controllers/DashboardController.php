@@ -33,21 +33,23 @@ class DashboardController extends Controller
     {
         $user_id = Auth::guard('user')->id();
         $course_id = $lesson->course_id;
-        $userCourse = UserCourse::query()->where('course_id', $course_id)
+        $userCourse = UserCourse::query()
+            ->where('course_id', $course_id)
             ->where('user_id', $user_id)
-        ->first();
+            ->first();
         if (!$userCourse) {
             abort(403);
         }
+
         $userLesson = UserLesson::getByUserAndLesson($user_id, $lesson->id)->first();
-        if ($userLesson && $userLesson->count >= 3) {
-            abort(403);
-        }
         if (!$userLesson) {
             UserLesson::query()->insert([
                 'user_id' => $user_id,
                 'lesson_id' => $lesson->id,
             ]);
+        }
+        if ($userLesson && $userLesson->count >= 3) {
+            abort(403);
         }
         $lesson->load('video');
         return view('user.study', compact('lesson'));
