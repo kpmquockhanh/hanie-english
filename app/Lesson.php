@@ -50,9 +50,12 @@ class Lesson extends Model
     public function getCountAttribute()
     {
         if (Auth::guard('user')->check()) {
-            return UserLesson::getByUserAndLesson(Auth::guard('user')->id(), $this->id)
-                ->first()
-                ->count;
+            $userLesson = UserLesson::getByUserAndLesson(Auth::guard('user')->id(), $this->id)
+                ->first();
+            if (!$userLesson) {
+                return 0;
+            }
+            return $userLesson->count;
         }
         return 0;
     }
