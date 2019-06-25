@@ -18,8 +18,14 @@
             <div class="col-md-4">
                 <div class="box">
                     <div class="box-header with-border">
-                        {{ $lesson->name }}
-
+                        <div>
+                            {{ $lesson->name }}
+                        </div>
+                        <div class="pull-right">
+                            <strong>
+                                <i>{{ $lesson->count }} time(s)</i>
+                            </strong>
+                        </div>
                     </div>
                     <div class="box-body">
                         <div>
