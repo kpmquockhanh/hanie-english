@@ -56,6 +56,8 @@ Route::prefix('user')->middleware('user.active')->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
         Route::get('lessons/{course}', 'DashboardController@listLessons')->name('dashboard.lessons');
         Route::get('study/{lesson}', 'DashboardController@study')->name('dashboard.study');
+        Route::get('study/{lesson}/examination', 'DashboardController@examination')->name('dashboard.examination');
+        Route::post('study/{lesson}/examination', 'DashboardController@submitExamination')->name('dashboard.examination');
         Route::post('processLesson/', 'DashboardController@incrementCount')->name('dashboard.processLesson');
     });
 
