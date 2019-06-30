@@ -96,7 +96,10 @@ class DashboardController extends Controller
             return redirect(route('dashboard.lessons', $lesson->course_id))->withErrors('Time is up!');
         }
 
-
+        $score = Score::query()
+            ->where('user_id', Auth::guard('user')->id())
+            ->where('lesson_id', $lesson->id)
+            ->first();
         return view('user.examination', compact('lesson', 'arrQuestion', 'score'));
     }
 
