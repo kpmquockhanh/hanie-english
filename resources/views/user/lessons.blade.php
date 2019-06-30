@@ -2,7 +2,7 @@
 @section('style')
 @endsection
 @section('option-des')
-    available lessons
+    your lessons
 @stop
 @section('content')
     <div class="row">
@@ -14,8 +14,10 @@
                 </div>
             </div>
         @endif
-        @include('admin.layouts.flash-message')
-        @include('admin.layouts.error-message')
+        <div class="col-lg-12">
+            @include('admin.layouts.flash-message')
+            @include('admin.layouts.error-message')
+        </div>
         @foreach ($course->lessons as $lesson)
             <div class="col-md-4">
                 <div class="box">
@@ -35,15 +37,24 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a href="{{ route('dashboard.study', [$lesson->id]) }}" class="btn-sm btn-success">Study this
-                            lesson</a>
-                        <a href="{{ route('dashboard.examination', $lesson->id) }}" class="btn-sm btn-info">Make a
-                            test</a>
                         @if ($lesson->count < 3)
                             <a href="{{ route('dashboard.study', [$lesson->id]) }}" class="btn-sm btn-success">Study this lesson</a>
                         @endif
-                        <a href="" class="btn-sm btn-info">Make a test</a>
-                        {{--<a href="" class="btn-sm btn-danger">Cancel, be careful!</a>--}}
+                        @if (!$lesson->score || $lesson->score->end_at >= \Carbon\Carbon::now())
+                            @if ($lesson->examination)
+                                <a href="{{ route('dashboard.examination', $lesson->id) }}" class="btn-sm btn-info">
+                                    @if ($lesson->score->end_at)
+                                        Continue your test
+                                    @else
+                                        Make a test
+                                    @endif
+                                </a>
+                            @else
+                                    <button class="btn-sm btn-secondary" disabled>No test</button>
+                            @endif
+                        @elseif ($lesson->score->end_at < \Carbon\Carbon::now())
+                            <button class="btn-sm btn-danger" disabled="">Test result: <strong>{{ $lesson->score->score }}</strong> point(s)</button>
+                        @endif
                     </div>
                 </div>
             </div>

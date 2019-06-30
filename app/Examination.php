@@ -14,7 +14,7 @@ class Examination extends Model
 
     public function lesson()
     {
-        return $this->hasOne(Lesson::class, 'id');
+        return $this->belongsTo(Lesson::class);
     }
 
     public function admin()

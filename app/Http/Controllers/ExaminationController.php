@@ -16,8 +16,9 @@ class ExaminationController extends Controller
      */
     public function index()
     {
-        $examinations = Examination::all();
+        $examinations = Examination::with('lesson')->paginate(10);
 
+//        dd($examinations);
         return view('admin.examinations.index', compact('examinations'));
     }
 
@@ -32,10 +33,9 @@ class ExaminationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {

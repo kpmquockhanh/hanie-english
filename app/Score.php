@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $note
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Carbon $started_at
  */
 class Score extends Model
 {
@@ -23,6 +24,21 @@ class Score extends Model
         'user_id',
         'lesson_id',
         'score',
-        'note'
+        'note',
+        'started_at'
     ];
+    protected $dates = [
+      'started_at'
+    ];
+
+    const TIME_UP = 15;
+
+    public function getEndAtAttribute()
+    {
+        return $this->started_at->addMinutes(self::TIME_UP);
+    }
+    public function getSecondAttribute()
+    {
+        return $this->started_at->addMinutes(self::TIME_UP)->diffInSeconds(Carbon::now());
+    }
 }
