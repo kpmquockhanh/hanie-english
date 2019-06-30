@@ -47,6 +47,16 @@ class Lesson extends Model
         return $this->belongsToMany(Question::class);
     }
 
+    public function examination()
+    {
+        return $this->hasOne(Examination::class, 'lesson_id');
+    }
+
+    public function score()
+    {
+        return $this->hasOne(Score::class);
+    }
+
     public function getCountAttribute()
     {
         if (Auth::guard('user')->check()) {
