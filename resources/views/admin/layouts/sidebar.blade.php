@@ -51,11 +51,11 @@
             <li>
                 <a href="{{ route('courses.index') }}"><i class="fa fa-book"></i><span>Courses</span></a>
             </li>
+            <li><a href="{{ route('categories.index') }}"><i class="fa fa-file"></i>Categories</a></li>
             <li><a href="{{ route('lessons.index') }}"><i class="fa fa-graduation-cap"></i>Lessons</a></li>
             <li><a href="{{ route('questions.index') }}"><i class="fa fa-question"></i>Questions</a></li>
             <li><a href="{{ route('answers.index') }}"><i class="fa fa-reply"></i>Answers</a></li>
             <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i>Users</a></li>
-            <li><a href="{{ route('categories.index') }}"><i class="fa fa-file"></i>Categories</a></li>
             <li><a href="{{ route('examinations.index') }}"><i class="fa fa-send"></i>Examinations</a></li>
 {{--            <li class="treeview">--}}
 {{--                <a href="#">--}}

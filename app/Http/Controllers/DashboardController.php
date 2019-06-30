@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Course;
+use App\Examination;
 use App\Lesson;
+use App\Question;
+use App\Score;
 use App\UserCourse;
 use App\UserLesson;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +58,128 @@ class DashboardController extends Controller
         }
         $lesson->load('video');
         return view('user.study', compact('lesson'));
+    }
+
+    public function examination(Lesson $lesson)
+    {
+        if (!$lesson->examination) {
+            return redirect()->back()->withErrors('Has no examination!');
+        }
+        $questionIds = json_decode($lesson->examination->question_ids);
+        $questions = Question::query()->whereIn('id', $questionIds)->get();
+        $arrQuestion = [];
+        foreach ($questions as $question)
+        {
+            $answerIds = json_decode($question->wrong_answer_ids);
+            $answerIds[] = $question->right_answer_id;
+            $answers = Answer::query()->whereIn('id', $answerIds)->get();
+            $arrQuestion[] = [$question, $answers->shuffle()];
+        }
+
+        $score = Score::query()
+            ->where('user_id', Auth::guard('user')->id())
+            ->where('lesson_id', $lesson->id)
+            ->first();
+
+        if (!$score) {
+            Score::query()->create([
+                'user_id' => Auth::guard('user')->id(),
+                'lesson_id' => $lesson->id,
+                'score' => 0,
+                'started_at' => Carbon::now(),
+            ]);
+        } elseif (!$score->started_at) {
+            $score->update([
+                'started_at' => Carbon::now()
+            ]);
+        } elseif ($score->end_at < Carbon::now()) {
+            return redirect(route('dashboard.lessons', $lesson->course_id))->withErrors('Time is up!');
+        }
+
+        $score = Score::query()
+            ->where('user_id', Auth::guard('user')->id())
+            ->where('lesson_id', $lesson->id)
+            ->first();
+        return view('user.examination', compact('lesson', 'arrQuestion', 'score'));
+    }
+
+    public function submitExamination(Request $request, Lesson $lesson)
+    {
+        $score = Score::query()
+            ->where('user_id', Auth::guard('user')->id())
+            ->where('lesson_id', $lesson->id)
+            ->first();
+
+        if (!$score) {
+            Score::query()->create([
+                'user_id' => Auth::guard('user')->id(),
+                'lesson_id' => $lesson->id,
+                'score' => 0,
+                'started_at' => Carbon::now(),
+            ]);
+        } elseif (!$score->started_at) {
+            $score->update([
+                'started_at' => Carbon::now()
+            ]);
+        } elseif ($score->end_at < Carbon::now()) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false
+                ]);
+            }
+            return redirect(route('dashboard.lessons'))->withErrors('Time is up!');
+        }
+
+        if (!$lesson->examination) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false
+                ]);
+            }
+            return redirect(route('dashboard.lessons', $lesson->course_id))->with('error', 'Submit examination failed'. $lesson->name.' !');
+        }
+
+        $questionIds = json_decode($lesson->examination->question_ids);
+        $questions = Question::query()
+            ->whereIn('id', $questionIds)
+            ->get();
+        $result = [];
+        foreach ($questions as $question) {
+            $answerId = $request->get('answer_for_'.$question->id);
+            $flg = false;
+            if ($question->right_answer_id == $answerId) {
+                $flg = true;
+
+            }
+            $result[$question->id] = $flg;
+        }
+
+        $result = collect($result);
+        $rightAnswers = $result->filter(function ($item) {
+            return $item;
+        });
+
+
+        $score = (float)$rightAnswers->count()*100/$result->count();
+
+        $data = [
+            'score' => $score,
+        ];
+        if ($request->submit === 'finish') {
+            $data['started_at'] = Carbon::now()->subMinutes(Score::TIME_UP);
+        }
+
+        Score::query()
+            ->where('user_id', Auth::guard('user')->id())
+            ->where('lesson_id', $lesson->id)
+            ->update($data);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true
+            ]);
+        }
+        return redirect(route('dashboard.lessons', $lesson->course_id))->with('success', 'Finish examination '. $lesson->name.' !');
     }
 
     public function incrementCount(Request $request)
