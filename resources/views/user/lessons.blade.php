@@ -43,7 +43,7 @@
                         @if (!$lesson->score || $lesson->score->end_at >= \Carbon\Carbon::now())
                             @if ($lesson->examination)
                                 <a href="{{ route('dashboard.examination', $lesson->id) }}" class="btn-sm btn-info">
-                                    @if ($lesson->score->end_at)
+                                    @if ($lesson->score && $lesson->score->end_at)
                                         Continue your test
                                     @else
                                         Make a test
