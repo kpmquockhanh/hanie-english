@@ -12,6 +12,14 @@
     @endif
     @include('admin.layouts.style')
     @yield('style')
+        <style>
+            .btn-sm {
+                display: inline-grid;
+            }
+            .box {
+                overflow-x: auto;
+            }
+        </style>
 </head>
 <body class="hold-transition skin-green fixed">
 <div class="wrapper">
