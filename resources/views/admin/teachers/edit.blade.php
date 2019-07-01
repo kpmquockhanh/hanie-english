@@ -51,7 +51,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
-                                    <label for="words">Words</label>
+                                    <label for="words">Teacher's words</label>
                                 </div>
                                 <div class="nk-int-st">
                                     <input type="text" class="form-control" placeholder="Words" name="word" value="{{ $teacher->word }}">
@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="dash-circle">
-                            <img id="preview-img" src="{{ asset($teacher->url_image)??asset('dashboard/img/avatar.svg') }}" alt="" style="width: 100%;">
+                            <img id="preview-img" src="{{ asset($teacher->url_image)??asset('images/avatars/default-avatar.svg') }}" alt="" style="width: 100%;">
                         </div>
                         <input type="file" id="image" name="image" hidden style="display: none;"/>
                     </div>

@@ -60,9 +60,9 @@ class LessonController extends Controller
         $this->validate(
             $request,
             [
-                'course_id' => 'required',
-                'name' => 'required',
-                'title' => 'required',
+                'course_id' => 'required|numeric',
+                'name' => 'required|max:191',
+                'title' => 'required|max:191',
                 'video' => 'required|mimes:mp4|size:102400',
             ]
         );
@@ -125,9 +125,9 @@ class LessonController extends Controller
         $this->validate(
             $request,
             [
-                'course_id' => 'required',
-                'name' => 'required',
-                'title' => 'required',
+                'course_id' => 'required|numeric',
+                'name' => 'required|max:191',
+                'title' => 'required|max:191',
                 'video' => 'mimes:mp4|size:102400',
             ]
         );

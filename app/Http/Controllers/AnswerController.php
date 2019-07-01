@@ -59,7 +59,7 @@ class AnswerController extends Controller
         $this->validate(
             $request,
             [
-                'content' => 'required'
+                'content' => 'required|max:100'
             ]
         );
 
@@ -105,7 +105,7 @@ class AnswerController extends Controller
         $this->validate(
             $request,
             [
-                'content' => 'required'
+                'content' => 'required|max:100'
             ]
         );
 

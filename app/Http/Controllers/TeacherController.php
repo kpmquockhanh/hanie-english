@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class TeacherController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -32,17 +30,16 @@ class TeacherController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
-            'word' => ['required', 'string'],
-            'position' => ['required', 'string'],
+            'word' => ['required', 'string', 'max:191'],
+            'position' => ['required', 'string', 'max:191'],
             'image' => ['required', 'mimes:jpeg,jpg,png', 'max:2000'],
         ]);
 
@@ -98,8 +95,8 @@ class TeacherController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
-            'word' => ['required', 'string'],
-            'position' => ['required', 'string'],
+            'word' => ['required', 'string', 'max:191'],
+            'position' => ['required', 'string', 'max:191'],
             'image' => ['mimes:jpeg,jpg,png', 'max:2000'],
         ]);
         $data = $request->only([
@@ -123,10 +120,8 @@ class TeacherController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Teacher $teacher
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Teacher $teacher)
     {

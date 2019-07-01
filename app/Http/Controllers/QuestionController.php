@@ -60,9 +60,9 @@ class QuestionController extends Controller
                 'categories' => 'required|array',
                 'content' => 'required',
                 'explain' => 'required',
-                'right_answer_id' => 'required',
+                'right_answer_id' => 'required|numeric',
                 'wrong_answer_ids' => 'required|array',
-                'wrong_answer_ids.*' => 'different:right_answer_id'
+                'wrong_answer_ids.*' => 'different:right_answer_id|numeric'
             ]
         );
 
@@ -128,9 +128,9 @@ class QuestionController extends Controller
             [
                 'content' => 'required',
                 'explain' => 'required',
-                'right_answer_id' => 'required',
+                'right_answer_id' => 'required|numeric',
                 'wrong_answer_ids' => 'required|array',
-                'wrong_answer_ids.*' => 'different:right_answer_id'
+                'wrong_answer_ids.*' => 'different:right_answer_id|numeric'
             ]
         );
 

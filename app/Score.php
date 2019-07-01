@@ -41,4 +41,19 @@ class Score extends Model
     {
         return $this->started_at->addMinutes(self::TIME_UP)->diffInSeconds(Carbon::now());
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+
+    public function isExpired()
+    {
+        return $this->started_at->isPast();
+    }
 }

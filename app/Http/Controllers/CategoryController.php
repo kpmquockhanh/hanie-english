@@ -53,7 +53,7 @@ class CategoryController extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required',
+                'name' => 'required|max:191',
             ]
         );
 
@@ -100,7 +100,7 @@ class CategoryController extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required',
+                'name' => 'required|max:191',
             ]
         );
 

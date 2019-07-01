@@ -40,7 +40,7 @@ class PhoneController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
-            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10']
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'max:20']
         ]);
 
         $data = $request->only([
@@ -88,7 +88,7 @@ class PhoneController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
-            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10']
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'max:20']
         ]);
 
         $data = $request->only([

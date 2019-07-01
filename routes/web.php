@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('user-course', 'UserCourseController');
         Route::resource('lessons', 'LessonController');
         Route::resource('examinations', 'ExaminationController');
+        Route::resource('scores', 'ScoreController');
     });
 });
 Route::prefix('user')->middleware('user.active')->group(function () {

@@ -70,6 +70,9 @@
             <li class="{{ request()->segment(2)==='examinations'?'active':'' }}">
                 <a href="{{ route('examinations.index') }}"><i class="fa fa-send"></i>Examinations</a>
             </li>
+            <li class="{{ request()->segment(2)==='scores'?'active':'' }}">
+                <a href="{{ route('scores.index') }}"><i class="fa fa-pencil-square-o"></i>Scores</a>
+            </li>
 {{--            <li class="treeview">--}}
 {{--                <a href="#">--}}
 {{--                    <i class="fa fa-book"></i>--}}

@@ -40,8 +40,9 @@ class ExaminationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'lesson_id' => ['required'],
-            'question_ids' => ['required']
+            'lesson_id' => ['required|numeric'],
+            'question_ids' => ['required|array'],
+            'question_ids.*' => ['numeric'],
         ]);
         Examination::query()->create([
             'lesson_id' => $request->lesson_id,
@@ -85,8 +86,9 @@ class ExaminationController extends Controller
     public function update(Request $request, Examination $examination)
     {
         $this->validate($request, [
-            'lesson_id' => ['required'],
-            'question_ids' => ['required']
+            'lesson_id' => ['required|numeric'],
+            'question_ids' => ['required|array'],
+            'question_ids.*' => ['numeric'],
         ]);
         $examination->update([
             'lesson_id' => $request->lesson_id,

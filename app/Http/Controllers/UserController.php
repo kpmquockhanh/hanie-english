@@ -50,10 +50,10 @@ class UserController extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required',
-                'username' => 'required|unique:users|alpha_dash',
+                'name' => 'required|max:191',
+                'username' => 'required|unique:users|alpha_dash|max:191',
                 'avatar' => 'required|mimes:jpeg,jpg,png|max:2000',
-                'password' => 'required|confirmed|min:8',
+                'password' => 'required|confirmed|min:8|max:191',
             ]
         );
 
@@ -119,9 +119,9 @@ class UserController extends Controller
         $this->validate(
             $request,
             [
-//                    'name' => 'required',
-                'avatar' => 'required|mimes:jpeg,jpg,png|max:2000',
-                'password' => 'confirmed|min:8|nullable',
+                'name' => 'max:191',
+                'avatar' => 'mimes:jpeg,jpg,png|max:2000',
+                'password' => 'confirmed|min:8|max:191',
             ]
         );
 
