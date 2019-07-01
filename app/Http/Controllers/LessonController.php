@@ -63,7 +63,7 @@ class LessonController extends Controller
                 'course_id' => 'required',
                 'name' => 'required',
                 'title' => 'required',
-                'video' => 'required|mimes:mp4',
+                'video' => 'required|mimes:mp4|size:102400',
             ]
         );
         $data = $request->only([
@@ -128,7 +128,7 @@ class LessonController extends Controller
                 'course_id' => 'required',
                 'name' => 'required',
                 'title' => 'required',
-                'video' => 'mimes:mp4',
+                'video' => 'mimes:mp4|size:102400',
             ]
         );
         $data = $request->only([

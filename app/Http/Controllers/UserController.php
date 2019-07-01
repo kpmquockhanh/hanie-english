@@ -52,7 +52,7 @@ class UserController extends Controller
             [
                 'name' => 'required',
                 'username' => 'required|unique:users|alpha_dash',
-                'avatar' => 'required|image',
+                'avatar' => 'required|mimes:jpeg,jpg,png|max:2000',
                 'password' => 'required|confirmed|min:8',
             ]
         );
@@ -120,7 +120,7 @@ class UserController extends Controller
             $request,
             [
 //                    'name' => 'required',
-                'avatar' => 'image',
+                'avatar' => 'required|mimes:jpeg,jpg,png|max:2000',
                 'password' => 'confirmed|min:8|nullable',
             ]
         );
