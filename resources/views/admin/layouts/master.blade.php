@@ -16,9 +16,9 @@
             .btn-sm {
                 display: inline-grid;
             }
-            .box {
-                overflow-x: auto;
-            }
+            /*.box {*/
+            /*    overflow-x: auto;*/
+            /*}*/
         </style>
 </head>
 <body class="hold-transition skin-green fixed">

@@ -68,6 +68,11 @@ class AnswerController extends Controller
 
         Answer::query()->create($createData);
 
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+            ]);
+        }
         return redirect(route('answers.index'))->with('success', 'Created successfully!');
     }
 

@@ -55,7 +55,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
-                                    <label for="title">Tile</label>
+                                    <label for="title">Title</label>
                                 </div>
                                 <div class="nk-int-st">
                                     <input type="text" name="title" class="form-control"

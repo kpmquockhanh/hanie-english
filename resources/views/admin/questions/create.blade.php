@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('style')
     <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('node_modules/izitoast/dist/css/iziToast.min.css') }}" rel="stylesheet" />
 @stop
 @section('content')
     <div class="box box-success">
@@ -23,10 +24,10 @@
                     <div class="col-lg-2">
                         <label for="">Your category not exists?</label>
                         <div>
-                            <a href="{{ route('categories.create') }}" target="_blank" class="btn-sm btn-success">
+                            <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#modal-category">
                                 <i class="fa fa-plus"></i>
                                 Add a category
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -56,10 +57,10 @@
                     <div class="col-lg-2">
                         <label for="">Your answer not exists?</label>
                         <div>
-                            <a href="{{ route('answers.create') }}" target="_blank" class="btn-sm btn-success">
+                            <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#modal-answer">
                                 <i class="fa fa-plus"></i>
                                 Add a answer
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -80,6 +81,8 @@
             </div>
         </form>
     </div>
+    @include('admin.questions.modal-create-answer')
+    @include('admin.questions.modal-create-cate')
 @stop
 @section('script')
     <script>
@@ -116,5 +119,6 @@
 
     </script>
     <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('node_modules/axios/dist/axios.min.js') }}"></script>
     @include('admin.questions.scripts')
 @stop

@@ -63,7 +63,11 @@ class CategoryController extends Controller
         $createData['created_by'] = Auth::id();
 
         Category::query()->create($createData);
-
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+            ]);
+        }
         return redirect(route('categories.index'))->with('success', 'Created successfully!');
     }
 
