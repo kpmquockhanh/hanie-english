@@ -32,31 +32,44 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ route('admin.index') }}">
+            <li class="{{ !request()->segment(2)?'active':'' }}"><a href="{{ route('admin.index') }}">
                 <i class="fa fa-home"></i>
                 <span>Home</span></a>
 
-            <li class=""><a href="{{ route('admin.config') }}">
+            <li class="{{ request()->segment(2)==='config'?'active':'' }}"><a href="{{ route('admin.config') }}">
                 <i class="fa fa-gear"></i>
                 <span>Config landingpage</span></a>
             </li>
-            <li class=""><a href="{{ route('teachers.index') }}">
+            <li class="{{ request()->segment(2)==='teachers'?'active':'' }}"><a href="{{ route('teachers.index') }}">
                 <i class="fa fa-user"></i>
                 <span>Teachers</span></a>
             </li>
-            <li class=""><a href="{{ route('phones.index') }}">
+            <li class="{{ request()->segment(2)==='phones'?'active':'' }}"><a href="{{ route('phones.index') }}">
                 <i class="fa fa-phone"></i>
                 <span>Phones</span></a>
             </li>
-            <li>
+            <li class="header">COURSE SYSTEM</li>
+            <li class="{{ request()->segment(2)==='courses'?'active':'' }}">
                 <a href="{{ route('courses.index') }}"><i class="fa fa-book"></i><span>Courses</span></a>
             </li>
-            <li><a href="{{ route('categories.index') }}"><i class="fa fa-file"></i>Categories</a></li>
-            <li><a href="{{ route('lessons.index') }}"><i class="fa fa-graduation-cap"></i>Lessons</a></li>
-            <li><a href="{{ route('questions.index') }}"><i class="fa fa-question"></i>Questions</a></li>
-            <li><a href="{{ route('answers.index') }}"><i class="fa fa-reply"></i>Answers</a></li>
-            <li><a href="{{ route('users.index') }}"><i class="fa fa-user"></i>Users</a></li>
-            <li><a href="{{ route('examinations.index') }}"><i class="fa fa-send"></i>Examinations</a></li>
+            <li class="{{ request()->segment(2)==='categories'?'active':'' }}">
+                <a href="{{ route('categories.index') }}"><i class="fa fa-file"></i>Categories</a>
+            </li>
+            <li class="{{ request()->segment(2)==='lessons'?'active':'' }}">
+                <a href="{{ route('lessons.index') }}"><i class="fa fa-graduation-cap"></i>Lessons</a>
+            </li>
+            <li class="{{ request()->segment(2)==='questions'?'active':'' }}">
+                <a href="{{ route('questions.index') }}"><i class="fa fa-question"></i>Questions</a>
+            </li>
+            <li class="{{ request()->segment(2)==='answers'?'active':'' }}">
+                <a href="{{ route('answers.index') }}"><i class="fa fa-reply"></i>Answers</a>
+            </li>
+            <li class="{{ request()->segment(2)==='users'?'active':'' }}">
+                <a href="{{ route('users.index') }}"><i class="fa fa-user"></i>Users</a>
+            </li>
+            <li class="{{ request()->segment(2)==='examinations'?'active':'' }}">
+                <a href="{{ route('examinations.index') }}"><i class="fa fa-send"></i>Examinations</a>
+            </li>
 {{--            <li class="treeview">--}}
 {{--                <a href="#">--}}
 {{--                    <i class="fa fa-book"></i>--}}
