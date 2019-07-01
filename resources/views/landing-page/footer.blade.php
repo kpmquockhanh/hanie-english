@@ -13,7 +13,6 @@
                     <div class="section-text">
                         <h4></h4>
                         <p>Địa chỉ:  Tầng 6 số nhà 22 ngõ 79/14 Dương Quảng Hàm, Cầu Giấy, Hà Nội</p>
-                        <p>Hoặc 440 Vĩnh Hưng, Lĩnh Nam, Hoàng Mai.</p>
                         <p><i class="fa fa-phone"></i>  Hotline: 0918199264</p>
                         <p><i class="fa fa-envelope"></i> hanie.english.edu@gmail.com</p>
                     </div>
