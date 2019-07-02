@@ -23,7 +23,7 @@ class CategoryController extends Controller
                 'name as text'
             ]);
             if (!$query) {
-                return response()->json(['results' => $categories->take(10)->get()]);
+                return response()->json(['results' => $categories->get()]);
             }
 
             $categories->where('content', 'like', "%$query%");

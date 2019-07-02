@@ -18,21 +18,22 @@ class QuestionController extends Controller
      */
     public function index(Request $request)
     {
-        $questions = Question::with('rightAnswer')->get();
+        $questions = Question::with('rightAnswer');
         if ($request->ajax()) {
             $query = $request->q;
-            $listQuestions = Question::query()->select([
+            $questions->select([
                 'id',
                 'content as text'
             ]);
             if (!$query) {
-                return response()->json(['results' => $listQuestions->take(10)->get()]);
+                return response()->json(['results' => $questions->get()]);
             }
 
-            $listQuestions->where('content', 'like', "%$query%");
-            return response()->json(['results' => $listQuestions->get()]);
+            $questions->where('content', 'like', "%$query%");
+            return response()->json(['results' => $questions->get()]);
         }
 
+        $questions = $questions->paginate(10);
         return view('admin.questions.index', compact('questions'));
     }
 

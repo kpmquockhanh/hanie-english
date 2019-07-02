@@ -28,13 +28,13 @@ class AnswerController extends Controller
                 $answers->whereKeyNot($except);
             }
             if (!$query) {
-                return response()->json(['results' => $answers->take(10)->get()]);
+                return response()->json(['results' => $answers->get()]);
             }
 
             $answers->where('content', 'like', "%$query%");
             return response()->json(['results' => $answers->get()]);
         }
-        $answers = $answers->get();
+        $answers = $answers->paginate(10);
         return view('admin.answers.index', compact('answers'));
     }
 

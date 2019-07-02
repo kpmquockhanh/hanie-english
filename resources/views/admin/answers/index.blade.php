@@ -60,6 +60,9 @@
             </table>
         </div>
         <!-- /.box-body -->
+        <div class="box-footer">
+            {{ $answers->links() }}
+        </div>
     </div>
     <!-- /.box -->
 @stop
