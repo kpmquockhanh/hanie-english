@@ -10,24 +10,26 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="data-table-list">
                     @foreach($configs as $config)
-                        @if ($config->type == 'text')
-                            <div class="cmp-tb-hd bsc-smp-sm">
-                                <label>{{ $config->name }}</label>
-                            </div>
-                            <div class="form-group">
-                                <div class="nk-int-st">
-                                    <input type="text" class="form-control" placeholder="" name="{{ $config->name }}" value="{{ $config->content }}">
-                                </div>
-                            </div>
-                        @endif
-                        @if ($config->type == 'html')
-                            <div class="">
+                        <div class="col-lg-6">
+                            @if ($config->type == 'text')
                                 <div class="cmp-tb-hd bsc-smp-sm">
                                     <label>{{ $config->name }}</label>
                                 </div>
-                                <textarea class="html-editor" id="{{ $config->name }}" name="{{ $config->name }}">{{ $config->content }}</textarea>
-                            </div>
-                        @endif
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="" name="{{ $config->name }}" value="{{ $config->content }}">
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($config->type == 'html')
+                                <div class="">
+                                    <div class="cmp-tb-hd bsc-smp-sm">
+                                        <label>{{ $config->name }}</label>
+                                    </div>
+                                    <textarea class="html-editor" id="{{ $config->name }}" name="{{ $config->name }}">{{ $config->content }}</textarea>
+                                </div>
+                            @endif
+                        </div>
                     @endforeach
 
                     <div>
@@ -46,6 +48,8 @@
         //     // Replace the <textarea id="editor1"> with a CKEditor
         //     // instance, using default configuration.
         CKEDITOR.config.extraAllowedContent = 'iframe[*]';
+        CKEDITOR.config.extraPlugins = 'sourcedialog';
+        CKEDITOR.config.startupMode = 'source';
         @foreach($configs as $config)
             @if ($config->type == 'html')
                 CKEDITOR.replace('{{ $config->name }}');
