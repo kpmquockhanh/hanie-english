@@ -23,7 +23,6 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Phone number</th>
-                        <th>Created by</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -38,7 +37,6 @@
                         <td>{{ $phone->id }}</td>
                         <td>{{ $phone->name }}</td>
                         <td>{{ $phone->phone_number }}</td>
-                        <td>{{ $phone->admin->name }}</td>
                         <td>
                             <a href="{{ route('phones.edit', $phone->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('phones.destroy', $phone->id) }}" style="display: inline;" method="post">
@@ -55,7 +53,6 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Phone number</th>
-                        <th>Created by</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

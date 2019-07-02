@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/', 'LandingPageController@index')->name('landing_page');
-Route::get('/store-phone', 'LandingPageController@storePhone')->name('landing.store.phone');
+Route::post('/store-phone', 'LandingPageController@storePhone')->name('landing.store.phone');
 
 Route::prefix('admin')->group(function () {
     Route::namespace('AdminAuth')->group(function () {
