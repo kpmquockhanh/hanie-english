@@ -135,7 +135,6 @@ class CourseController extends Controller
     {
         try {
             Course::destroy($course->id);
-            Lesson::query()->where('course_id', $course->id)->delete();
             return redirect(route('courses.index'))->with('success', 'Deleted successfully!');
         } catch (\Exception $exp) {
             return redirect(route('courses.index'))->with('error', 'Deleted error!');

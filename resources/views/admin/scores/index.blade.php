@@ -44,10 +44,10 @@
                     <tr>
                         <td>{{ $score->id }}</td>
                         <td>
-                            <a href="{{ route('users.show', $score->user->id) }}">{{ $score->user->name }}</a>
+                            <a href="{{ route('users.show', $score->user->id) }}">{{ $score->user?$score->user->name:'' }}</a>
                         </td>
                         <td>
-                            <a href="{{ route('lessons.edit', $score->lesson->id) }}">{{ $score->lesson->name }}</a>
+                            <a href="{{ route('lessons.edit', $score->lesson->id) }}">{{ $score->lesson?$score->lesson->name:'' }}</a>
                         </td>
                         <td>{{ $score->score }}</td>
                         <td>{{ $score->note ?? 'Empty' }}</td>

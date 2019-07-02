@@ -44,7 +44,7 @@
                     <tr>
                         <td>{{ $lesson->id }}</td>
                         <td>{{ $lesson->name }}</td>
-                        <td>{{ $lesson->course->name }}</td>
+                        <td>{{ $lesson->course ?$lesson->course->name:'' }}</td>
                         <td>{{ $lesson->video->title }}</td>
                         <td>{{ $lesson->video->original_name }}</td>
                         <td>

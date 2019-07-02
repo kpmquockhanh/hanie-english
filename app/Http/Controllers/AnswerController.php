@@ -135,6 +135,7 @@ class AnswerController extends Controller
     {
         try {
             $answer->delete();
+
             return redirect(route('answers.index'))->with('success', 'Deleted successfully!');
         } catch (\Exception $e) {
             return redirect(route('answers.index'))->with('error', 'Deleted error!');
