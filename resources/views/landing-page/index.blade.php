@@ -62,7 +62,7 @@
                 <div class="ml-auto w-25">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
-                            <li class="cta"><a href="#contact-section" class="nav-link"><span>Liên hệ với chúng tôi ngay</span></a></li>
+                            <li class="cta"><a href="#job-section" class="nav-link"><span>Liên hệ với chúng tôi ngay</span></a></li>
                         </ul>
                     </nav>
                     <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -84,7 +84,7 @@
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">{{ $configs[0]->content }}</p>
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">{{ $configs[1]->content }}</p>
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">"{{ $configs[2]->content }}" - <strong><i>{{ $configs[3]->content }}</i></strong></p>
-                                <p data-aos="fade-up" data-aos-delay="300"><a href="#contact-section" class="btn btn-primary py-3 px-5 btn-pill">Liên hệ với chúng tôi ngay</a></p>
+                                <p data-aos="fade-up" data-aos-delay="300"><a href="#job-section" class="btn btn-primary py-3 px-5 btn-pill">Liên hệ với chúng tôi ngay</a></p>
 
                             </div>
 
