@@ -63,7 +63,7 @@ class LessonController extends Controller
                 'course_id' => 'required|numeric',
                 'name' => 'required|max:191',
                 'title' => 'required|max:191',
-                'video' => 'required|mimes:mp4|size:102400',
+                'video' => 'required|mimes:mp4|max:102400',
             ]
         );
         $data = $request->only([
