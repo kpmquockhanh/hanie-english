@@ -29,7 +29,11 @@
         iframe {
             width: 100%;
         }
-
+        @media only screen and (max-width: 554px) {
+            #form-hidden {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -93,7 +97,7 @@
 
                             </div>
 
-                            <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                            <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500" id="form-hidden">
                                 <form action="{{ route('landing.store.phone') }}" method="post" class="form-box">
                                     @csrf
                                     <h3 class="h4 text-black mb-4">Đăng kí khoá học</h3>
