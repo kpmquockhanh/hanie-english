@@ -73,6 +73,9 @@
             <li class="{{ request()->segment(2)==='scores'?'active':'' }}">
                 <a href="{{ route('scores.index') }}"><i class="fa fa-pencil-square-o"></i>Scores</a>
             </li>
+            <li class="{{ request()->segment(2)==='histories'?'active':'' }}">
+                <a href="{{ route('histories.index') }}"><i class="fa fa-pencil-square-o"></i>Histories</a>
+            </li>
 {{--            <li class="treeview">--}}
 {{--                <a href="#">--}}
 {{--                    <i class="fa fa-book"></i>--}}

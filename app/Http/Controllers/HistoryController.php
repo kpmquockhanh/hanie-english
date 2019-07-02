@@ -14,7 +14,10 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        $histories = History::with('admin')
+            ->orderByDesc('id')
+            ->paginate(10);
+        return view('admin.history.index', compact('histories'));
     }
 
     /**

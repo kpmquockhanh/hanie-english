@@ -27,7 +27,7 @@ class History extends Model
 
     public function admin()
     {
-        $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class);
     }
 
     public static function makeHistory(Model $model, $action) {
@@ -38,4 +38,5 @@ class History extends Model
            'referent_id' => $model->id,
         ]);
     }
+
 }

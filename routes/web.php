@@ -41,6 +41,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('lessons', 'LessonController');
         Route::resource('examinations', 'ExaminationController');
         Route::resource('scores', 'ScoreController');
+        Route::resource('histories', 'HistoryController');
     });
 });
 Route::prefix('user')->middleware('user.active')->group(function () {
