@@ -50,10 +50,11 @@
                 <div class="mx-auto text-center">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
-                            <li><a href="#home-section" class="nav-link">Home</a></li>
-                            <li><a href="#courses-section" class="nav-link">Courses</a></li>
-                            <li><a href="#programs-section" class="nav-link">Programs</a></li>
-                            <li><a href="#teachers-section" class="nav-link">Teachers</a></li>
+                            <li><a href="#home-section" class="nav-link">Trang chủ</a></li>
+                            <li><a href="#about-section" class="nav-link">Giới thiệu</a></li>
+                            <li><a href="#levels-section" class="nav-link">Levels</a></li>
+                            <li><a href="#teachers-section" class="nav-link">Giảng viên</a></li>
+                            <li><a href="#job-section" class="nav-link">Tuyển dụng</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -90,7 +91,7 @@
                             <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
                                 <form action="{{ route('landing.store.phone') }}" method="post" class="form-box">
                                     @csrf
-                                    <h3 class="h4 text-black mb-4">Sign Up</h3>
+                                    <h3 class="h4 text-black mb-4">Đăng kí khoá học</h3>
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="name" placeholder="Your name" autocomplete="off">
                                     </div>
@@ -98,7 +99,7 @@
                                         <input type="text" class="form-control" name="phone_number" placeholder="Your Phone number" autocomplete="off">
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
+                                        <input type="submit" class="btn btn-primary btn-pill" value="Đăng kí">
                                     </div>
                                 </form>
 
@@ -111,63 +112,21 @@
         </div>
     </div>
 
-    <div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');">
+    <div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');" id="about-section">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-8 text-center testimony">
-                    <img src="lp/images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                    <h3 class="mb-4">Jerome Jensen</h3>
+                    <h2 class="mb-4 text-white">Giới thiệu</h2>
                     <blockquote>
-                        <p>&ldquo; Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem soluta sit eius necessitatibus voluptate excepturi beatae ad eveniet sapiente impedit quae modi quo provident odit molestias! Rem reprehenderit assumenda &rdquo;</p>
+                        <p>&ldquo; Hanie English Đào tạo giao tiếp từ cơ bản đến nâng cao, kết hợp củng cố kiến thức nền vững chắc theo tiêu chuẩn quốc tế. Hiệu quả rõ rệt sau 20 ngày.&rdquo;</p>
+                        <p>&ldquo; Luyện tập 4 kỹ năng, ôn thi các chứng chỉ PET, KET, TOEIC, ESOL,… &rdquo;</p>
+                        {!! $configs[4]->content !!}
                     </blockquote>
                 </div>
             </div>
         </div>
     </div>
-    <div class="site-section courses-title" id="courses-section">
-        <div class="container">
-            <div class="row mb-5 justify-content-center">
-                <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
-                    <h2 class="section-title">Khoá học</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="site-section courses-entry-wrap"  data-aos="fade-up" data-aos-delay="100">
-        <div class="container">
-            <div class="row">
-
-                <div class="owl-carousel col-12 nonloop-block-14">
-                    @foreach ($courses as $course)
-                        <div class="course bg-white h-100 align-self-stretch">
-                            <figure class="m-0">
-                                <a href="course-single.html"><img src="lp/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                            </figure>
-                            <div class="course-inner-text py-4 px-4">
-{{--                                <span class="course-price">$20</span>--}}
-{{--                                <div class="meta"><span class="icon-clock-o"></span>4 Lessons / 12 week</div>--}}
-                                <h3><a href="#">{{ $course->name }}</a></h3>
-                                <p>{!! $course->description !!}</p>
-                            </div>
-                            <div class="d-flex border-top stats">
-{{--                                <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>--}}
-{{--                                <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 2</div>--}}
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-
-
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-7 text-center">
-                    <button class="customPrevBtn btn btn-primary m-1">Prev</button>
-                    <button class="customNextBtn btn btn-primary m-1">Next</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {!! $configs[7]->content !!}
 
 
     <div class="site-section" id="programs-section">
@@ -186,15 +145,15 @@
                     <h2 class="text-black mb-4">Hình thức học</h2>
                     <p class="mb-4">Hình thức 1 gia sư theo sát 1 học viên, giải đáp mọi thắc mắc của học viên.</p>
 
-                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+{{--                    </div>--}}
 
-                    <div class="d-flex align-items-center custom-icon-wrap">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>
@@ -207,15 +166,15 @@
                     <h2 class="text-black mb-4">Thời gian</h2>
                     <p class="mb-4">Thời gian dạy và học linh hoạt dựa vào khoảng thời gian phù hợp với học viên, mọi lúc mọi nơi, uy tín và đảm bảo chất lượng.</p>
 
-                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+{{--                    </div>--}}
 
-                    <div class="d-flex align-items-center custom-icon-wrap">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>
@@ -228,15 +187,15 @@
                     <h2 class="text-black mb-4">Giảng viên</h2>
                     <p class="mb-4">Các gia sư online có trình độ và đã trải qua khóa training khắt khe về chuyên môn cũng như kỹ năng giảng dạy.</p>
 
-                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+{{--                    </div>--}}
 
-                    <div class="d-flex align-items-center custom-icon-wrap">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>
@@ -249,34 +208,22 @@
                     <h2 class="text-black mb-4">Phù hợp với</h2>
                     <p class="mb-4">Đối tượng học sinh: Người đi làm, du học sinh, …</p>
 
-                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+{{--                    </div>--}}
 
-                    <div class="d-flex align-items-center custom-icon-wrap">
-                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-                    </div>
+{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-8 text-center testimony">
-                    <img src="lp/images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                    <h3 class="mb-4">Jerome Jensen</h3>
-                    <blockquote>
-                        <p>&ldquo; Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem soluta sit eius necessitatibus voluptate excepturi beatae ad eveniet sapiente impedit quae modi quo provident odit molestias! Rem reprehenderit assumenda &rdquo;</p>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </div>
+    {!! $configs[5]->content !!}
     <div class="site-section" id="teachers-section">
         <div class="container">
 
@@ -304,114 +251,103 @@
         </div>
     </div>
 
-    <div class="site-section pb-0">
+    {!! $configs[6]->content !!}
+{{--    <div class="site-section pb-0">--}}
 
-        <div class="future-blobs">
-            <div class="blob_2">
-                <img src="lp/images/blob_2.svg" alt="Image">
-            </div>
-            <div class="blob_1">
-                <img src="lp/images/blob_1.svg" alt="Image">
-            </div>
-        </div>
-        <div class="container">
-            <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">
-                <div class="col-lg-7 text-center">
-                    <h2 class="section-title">Why Choose Us</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">
+{{--        <div class="future-blobs">--}}
+{{--            <div class="blob_2">--}}
+{{--                <img src="lp/images/blob_2.svg" alt="Image">--}}
+{{--            </div>--}}
+{{--            <div class="blob_1">--}}
+{{--                <img src="lp/images/blob_1.svg" alt="Image">--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="container">--}}
+{{--            <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">--}}
+{{--                <div class="col-lg-7 text-center">--}}
+{{--                    <h2 class="section-title">Tại sao chọn chúng tôi</h2>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">--}}
 
-                    <div class="p-4 rounded bg-white why-choose-us-box">
+{{--                    <div class="p-4 rounded bg-white why-choose-us-box">--}}
 
-                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
-                            <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-                        </div>
+{{--                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">--}}
+{{--                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>--}}
+{{--                            <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+{{--                        </div>--}}
 
-                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                            <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-                        </div>
+{{--                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">--}}
+{{--                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>--}}
+{{--                            <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+{{--                        </div>--}}
 
-                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
-                            <div><h3 class="m-0">Top Professionals in The World</h3></div>
-                        </div>
+{{--                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">--}}
+{{--                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>--}}
+{{--                            <div><h3 class="m-0">Top Professionals in The World</h3></div>--}}
+{{--                        </div>--}}
 
-                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                            <div><h3 class="m-0">Expand Your Knowledge</h3></div>
-                        </div>
+{{--                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">--}}
+{{--                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>--}}
+{{--                            <div><h3 class="m-0">Expand Your Knowledge</h3></div>--}}
+{{--                        </div>--}}
 
-                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
-                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
-                            <div><h3 class="m-0">Best Online Teaching Assistant Courses</h3></div>
-                        </div>
+{{--                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">--}}
+{{--                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>--}}
+{{--                            <div><h3 class="m-0">Best Online Teaching Assistant Courses</h3></div>--}}
+{{--                        </div>--}}
 
-                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light">
-                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                            <div><h3 class="m-0">Best Teachers</h3></div>
-                        </div>
+{{--                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light">--}}
+{{--                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>--}}
+{{--                            <div><h3 class="m-0">Best Teachers</h3></div>--}}
+{{--                        </div>--}}
 
-                    </div>
-
-
-                </div>
-                <div class="col-lg-7 align-self-end"  data-aos="fade-left" data-aos-delay="200">
-                    <img src="lp/images/person_transparent.png" alt="Image" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                    </div>--}}
 
 
+{{--                </div>--}}
+{{--                <div class="col-lg-7 align-self-end"  data-aos="fade-left" data-aos-delay="200">--}}
+{{--                    <img src="lp/images/person_transparent.png" alt="Image" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
-
-    <div class="site-section bg-light" id="contact-section">
+    <div class="site-section bg-light" id="job-section">
         <div class="container">
 
             <div class="row justify-content-center">
                 <div class="col-md-7">
 
+                    <h2 class="section-title mb-3">Tuyển dụng</h2>
+                    <p class="mb-5">
+                        Nếu bạn quan tâm tới các vị trí tuyển chọn của chúng tôi vui lòng điền vào biểu mẫu phía
+                    </p>
 
-
-                    <h2 class="section-title mb-3">Message Us</h2>
-                    <p class="mb-5">Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
-
-                    <form method="post" data-aos="fade">
+                    <form method="post" data-aos="fade" action="{{ route('landing.store.job') }}">
+                        @csrf
                         <div class="form-group row">
-                            <div class="col-md-6 mb-3 mb-lg-0">
-                                <input type="text" class="form-control" placeholder="First name">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Last name">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="Tên" name="name">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Subject">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" placeholder="Email" name="email">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
+                                <textarea class="form-control" id="" cols="30" rows="10" placeholder="Ghi thông điệp tại đây" name="message"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
-
-                                <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
+                                <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Gửi yêu cầu">
                             </div>
                         </div>
 
@@ -426,27 +362,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h3>About OneSchool</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consectetur ut hic ipsum et veritatis corrupti. Itaque eius soluta optio dolorum temporibus in, atque, quos fugit sunt sit quaerat dicta.</p>
+                    <h3>About HANIE ENGLISH.</h3>
+                    <p>Địa chỉ: Tầng 6 số nhà 22 ngõ 79/14 Dương Quảng Hàm, Cầu Giấy, Hà Nội</p>
+                    <p><span class="icon icon-phone"></span> Hotline: 0918199264</p>
+                    <p><span class="icon icon-add_box"></span> hanie.english.edu@gmail.com</p>
                 </div>
 
                 <div class="col-md-3 ml-auto">
-                    <h3>Links</h3>
+                    <h3>THEO DÕI CHÚNG TÔI</h3>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Programs</a></li>
-                        <li><a href="#">Teachers</a></li>
+                        <li><a href="https://www.facebook.com/Ngh%E1%BB%87-Thu%E1%BA%ADt-Chinh-Ph%E1%BB%A5c-Ti%E1%BA%BFng-Anh-1839176996210179/">Facebook</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4">
-                    <h3>Subscribe</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt iure iusto architecto? Numquam, natus?</p>
-                    <form action="#" class="footer-subscribe">
-                        <div class="d-flex mb-5">
-                            <input type="text" class="form-control rounded-0" placeholder="Email">
-                            <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">
+                    <h3>Nhận thông báo</h3>
+                    <p>Điền số điện để chúng tôi có thể thông báo cho bạn những khóa học quan trọng một cách nhanh nhất.</p>
+                    <form action="{{ route('landing.store.phone') }}" class="footer-subscribe">
+                        @csrf
+                        <div class="d-flex mb-5 flex-column">
+                            <input type="text" class="form-control rounded-0" placeholder="Tên của bạn" name="name" autocomplete="off">
+                            <input type="text" class="form-control rounded-0" placeholder="Số điện thoại" name="phone_number" autocomplete="off">
+                            <input type="submit" class="btn btn-primary rounded-0" value="Đăng kí">
                         </div>
                     </form>
                 </div>
@@ -458,7 +395,7 @@
                     <div class="border-top pt-5">
                         <p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Hanie English.
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>

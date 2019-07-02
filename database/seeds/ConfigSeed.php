@@ -47,126 +47,245 @@ SỬ DỤNG TIẾNG ANH GÓP PHẦN NÂNG CAO GIÁ TRỊ BẢN THÂN',
             'type' => 'html',
             'show' => true,
             'name' => 'html_section_1',
-            'content' => '<section id="courses" class="text-left">
-    <h3 class="header-title text-center">CHƯƠNG TRÌNH ĐÀO TẠO TỔNG QUÁT</h3>
+            'content' => '<div class="site-section bg-image overlay" style="background-image: url(\'lp/images/hero_1.jpg\');">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8 testimony text-white">
+                    <h1 class="mb-4 text-white">Chương trình đạo tạo tổng quát</h1>
+                    <h2>Luyện thi PET, KET, TOEIC</h2>
 
-    <h5 class="text-left row font-30">Luyện thi PET, KET, TOEIC</h5>
-    <dl class="row text-left">
-        <dt><strong class="font-20">Mô hình chuẩn châu âu: từ STARTERS, MOVERS, FLYERS
-TOEIC VỚI 4 KỸ NĂNG
-TỪ 350 ĐẾN 750 - 800 TRONG VÒNG 3 ĐẾN 6 THÁNG</strong></dt>
+                    <p><strong>M&ocirc; h&igrave;nh chuẩn ch&acirc;u &acirc;u: từ STARTERS, MOVERS, FLYERS TOEIC VỚI 4 KỸ NĂNG TỪ 350 ĐẾN 750 - 800 TRONG V&Ograve;NG 3 ĐẾN 6 TH&Aacute;NG</strong></p>
 
-    </dl>
+                    <h2>Giảng vi&ecirc;n</h2>
 
-    <h5 class="text-left row font-30">Giảng viên</h5>
-    <dl class="row text-left">
-        <dd>Giảng viên nhiệt tình, luôn theo sát học viên trong từng buổi học, và trong suốt khóa học</dd>
-        <dd>Tất cả các giảng viên đều được đào tạo bài bản chuyên nghiệp</dd>
-        <dd>Có kỹ năng sư phạm</dd>
-        <dd>Có kinh nghiệm giảng dạy - Có bằng Toeic, IELTS, B2, TESOL</dd>
-        <dd>Được đào tạo từ khoa ngoại ngữ của các trường đại học: Đại học ngoại ngữ Hà Nội, Đại học Thương Mại,...</dd>
-    </dl>
+                    <p>Giảng vi&ecirc;n nhiệt t&igrave;nh, lu&ocirc;n theo s&aacute;t học vi&ecirc;n trong từng buổi học, v&agrave; trong suốt kh&oacute;a học</p>
 
-    <h5 class="text-left row font-30">Phương pháp</h5>
-    <dl class="row text-left">
-        <dt><strong class="font-20">Phương pháp luyện nghe</strong></dt>
-        <dd>Được chia thành 3 giai đoạn : Pre-listening, While-listening, Post-listening</dd>
-        <dd>Với 3 bước này sẽ hỗ trợ học viên nghe hiểu sâu và bắt được nghĩa của bài 1 cách rõ ràng nhất, và có khả năng diễn đạt ý tưởng của câu chuyện theo cách hiểu của bản thân</dd>
-        <dt><strong class="font-20">Phương pháp dạy “SPEAKING”</strong></dt>
-        <dd>Role-play: Học viên và giáo viên đóng vai nhân vật trong một ngữ cảnh nhất định để luyện tập kĩ năng nói. Học viên được cung cấp từ mới, cấu trúc câu để hiểu tường tận bài nói, chỉnh sửa ngữ âm giúp học viên nói đúng ngữ điệu.</dd>
-        <dd>Sử dụng tiếng anh tối đa để giao tiếp trong lớp học lợi ích của việc sử dụng tiếng anh trong lớp: Giúp học viên luyện nghe và nói một cách trôi chảy, tự nhiên nhất có thể</dd>
-        <dd>Đưa cho học sinh cảm giác tiếng anh là một ngôn ngữ để giao tiếp thực sự chứ không phải là một ngôn ngữ trên sách vở, hay là học vẹt</dd>
-    </dl>
-</section>',
+                    <p>Tất cả c&aacute;c giảng vi&ecirc;n đều được đ&agrave;o tạo b&agrave;i bản chuy&ecirc;n nghiệp</p>
+
+                    <p>C&oacute; kỹ năng sư phạm</p>
+
+                    <p>C&oacute; kinh nghiệm giảng dạy - C&oacute; bằng Toeic, IELTS, B2, TESOL</p>
+
+                    <p>Được đ&agrave;o tạo từ khoa ngoại ngữ của c&aacute;c trường đại học: Đại học ngoại ngữ H&agrave; Nội, Đại học Thương Mại,...</p>
+
+                    <h2>Phương ph&aacute;p</h2>
+
+                    <p><strong>Phương ph&aacute;p luyện nghe</strong></p>
+
+                    <p>Được chia th&agrave;nh 3 giai đoạn : Pre-listening, While-listening, Post-listening</p>
+
+                    <p>Với 3 bước n&agrave;y sẽ hỗ trợ học vi&ecirc;n nghe hiểu s&acirc;u v&agrave; bắt được nghĩa của b&agrave;i 1 c&aacute;ch r&otilde; r&agrave;ng nhất, v&agrave; c&oacute; khả năng diễn đạt &yacute; tưởng của c&acirc;u chuyện theo c&aacute;ch hiểu của bản th&acirc;n</p>
+
+                    <h2><strong>Phương ph&aacute;p dạy &ldquo;SPEAKING&rdquo;</strong></h2>
+
+                    <p>Role-play: Học vi&ecirc;n v&agrave; gi&aacute;o vi&ecirc;n đ&oacute;ng vai nh&acirc;n vật trong một ngữ cảnh nhất định để luyện tập kĩ năng n&oacute;i. Học vi&ecirc;n được cung cấp từ mới, cấu tr&uacute;c c&acirc;u để hiểu tường tận b&agrave;i n&oacute;i, chỉnh sửa ngữ &acirc;m gi&uacute;p học vi&ecirc;n n&oacute;i đ&uacute;ng ngữ điệu.</p>
+
+                    <p>Sử dụng tiếng anh tối đa để giao tiếp trong lớp học lợi &iacute;ch của việc sử dụng tiếng anh trong lớp: Gi&uacute;p học vi&ecirc;n luyện nghe v&agrave; n&oacute;i một c&aacute;ch tr&ocirc;i chảy, tự nhi&ecirc;n nhất c&oacute; thể</p>
+
+                    <p>Đưa cho học sinh cảm gi&aacute;c tiếng anh l&agrave; một ng&ocirc;n ngữ để giao tiếp thực sự chứ kh&ocirc;ng phải l&agrave; một ng&ocirc;n ngữ tr&ecirc;n s&aacute;ch vở, hay l&agrave; học vẹt</p>
+
+                </div>
+            </div>
+        </div>
+    </div>',
         ]);
         \App\Config::query()->create([
             'type' => 'html',
             'show' => true,
             'name' => 'html_section_2',
-            'content' => '<section id="courses">
-    <div class="row">
-        <div class="tabset">
-            <!-- Tab 1 -->
-            <input type="radio" name="tabset" id="tab1" aria-controls="h1" checked="">
-            <label for="tab1">Hanie 01</label>
-            <!-- Tab 2 -->
-            <input type="radio" name="tabset" id="tab2" aria-controls="h2">
-            <label for="tab2">Hanie 02</label>
-            <input type="radio" name="tabset" id="tab3" aria-controls="h3">
-            <label for="tab3">Hanie 03</label>
+            'content' => '<div class="site-section pb-0">
 
-            <div class="tab-panels">
-                <section id="h1" class="tab-panel text-left">
-                    <h2>Hanie 01</h2>
-                    <p>Nhận mặt chữ</p>
-                    <p>Nắm được kiến thức giao tiếp cơ bản (kĩ năng, hình thành phản xạ)</p>
-                    <p>Làm quen với bảng phiên âm cơ bản, làm quen và mở khẩu hình</p>
-                </section>
-                <section id="h2" class="tab-panel text-left">
-                    <h2>Hanie 02</h2>
-                    <p>Tiếp xúc với nhiều tình huống giao tiếp khác nhau, hình thành vốn vựng cơ bản qua hơn 20 chủ đề quen thuộc</p>
-                    <p>Vận dụng kĩ năng mở khẩu hình, làm quen với các cấu trúc trong giao tiếp tiếng anh</p>
-                    <p>Tăng khả năng nói nhờ 20 bài FREETALKS trong quá trình học.</p>
-                </section>
-                <section id="h3" class="tab-panel text-left">
-                    <h2>Hanie 03</h2>
-                    <p>Nắm được nhiều cáu trúc khó hơn cùng lượng từ vụng phong phú và tăng kĩ năng vận dụng từ vựng (tương đương TOEIC 600)</p>
-                    <p>Nắm chắc nhiều kiến thức cơ bản về các vấn đề trong cuộc sống nhờ lượng lớn từ vụng chuyên ngành theo chủ đề</p>
-                    <p>Tăng khả năng vẫn dụng ngữ pháp</p>
-                    <p>Tăng khả năng thuyết trình tiếng anh, vận dụng từ vựng (Tương đương TOEIC 750 và IELTS speaking 6.5)</p>
-                </section>
+        <div class="future-blobs">
+            <div class="blob_2">
+                <img src="lp/images/blob_2.svg" alt="Image">
+            </div>
+            <div class="blob_1">
+                <img src="lp/images/blob_1.svg" alt="Image">
             </div>
         </div>
-    </div>
+        <div class="container">
+            <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">
 
-</section>',
+                    <div class="p-4 rounded bg-white why-choose-us-box">
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
+                            <div class="mr-3">
+                                <span class="custom-icon-inner">
+                                    <span class="icon icon-graduation-cap"></span>
+                                </span>
+                            </div>
+                            <div>
+                                <h2 class="m-0">Hanie 01</h2>
+                                <p>
+                                    Nhận mặt chữ
+                                </p>
+                                <p>
+                                    Nắm được kiến thức giao tiếp cơ bản (kĩ năng, hình thành phản xạ)
+                                </p>
+                                <p>
+                                    Làm quen với bảng phiên âm cơ bản, làm quen và mở khẩu hình
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="p-4 rounded bg-white why-choose-us-box">
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
+                            <div class="mr-3">
+                                <span class="custom-icon-inner">
+                                    <span class="icon icon-graduation-cap"></span>
+                                </span>
+                            </div>
+                            <div>
+                                <h2 class="m-0">Hanie 02</h2>
+                                <p>
+                                    Tiếp xúc với nhiều tình huống giao tiếp khác nhau, hình thành vốn vựng cơ bản qua hơn 20 chủ đề quen thuộc
+                                </p>
+                                <p>
+                                    Vận dụng kĩ năng mở khẩu hình, làm quen với các cấu trúc trong giao tiếp tiếng anh
+                                </p>
+                                <p>
+                                    Tăng khả năng nói nhờ 20 bài FREETALKS trong quá trình học.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="p-4 rounded bg-white why-choose-us-box">
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
+                            <div class="mr-3">
+                                <span class="custom-icon-inner">
+                                    <span class="icon icon-graduation-cap"></span>
+                                </span>
+                            </div>
+                            <div>
+                                <h2 class="m-0">Hanie 03</h2>
+                                <p>
+                                    Nắm được nhiều cáu trúc khó hơn cùng lượng từ vụng phong phú và tăng kĩ năng vận dụng từ vựng (tương đương TOEIC 600)
+                                </p>
+                                <p>
+                                    Nắm chắc nhiều kiến thức cơ bản về các vấn đề trong cuộc sống nhờ lượng lớn từ vụng chuyên ngành theo chủ đề
+                                </p>
+                                <p>
+                                    Tăng khả năng vẫn dụng ngữ pháp
+                                </p>
+                                <p>
+                                    Tăng khả năng thuyết trình tiếng anh, vận dụng từ vựng (Tương đương TOEIC 750 và IELTS speaking 6.5)
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>',
         ]);
         \App\Config::query()->create([
             'type' => 'html',
             'show' => true,
             'name' => 'html_section_3',
-            'content' => '<section id="level">
-    <section id="sec">
-    <h3 class="header-title">Các levels để giao tiếp thành thạo</h3>
-    <ul>
-        <li>
-            <span class="fa fa-book"></span>
+            'content' => '<div class="site-section courses-title" id="levels-section">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+                    <h2 class="section-title">Các levels để giao tiếp thành thạo</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section courses-entry-wrap" data-aos="fade-up" data-aos-delay="100" id="course-section">
+        <div class="container">
+            <div class="row">
+                <div class="owl-carousel col-12 nonloop-block-14">
 
-            <h3>Level 1: STARTERS</h3>
-            <p>
-                -	40 buổi học bao gồm 4 bài test.
-            </p>
-            <p>
-                -	Các mẫu câu đơn giản, ôn tập lại với 6 thì cơ bản.
-            </p>
-            <p>
-                -	Với hơn 85 cấu trúc câu.
-            </p>
-            <p>
-                -	15 bài phát âm.
-            </p>
-            <p>
-                -	Hơn 200 từ vựng.
-            </p>
-        </li>
-        <li>
-            <span class="fa fa-book"></span>
-            <h3>Level 2: Movers</h3>
-            <p>-	Hơn 30 buổi học.</p>
-            <p>-	Các tình huống giao tếp gần gũi trong đời sống, luyện là chỉnh âm theo phương pháp role – play.</p>
-            <p>-	150 cấu trúc câu.</p>
-            <p>-	300 từ vựng.</p>
-        </li>
-        <li>
-            <span class="fa fa-book"></span>
-            <h3>Level 3: Advanced</h3>
-            <p>-	Các từ ngữ chuyên ngành.</p>
-            <p>-	Các chủ đề liên quan đến khoa học và cuộc sống.</p>
-            <p>-    Gần 10 chủ đề lớn, phát triển toàn diện 4 kỹ năng: LISTENING, SPEAKING, WRITING, READING nhờ 140 bài giảng</p>
-        </li>
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="lp/images/person_1.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                            <div class="meta"><span class="icon-clock-o"></span>4 Lessons / 12 week</div>
+                            <h3><a href="#">LEVEL 1: STARTERS</a></h3>
+                            <p>- 40 buổi học bao gồm 4 bài test.</p>
+                            <p>- Các mẫu câu đơn giản, ôn tập lại với 6 thì cơ bản.</p>
+                            <p>- Với hơn 85 cấu trúc câu.</p>
+                            <p>- 15 bài phát âm.</p>
+                            <p>- Hơn 200 từ vựng.</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                            <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 2</div>
+                        </div>
+                    </div>
 
-    </ul>
-</section></section>',
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="lp/images/person_3.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                           
+                            <div class="meta"><span class="icon-clock-o"></span>4 Lessons / 12 week</div>
+                            <h3><a href="#">LEVEL 2: MOVERS</a></h3>
+                            <p>- Hơn 30 buổi học.</p>
+                            <p>- Các tình huống giao tếp gần gũi trong đời sống, luyện là chỉnh âm theo phương pháp role – play.</p>
+                            <p>- 150 cấu trúc câu.</p>
+                            <p>- 300 từ vựng.</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                            <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 2</div>
+                        </div>
+                    </div>
+
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="lp/images/person_4.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                           
+                            <div class="meta"><span class="icon-clock-o"></span>4 Lessons / 12 week</div>
+                            <h3><a href="#">LEVEL 3: ADVANCED</a></h3>
+                            <p>- Các từ ngữ chuyên ngành.</p>
+                            <p>- Các chủ đề liên quan đến khoa học và cuộc sống.</p>
+                            <p>- Gần 10 chủ đề lớn, phát triển toàn diện 4 kỹ năng: LISTENING, SPEAKING, WRITING, READING nhờ 140 bài giảng</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span> 2,193 students</div>
+                            <div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat"></span> 2</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-7 text-center">
+                    <button class="customPrevBtn btn btn-primary m-1">Prev</button>
+                    <button class="customNextBtn btn btn-primary m-1">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>',
         ]);
 
     }

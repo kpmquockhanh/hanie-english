@@ -32,7 +32,7 @@ class History extends Model
 
     public static function makeHistory(Model $model, $action) {
         self::query()->create([
-           'admin_id' => Auth::guard('admin')->id(),
+           'admin_id' => Auth::guard('admin')->id() ?? 1,
            'action' => $action,
            'table' => $model->getTable(),
            'referent_id' => $model->id,

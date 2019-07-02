@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 */
 Route::get('/', 'LandingPageController@index')->name('landing_page');
 Route::post('/store-phone', 'LandingPageController@storePhone')->name('landing.store.phone');
+Route::post('/store-job', 'LandingPageController@storeJob')->name('landing.store.job');
 
 Route::prefix('admin')->group(function () {
     Route::namespace('AdminAuth')->group(function () {

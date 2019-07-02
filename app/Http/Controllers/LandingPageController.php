@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Config;
 use App\Course;
+use App\Job;
 use App\Phone;
 use App\Teacher;
 use Illuminate\Http\Request;
@@ -30,6 +31,22 @@ class LandingPageController extends Controller
         ]);
 
         Phone::query()->create($data);
+
+        return redirect(route('landing_page'));
+    }
+
+    public function storeJob(Request $request)
+    {
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'email', 'max:100'],
+            'message' => ['max:191'],
+        ]);
+        $data = $request->only([
+            'name', 'email', 'message'
+        ]);
+
+        Job::query()->create($data);
 
         return redirect(route('landing_page'));
     }
