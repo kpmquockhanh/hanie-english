@@ -25,7 +25,12 @@
     <link rel="stylesheet" href="{{ asset('lp/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('lp/css/style.css') }}">
+    <style>
+        iframe {
+            width: 100%;
+        }
 
+    </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
