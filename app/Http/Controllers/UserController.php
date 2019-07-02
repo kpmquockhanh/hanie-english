@@ -121,7 +121,7 @@ class UserController extends Controller
             [
                 'name' => 'max:191',
                 'avatar' => 'mimes:jpeg,jpg,png|max:2000',
-                'password' => 'confirmed|min:8|max:191',
+                'password' => 'nullable|confirmed|min:8|max:191',
             ]
         );
 

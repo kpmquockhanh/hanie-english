@@ -31,6 +31,7 @@ class Score extends Model
       'started_at'
     ];
 
+
     const TIME_UP = 15;
 
     public function getEndAtAttribute()
