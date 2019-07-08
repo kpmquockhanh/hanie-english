@@ -45,8 +45,8 @@
                         <td>{{ $lesson->id }}</td>
                         <td>{{ $lesson->name }}</td>
                         <td>{{ $lesson->course ?$lesson->course->name:'' }}</td>
-                        <td>{{ $lesson->video->title }}</td>
-                        <td>{{ $lesson->video->original_name }}</td>
+                        <td>{{ $lesson->video?$lesson->video->title:'' }}</td>
+                        <td>{{ $lesson->video?$lesson->video->original_name:'' }}</td>
                         <td>
                             <a href="{{ $lesson->video->url_path }}" target="_blank">Link video</a>
                         </td>

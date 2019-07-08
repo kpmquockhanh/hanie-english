@@ -168,8 +168,12 @@ class UserController extends Controller
 
     public function makeCourses(Request $request)
     {
-        if (!$request->user_id || !count($request->courses)) {
-            return null;
+        if (!$request->user_id) {
+            return redirect(route('users.show', ['id' => $request->user_id]));
+        }
+        if (!$request->courses || !count($request->courses)) {
+            UserCourse::query()->where('user_id', $request->user_id)->delete();
+            return redirect(route('users.show', ['id' => $request->user_id]));
         }
         $currentCourses = UserCourse::query()
             ->where('user_id', $request->user_id)
@@ -177,6 +181,7 @@ class UserController extends Controller
             ->map(function ($item) {
                 return $item->course_id;
             })->toArray();
+
         $deleteCourses = array_diff($currentCourses, $request->courses);
         $insertCourse = array_diff($request->courses, $currentCourses);
 
@@ -191,6 +196,5 @@ class UserController extends Controller
         }
 
         return redirect(route('users.show', ['id' => $request->user_id]));
-//        foreach ()
     }
 }

@@ -39,8 +39,18 @@ class Video extends Model
     public function getUrlPathAttribute()
     {
         $url = env('AWS_URL');
+
         return "$url/$this->disk/$this->path";
     }
+    public function getHlsPathAttribute()
+    {
+        $url = env('AWS_URL');
+        if (!$this->converted_for_stream_at) {
+            return null;
+        }
+        return "$url/$this->converted_for_stream_at";
+    }
+
     protected static function boot()
     {
         parent::boot();

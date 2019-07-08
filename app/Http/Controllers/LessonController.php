@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Examination;
+use App\Jobs\ProcessHLS;
 use App\Lesson;
 use App\Video;
 use Illuminate\Http\Request;
@@ -85,7 +86,8 @@ class LessonController extends Controller
         DB::transaction(function () use ($data, $dataVideo) {
             Lesson::query()->create($data);
             $dataVideo['lesson_id'] = Lesson::max('id');
-            Video::query()->create($dataVideo);
+            $insertVideo = Video::query()->create($dataVideo);
+            ProcessHLS::dispatch($insertVideo);
         });
 
         return redirect(route('lessons.index'))->with('success', 'Created successfully!');

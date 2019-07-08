@@ -7,6 +7,9 @@ use App\Course;
 use App\Job;
 use App\Phone;
 use App\Teacher;
+use Aws\ElastiCache\ElastiCacheClient;
+use Aws\ElasticTranscoder\ElasticTranscoderClient;
+use Aws\Exception\AwsException;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -49,5 +52,11 @@ class LandingPageController extends Controller
         Job::query()->create($data);
 
         return redirect(route('landing_page'));
+    }
+
+    public function test()
+    {
+
+
     }
 }

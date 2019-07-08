@@ -22,10 +22,13 @@
                             controls
                             autoplay
                             preload="auto"
-                            {{--poster="//vjs.zencdn.net/v/oceans.png"--}}
                             data-setup='{}' style="width: 100%;">
-                        {{--<source src="https://hanie.s3-ap-northeast-1.amazonaws.com/videos/encoded/encoded.m3u8" type="application/x-mpegURL">--}}
-                        <source src="{{ $lesson->video->url_path }}" type="video/mp4">
+                        @if ($lesson->video->hls_path)
+                            <source src="{{ $lesson->video->hls_path }}" type="application/x-mpegURL">
+                        @else
+                            <source src="{{ $lesson->video->url_path }}" type="video/mp4">
+                        @endif
+
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a
                             web browser that
