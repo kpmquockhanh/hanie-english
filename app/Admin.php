@@ -90,4 +90,13 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Examination::class, 'created_by');
     }
+
+    public function getUrlAvatarAttribute()
+    {
+        if ($this->avatar) {
+            $url = env('AWS_URL');
+            return "$url/$this->avatar";
+        }
+        return null;
+    }
 }
