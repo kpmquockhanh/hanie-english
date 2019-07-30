@@ -148,7 +148,7 @@
             </div>
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-                    <img src="lp/images/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid">
+                    <img data-original="lp/images/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
                     <h2 class="text-black mb-4">Hình thức học</h2>
@@ -169,7 +169,7 @@
 
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-                    <img src="lp/images/undraw_teaching.svg" alt="Image" class="img-fluid">
+                    <img data-original="lp/images/undraw_teaching.svg" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                     <h2 class="text-black mb-4">Thời gian</h2>
@@ -190,7 +190,7 @@
 
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-                    <img src="lp/images/undraw_teacher.svg" alt="Image" class="img-fluid">
+                    <img data-original="lp/images/undraw_teacher.svg" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
                     <h2 class="text-black mb-4">Giảng viên</h2>
@@ -211,7 +211,7 @@
 
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-                    <img src="lp/images/undraw_teaching.svg" alt="Image" class="img-fluid">
+                    <img data-original="lp/images/undraw_teaching.svg" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                     <h2 class="text-black mb-4">Phù hợp với</h2>
@@ -247,7 +247,7 @@
                 @foreach ($teachers as $teacher)
                     <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="teacher text-center">
-                            <img src="{{ asset($teacher->url_image ?? 'lp/images/person_1.jpg') }}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+                            <img data-original="{{ asset($teacher->url_image ?? 'lp/images/person_1.jpg') }}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
                             <div class="py-2">
                                 <h3 class="text-black">{{ $teacher->name }}</h3>
                                 <p class="position">{{ $teacher->position }}</p>
@@ -432,8 +432,14 @@
 <script src="{{ asset('lp/js/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('lp/js/jquery.sticky.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"
+        integrity="sha256-rXnOfjTRp4iAm7hTAxEz3irkXzwZrElV2uRsdJAYjC4=" crossorigin="anonymous">
+</script>
+
 
 <script src="{{ asset('lp/js/main.js') }}"></script>
-
+<script>
+    $("img").lazyload();
+</script>
 </body>
 </html>
