@@ -6,6 +6,7 @@ use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class TeacherController extends Controller
 {
@@ -36,6 +37,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+//        dd(12313);
         $this->validate($request, [
             'name' => ['required', 'string', 'max:100'],
             'word' => ['required', 'string', 'max:191'],
@@ -50,8 +52,10 @@ class TeacherController extends Controller
 
         if ($image = $request->file('image')) {
             $name = time().'.'.$image->getClientOriginalExtension();
-            Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
-//            $image->move('uploads', $name);
+
+            // resizing an uploaded file
+            $resizedImg = Image::make($image)->resize(300, 300)->encode();
+            Storage::disk('s3')->put('avatars/'.$name, $resizedImg, 'public');
             $data['image'] = 'avatars/'.$name;
         }
 
@@ -106,7 +110,9 @@ class TeacherController extends Controller
 
         if ($image = $request->file('image')) {
             $name = time().'.'.$image->getClientOriginalExtension();
-            Storage::disk('s3')->put('avatars/'.$name, file_get_contents($image), 'public');
+            // resizing an uploaded file
+            $resizedImg = Image::make($image)->resize(300, 300)->encode();
+            Storage::disk('s3')->put('avatars/'.$name, $resizedImg, 'public');
 //            $image->move('uploads', $name);
             $data['image'] = 'avatars/'.$name;
 
