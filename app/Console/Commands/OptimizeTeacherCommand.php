@@ -46,6 +46,7 @@ class OptimizeTeacherCommand extends Command
                 $image = Storage::disk('s3')->get($teacher->image);
                 $resizedImg = Image::make($image);
                 if ($resizedImg->width() !== 300 && $resizedImg->height() !== 300) {
+                    echo "Resize $teacher->image\n";
                     $resizedImg = $resizedImg->resize(300, 300)->encode();
                     Storage::disk('s3')->put($teacher->image, $resizedImg, 'public');
                 }
