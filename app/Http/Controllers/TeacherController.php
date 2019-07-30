@@ -54,7 +54,7 @@ class TeacherController extends Controller
             $name = time().'.'.$image->getClientOriginalExtension();
 
             // resizing an uploaded file
-            $resizedImg = Image::make($image)->resize(300, 300)->encode();
+            $resizedImg = Image::make($image)->crop(300, 300)->encode();
             Storage::disk('s3')->put('avatars/'.$name, $resizedImg, 'public');
             $data['image'] = 'avatars/'.$name;
         }
@@ -111,7 +111,7 @@ class TeacherController extends Controller
         if ($image = $request->file('image')) {
             $name = time().'.'.$image->getClientOriginalExtension();
             // resizing an uploaded file
-            $resizedImg = Image::make($image)->resize(300, 300)->encode();
+            $resizedImg = Image::make($image)->crop(300, 300)->encode();
             Storage::disk('s3')->put('avatars/'.$name, $resizedImg, 'public');
 //            $image->move('uploads', $name);
             $data['image'] = 'avatars/'.$name;
