@@ -126,7 +126,7 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                            <img src="{{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->avatar ? asset(\Illuminate\Support\Facades\Auth::guard('admin')->user()->url_avatar) : asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                             <p>
                                 {{ \Illuminate\Support\Facades\Auth::guard('admin')->user()->name }} - Web Developer
