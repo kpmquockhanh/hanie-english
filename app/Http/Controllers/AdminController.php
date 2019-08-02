@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -43,7 +44,15 @@ class AdminController extends Controller
         if ($image = $request->file('avatar')) {
             $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
-            Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');
+            // resizing an uploaded file
+            $resizedImg = Image::make($image);
+            if ($resizedImg->width() < $resizedImg->height()) {
+                $resizedImg->crop($resizedImg->width(), $resizedImg->width());
+            } else {
+                $resizedImg->crop($resizedImg->height(), $resizedImg->height());
+            }
+            $resizedImg->resize(300, 300)->encode();
+            Storage::disk('s3')->put($disk.$name, $resizedImg, 'public');
             Storage::disk('s3')->delete($admin->avatar);
             $updateData['avatar'] = $disk.$name;
         }
