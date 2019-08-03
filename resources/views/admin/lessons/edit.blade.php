@@ -3,6 +3,10 @@
 @section('option-des', 'Update lesson')
 @section('style')
     <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet"/>
+    <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet">
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 @stop
 @section('content')
     <div class="box box-success">
@@ -79,6 +83,31 @@
                                     <input type="text" name="original_name" class="form-control"
                                            placeholder="Original name" value="{{ $lesson->video->original_name }}" readonly>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex; justify-content: center;">
+                            <div class="col-lg-6" style="margin: auto;">
+                                <video
+                                        id="player"
+                                        class="video-js"
+                                        controls
+                                        autoplay
+                                        preload="auto"
+                                        data-setup='{}' style="width: 100%;">
+                                    @if (!$lesson->video->hls_path)
+                                        <source src="{{ $lesson->video->hls_path }}" type="application/x-mpegURL">
+                                    @else
+                                        <source src="{{ $lesson->video->url_path }}" type="video/mp4">
+                                    @endif
+
+                                    <p class="vjs-no-js">
+                                        To view this video please enable JavaScript, and consider upgrading to a
+                                        web browser that
+                                        <a href="https://videojs.com/html5-video-support/" target="_blank">
+                                            supports HTML5 video
+                                        </a>
+                                    </p>
+                                </video>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
