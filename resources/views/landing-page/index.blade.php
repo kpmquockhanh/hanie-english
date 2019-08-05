@@ -5,12 +5,17 @@
     <title>Hanie English</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        @font-face {
+            font-family: Muli;
+            src: url({{ asset('lp/fonts/Muli.ttf') }});
+        }
+    </style>
+{{--    <link rel="stylesheet" href="{{ asset('lp/fonts/icomoon/style.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('lp/fonts/icomoon/styleMIN.css') }}">
 
-
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('lp/fonts/icomoon/style.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('lp/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('lp/css/compliedBS.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('lp/css/bootstrap.min.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('lp/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('lp/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lp/css/owl.theme.default.min.css') }}">
@@ -25,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('lp/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('lp/css/style.css') }}">
+
     <style>
         iframe {
             width: 100%;
