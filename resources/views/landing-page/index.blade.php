@@ -77,7 +77,7 @@
                 <div class="ml-auto w-25">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
-                            <li class="cta"><a href="#job-section" class="nav-link"><span>Liên hệ với chúng tôi ngay</span></a></li>
+                            <li class="cta"><a href="#contact" class="nav-link"><span>Liên hệ với chúng tôi ngay</span></a></li>
                         </ul>
                     </nav>
                     <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -99,7 +99,7 @@
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">{{ $configs[0]->content }}</p>
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">{{ $configs[1]->content }}</p>
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">"{{ $configs[2]->content }}" - <strong><i>{{ $configs[3]->content }}</i></strong></p>
-                                <p data-aos="fade-up" data-aos-delay="300"><a href="#job-section" class="btn btn-primary py-3 px-5 btn-pill">Liên hệ với chúng tôi ngay</a></p>
+                                <p data-aos="fade-up" data-aos-delay="300"><a href="#contact" class="btn btn-primary py-3 px-5 btn-pill">Liên hệ với chúng tôi ngay</a></p>
 
                             </div>
 
@@ -141,15 +141,12 @@
             </div>
         </div>
     </div>
-    {!! $configs[7]->content !!}
-
-
     <div class="site-section" id="programs-section">
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-lg-7 text-center"  data-aos="fade-up" data-aos-delay="">
                     <h2 class="section-title">Hình Thức Đào Tạo</h2>
-{{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque! Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam, illum sed veniam!</p>--}}
+                    {{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque! Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam, illum sed veniam!</p>--}}
                 </div>
             </div>
             <div class="row mb-5 align-items-center">
@@ -160,15 +157,15 @@
                     <h2 class="text-black mb-4">Hình thức học</h2>
                     <p class="mb-4">Hình thức 1 gia sư theo sát 1 học viên, giải đáp mọi thắc mắc của học viên.</p>
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
-{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+                    {{--                    </div>--}}
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
-{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+                    {{--                    </div>--}}
 
                 </div>
             </div>
@@ -181,15 +178,15 @@
                     <h2 class="text-black mb-4">Thời gian</h2>
                     <p class="mb-4">Thời gian dạy và học linh hoạt dựa vào khoảng thời gian phù hợp với học viên, mọi lúc mọi nơi, uy tín và đảm bảo chất lượng.</p>
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
-{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+                    {{--                    </div>--}}
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
-{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+                    {{--                    </div>--}}
 
                 </div>
             </div>
@@ -202,15 +199,15 @@
                     <h2 class="text-black mb-4">Giảng viên</h2>
                     <p class="mb-4">Các gia sư online có trình độ và đã trải qua khóa training khắt khe về chuyên môn cũng như kỹ năng giảng dạy.</p>
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
-{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+                    {{--                    </div>--}}
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
-{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+                    {{--                    </div>--}}
 
                 </div>
             </div>
@@ -223,15 +220,15 @@
                     <h2 class="text-black mb-4">Phù hợp với</h2>
                     <p class="mb-4">Đối tượng học sinh: Người đi làm, du học sinh, …</p>
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
-{{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+                    {{--                    </div>--}}
 
-{{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
-{{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
-{{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
+                    {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+                    {{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+                    {{--                    </div>--}}
 
                 </div>
             </div>
@@ -239,6 +236,9 @@
         </div>
     </div>
     {!! $configs[5]->content !!}
+    {!! $configs[7]->content !!}
+
+
     <div class="site-section" id="teachers-section">
         <div class="container">
 
@@ -253,7 +253,7 @@
                 @foreach ($teachers as $teacher)
                     <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="teacher text-center">
-                            <img data-original="{{ asset($teacher->url_image ?? 'lp/images/person_1.jpg') }}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+                            <img data-original="{{ asset($teacher->url_image ?? 'lp/images/person_1.jpg') }}" alt="Image" class="img-fluid mx-auto mb-4" style="border-radius: 5px;">
                             <div class="py-2">
                                 <h3 class="text-black">{{ $teacher->name }}</h3>
                                 <p class="position">{{ $teacher->position }}</p>
@@ -373,7 +373,7 @@
     </div>
 
 
-    <footer class="footer-section bg-white">
+    <footer class="footer-section bg-white" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
