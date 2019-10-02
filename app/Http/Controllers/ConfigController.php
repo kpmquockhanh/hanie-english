@@ -10,9 +10,6 @@ class ConfigController extends Controller
     public function index()
     {
         $configs = Config::all();
-
-
-//        dd($configs->first()->type);
         return view('admin.config', compact('configs'));
     }
 
