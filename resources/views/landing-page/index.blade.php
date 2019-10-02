@@ -40,12 +40,53 @@
                 display: none;
             }
         }
+        .carousel-overal .owl-stage {
+            padding: 0 !important;
+        }
+        /*.carousel-overal .owl-item {*/
+        /*    height: 100%;*/
+        /*}*/
+        #advisory {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 9999;
+        }
+
+        #course-section .owl-stage-outer {
+            border-radius: 7px;
+        }
+        #course-section .course {
+            border-radius: 7px;
+        }
+        #course-section p {
+            color: gray;
+        }
+        .rec-small {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            width: 40vw;
+            height: 50vh;
+            background-color: red;
+            position: absolute;
+            left: 10vw;
+            top: 15vh;
+            z-index: 99;
+        }
+        .rec-big {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            width: 50vw;
+            height: 70vh;
+            background-color: blue;
+            float: right;
+        }
+
     </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
+<div id="advisory">
+    <a href="#" class="btn btn-primary py-3 px-5 btn-pill">Nhận tư vấn miễn phí</a>
+</div>
 <div class="site-wrap">
-
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -54,14 +95,10 @@
         </div>
         <div class="site-mobile-menu-body"></div>
     </div>
-
-
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-
         <div class="container-fluid">
             <div class="d-flex align-items-center">
                 <div class="site-logo mr-auto w-25"><a href="#">{{ env('APP_NAME', 'Hanie') }}</a></div>
-
                 <div class="mx-auto text-center">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
@@ -73,7 +110,6 @@
                         </ul>
                     </nav>
                 </div>
-
                 <div class="ml-auto w-25">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
@@ -84,10 +120,8 @@
                 </div>
             </div>
         </div>
-
     </header>
     <div class="intro-section" id="home-section">
-
         <div class="slide-1" style="background-image: url('lp/images/hero_1.jpg');" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row align-items-center">
@@ -96,14 +130,55 @@
                             <div class="col-lg-6 mb-4">
                                 <h1  data-aos="fade-up" data-aos-delay="100">Hanie English </br>
                                     Inspiring your English</h1>
-                                <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">{{ $configs[0]->content }}</p>
-                                <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">{{ $configs[1]->content }}</p>
-                                <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">"{{ $configs[2]->content }}" - <strong><i>{{ $configs[3]->content }}</i></strong></p>
-                                <p data-aos="fade-up" data-aos-delay="300"><a href="#contact" class="btn btn-primary py-3 px-5 btn-pill">Liên hệ với chúng tôi ngay</a></p>
+                                <blockquote>
+                                    <p>&ldquo; Hanie English Đào tạo giao tiếp từ cơ bản đến nâng cao, kết hợp củng cố kiến thức nền vững chắc theo tiêu chuẩn quốc tế. Hiệu quả rõ rệt sau 20 ngày.&rdquo;</p>
+                                    <p>&ldquo; Luyện tập 4 kỹ năng, ôn thi các chứng chỉ PET, KET, TOEIC, ESOL,… &rdquo;</p>
+                                </blockquote>
+                                <div data-aos="fade-up" class="site-section courses-entry-wrap" id="course-section" style="margin-top: 0; padding-top: 0; height: 50vh;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="owl-carousel carousel-overal col-12 nonloop-block-14">
+                                                <div class="course bg-white h-100 align-self-stretch">
+                                                    <div class="course-inner-text py-4 px-4">
+                                                        <h3>Luyện thi PET, KET, TOEIC</h3>
+                                                        <p>Mô hình chuẩn châu âu: từ STARTERS, MOVERS, FLYERS TOEIC VỚI 4 KỸ NĂNG TỪ 350 ĐẾN 750 - 800 TRONG VÒNG 3 ĐẾN 6 THÁNG</p>
+                                                    </div>
+                                                </div>
+                                                <div class="course bg-white h-100 align-self-stretch">
+                                                    <div class="course-inner-text py-4 px-4">
+                                                        <h3>Giảng viên</h3>
+                                                        <p>Giảng viên nhiệt tình, luôn theo sát học viên trong từng buổi học, và trong suốt khóa học
+                                                        <p>Tất cả các giảng viên đều được đào tạo bài bản chuyên nghiệp</p>
+                                                        <p>Có kỹ năng sư phạm</p>
+                                                        <p>Có kinh nghiệm giảng dạy - Có bằng Toeic, IELTS, B2, TESOL</p>
+                                                        <p>Được đào tạo từ khoa ngoại ngữ của các trường đại học: Đại học ngoại ngữ Hà Nội, Đại học Thương Mại,...</p>
+                                                    </div>
+                                                </div>
+                                                <div class="course bg-white h-100 align-self-stretch">
+                                                    <div class="course-inner-text py-4 px-4">
+                                                        <h3>Phương pháp</h3>
+                                                        <p>Phương pháp luyện nghe</p>
+                                                        <p>Được chia thành 3 giai đoạn : Pre-listening, While-listening, Post-listening</p>
+                                                        <p>Với 3 bước này sẽ hỗ trợ học viên nghe hiểu sâu và bắt được nghĩa của bài 1 cách rõ ràng nhất, và có khả năng diễn đạt ý tưởng của câu chuyện theo cách hiểu của bản thân</p>
+                                                    </div>
+                                                </div>
+                                                <div class="course bg-white h-100 align-self-stretch">
+                                                    <div class="course-inner-text py-4 px-4">
+                                                        <h3>Phương pháp dạy “SPEAKING”</h3>
+                                                        <p>Role-play: Học viên và giáo viên đóng vai nhân vật trong một ngữ cảnh nhất định để luyện tập kĩ năng nói. Học viên được cung cấp từ mới, cấu trúc câu để hiểu tường tận bài nói, chỉnh sửa ngữ âm giúp học viên nói đúng ngữ điệu.</p>
+                                                        <p>Sử dụng tiếng anh tối đa để giao tiếp trong lớp học lợi ích của việc sử dụng tiếng anh trong lớp: Giúp học viên luyện nghe và nói một cách trôi chảy, tự nhiên nhất có thể</p>
+                                                        <p>Đưa cho học sinh cảm giác tiếng anh là một ngôn ngữ để giao tiếp thực sự chứ không phải là một ngôn ngữ trên sách vở, hay là học vẹt</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
 
-                            <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500" id="form-hidden">
+                            <div class="col-lg-6 ml-auto pt-6" data-aos="fade-up" data-aos-delay="500" id="form-hidden">
+                                <iframe height="370" src="{{ $configs['iframe_video']->content }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <form action="{{ route('landing.store.phone') }}" method="post" class="form-box">
                                     @csrf
                                     <h3 class="h4 text-black mb-4">Đăng kí khoá học</h3>
@@ -130,13 +205,20 @@
     <div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');" id="about-section">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-8 text-center testimony">
+                <div class="col-md-12 text-center testimony">
                     <h2 class="mb-4 text-white">Giới thiệu</h2>
-                    <blockquote>
-                        <p>&ldquo; Hanie English Đào tạo giao tiếp từ cơ bản đến nâng cao, kết hợp củng cố kiến thức nền vững chắc theo tiêu chuẩn quốc tế. Hiệu quả rõ rệt sau 20 ngày.&rdquo;</p>
-                        <p>&ldquo; Luyện tập 4 kỹ năng, ôn thi các chứng chỉ PET, KET, TOEIC, ESOL,… &rdquo;</p>
-                        {!! $configs[4]->content !!}
-                    </blockquote>
+                    <div class="">
+                       <div class="">
+                           <div class="rec-small">
+                               this is rec small
+                           </div>
+                       </div>
+                        <div class="">
+                            <div class="rec-big">
+                                this is rec big
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -235,8 +317,8 @@
 
         </div>
     </div>
-    {!! $configs[5]->content !!}
-    {!! $configs[7]->content !!}
+{{--    {!! $configs[5]->content !!}--}}
+    {!! $configs['html_section_3']->content !!}
 
 
     <div class="site-section" id="teachers-section">
@@ -266,7 +348,7 @@
         </div>
     </div>
 
-    {!! $configs[6]->content !!}
+    {!! $configs['html_section_2']->content !!}
 {{--    <div class="site-section pb-0">--}}
 
 {{--        <div class="future-blobs">--}}
@@ -446,6 +528,14 @@
 <script src="{{ asset('lp/js/main.js') }}"></script>
 <script>
     $("img").lazyload();
+    $('.carousel-overal').owlCarousel({
+        loop:true,
+        margin:10,
+        items: 1,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        // autoplayHoverPause: true
+    })
 </script>
 </body>
 </html>

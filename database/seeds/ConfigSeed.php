@@ -38,10 +38,10 @@ SỬ DỤNG TIẾNG ANH GÓP PHẦN NÂNG CAO GIÁ TRỊ BẢN THÂN',
             'content' => 'ông Lê Hoài Nam, Phó giám đốc Sở GD&ĐT TP.HCM',
         ]);
         \App\Config::query()->create([
-            'type' => 'html',
+            'type' => 'text',
             'show' => true,
             'name' => 'iframe_video',
-            'content' => '<iframe width="810" height="455" src="https://www.youtube.com/embed/svL9zkmHSNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'content' => 'https://www.youtube.com/embed/svL9zkmHSNE',
         ]);
         \App\Config::query()->create([
             'type' => 'html',

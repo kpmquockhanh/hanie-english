@@ -16,9 +16,12 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $configs = Config::all();
+        $configs = Config::all()->keyBy('name');
         $teachers = Teacher::all();
         $courses = Course::query()->take(4)->get();
+//        $configs->transform(function($item) {
+//            return $item->
+//        });
 //        dd($configs);
         return view('landing-page.index', compact('configs', 'teachers', 'courses'));
     }

@@ -9,33 +9,48 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="data-table-list">
+                    <div class="col-lg-12">
+                        <button class="btn btn-success" style="margin-top: 10px;">Update</button>
+                    </div>
                     @foreach($configs as $config)
                         <div class="col-lg-6">
-                            @if ($config->type == 'text')
-                                <div class="cmp-tb-hd bsc-smp-sm">
-                                    <label>{{ $config->name }}</label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="" name="{{ $config->name }}" value="{{ $config->content }}">
-                                    </div>
-                                </div>
-                            @endif
-                            @if ($config->type == 'html')
-                                <div class="">
+                            @switch($config->type)
+                                @case('text')
                                     <div class="cmp-tb-hd bsc-smp-sm">
                                         <label>{{ $config->name }}</label>
                                     </div>
-                                    <textarea class="html-editor" id="{{ $config->name }}" name="{{ $config->name }}">{{ $config->content }}</textarea>
-                                </div>
-                            @endif
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" placeholder="" name="{{ $config->name }}" value="{{ $config->content }}">
+                                        </div>
+                                    </div>
+                                    @break
+                                @case('html')
+                                    <div class="">
+                                        <div class="cmp-tb-hd bsc-smp-sm">
+                                            <label>{{ $config->name }}</label>
+                                        </div>
+                                        <textarea class="html-editor" id="{{ $config->name }}" name="{{ $config->name }}">{{ $config->content }}</textarea>
+                                    </div>
+                                    @break
+                                @case('list')
+                                    <div class="">
+                                        <div class="cmp-tb-hd bsc-smp-sm">
+                                            <label>{{ $config->name }}</label>
+                                        </div>
+                                        @foreach($configs as $config)
+                                            @endforeach
+                                    </div>
+                                @break
+                            @endswitch
                         </div>
                     @endforeach
 
-                    <div>
+                    <div class="col-lg-12">
                         <button class="btn btn-success" style="margin-top: 10px;">Update</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </form>
