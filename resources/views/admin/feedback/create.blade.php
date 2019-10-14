@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label>Content</label>
-                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content') }}">
+                            <textarea type="text" name="content" class="form-control" placeholder="Content" id="content">{{ old('content') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -34,4 +34,8 @@
     </div>
 @stop
 @section('script')
+    <script src="{{ asset('node_modules//ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('content');
+    </script>
 @stop
