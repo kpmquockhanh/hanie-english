@@ -79,9 +79,9 @@
         model.find('input').not('[type="button"]').val('');
     }
     function setLinks(res) {
-        console.log(res)
         const links = res.data.links;
-        const linkList = $('.model-link-test-container #links-list')
+        const linkList = $('.model-link-test-container #links-list');
+        linkList.html('');
         for (const link of links) {
             linkList.append(`<div class="form-group row">
                     <div class="col-md-12">

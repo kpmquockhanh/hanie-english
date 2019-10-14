@@ -17,8 +17,7 @@ class AdvisoryController extends Controller
      */
     public function index(Request $request)
     {
-        $advisories = Advisory::query();
-        $advisories = $advisories->paginate(10);
+        $advisories = Advisory::query()->paginate(10);
         return view('admin.advisories.index', compact('advisories'));
     }
 
