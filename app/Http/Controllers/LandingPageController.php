@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Config;
+use App\ConfigTestLinks;
 use App\Course;
 use App\Job;
+use App\Level;
 use App\Phone;
 use App\Teacher;
 use Aws\ElastiCache\ElastiCacheClient;
@@ -18,12 +20,10 @@ class LandingPageController extends Controller
     {
         $configs = Config::all()->keyBy('name');
         $teachers = Teacher::all();
-        $courses = Course::query()->take(4)->get();
-//        $configs->transform(function($item) {
-//            return $item->
-//        });
-//        dd($configs);
-        return view('landing-page.index', compact('configs', 'teachers', 'courses'));
+        $levels = Level::all();
+
+//        $courses = Course::query()->take(4)->get();
+        return view('landing-page.index', compact('configs', 'teachers'));
     }
 
     public function storePhone(Request $request)
@@ -56,10 +56,39 @@ class LandingPageController extends Controller
 
         return redirect(route('landing_page'));
     }
-
-    public function test()
+    public function makeAdvisory(Request $request)
     {
+        // Check ajax
+        if (!$request->json()) {
+            return null;
+        }
 
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+                'phone' => 'required|numeric',
+                'email' => 'email|required'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'code' => 422,
+                'errors' => $e->getMessage()
+            ]);
+        }
+//        Advisory::query()->create(
+//            $request->only([
+//                'name',
+//                'phone',
+//                'email'
+//            ])
+//        );
+        $links = ConfigTestLinks::all();
+        return response()->json([
+            'status' => true,
+            'code' => 200,
+            'links' => $links
+        ]);
 
     }
 }
