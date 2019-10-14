@@ -14,15 +14,15 @@
                 <h2 class="text-black mb-4">Hình thức học</h2>
                 <p class="mb-4">Hình thức 1 gia sư theo sát 1 học viên, giải đáp mọi thắc mắc của học viên.</p>
 
-                {{--                    <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
-                {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
-                {{--                        <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
-                {{--                    </div>--}}
+{{--                <div class="d-flex align-items-center custom-icon-wrap mb-3">--}}
+{{--                    <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>--}}
+{{--                    <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>--}}
+{{--                </div>--}}
 
-                {{--                    <div class="d-flex align-items-center custom-icon-wrap">--}}
-                {{--                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
-                {{--                        <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
-                {{--                    </div>--}}
+{{--                <div class="d-flex align-items-center custom-icon-wrap">--}}
+{{--                    <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>--}}
+{{--                    <div><h3 class="m-0">150 Universities Worldwide</h3></div>--}}
+{{--                </div>--}}
 
             </div>
         </div>

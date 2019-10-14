@@ -11,7 +11,8 @@ class Level extends Model
         'image',
         'lesson_number',
         'duration_by_week',
-        'desc'
+        'desc',
+        'created_by'
     ];
     protected $table = 'config_levels';
     public function getUrlImageAttribute () {
