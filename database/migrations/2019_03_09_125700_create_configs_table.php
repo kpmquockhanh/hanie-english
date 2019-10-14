@@ -18,15 +18,7 @@ class CreateConfigsTable extends Migration
             $table->string('type', 100);
             $table->boolean('show');
             $table->string('name');
-            $table->text('content')->nullable();
-//            $table->text('header_desc_1');
-//            $table->text('header_desc_2');
-//            $table->text('header_desc_3');
-//            $table->text('header_desc_4');
-//            $table->text('iframe_video');
-//            $table->text('html_section_1');
-//            $table->text('html_section_2');
-//            $table->text('html_section_3');
+            $table->text('content');
             $table->timestamps();
         });
     }

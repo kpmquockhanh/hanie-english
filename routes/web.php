@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'LandingPageController@index')->name('landing_page');
 Route::post('/store-phone', 'LandingPageController@storePhone')->name('landing.store.phone');
 Route::post('/store-job', 'LandingPageController@storeJob')->name('landing.store.job');
-Route::get('/test', 'LandingPageController@test')->name('landing.test.job');
+Route::post('/create-advisory', 'LandingPageController@makeAdvisory')->name('landing.create.advisory');
+//Route::get('/test', 'LandingPageController@test')->name('landing.test.job');
 
 Route::prefix('admin')->group(function () {
     Route::namespace('AdminAuth')->group(function () {
@@ -39,6 +40,14 @@ Route::prefix('admin')->group(function () {
         Route::post('users/make-courses', 'UserController@makeCourses')->name('users.make-course');
         Route::resource('courses', 'CourseController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('advisories', 'AdvisoryController');
+        Route::resource('recruitment', 'RecruitmentController')->except([
+            'create',
+            'store',
+            'show'
+        ]);
+        Route::resource('feedback', 'FeedbackController');
+        Route::resource('levels', 'LevelController');
         Route::resource('user-course', 'UserCourseController');
         Route::resource('lessons', 'LessonController');
         Route::resource('examinations', 'ExaminationController');
