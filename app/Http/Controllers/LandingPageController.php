@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advisory;
 use App\Config;
 use App\ConfigTestLinks;
 use App\Course;
@@ -76,13 +77,13 @@ class LandingPageController extends Controller
                 'errors' => $e->getMessage()
             ]);
         }
-//        Advisory::query()->create(
-//            $request->only([
-//                'name',
-//                'phone',
-//                'email'
-//            ])
-//        );
+        Advisory::query()->create(
+            $request->only([
+                'name',
+                'phone',
+                'email'
+            ])
+        );
         $links = ConfigTestLinks::all();
         return response()->json([
             'status' => true,
