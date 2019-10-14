@@ -1,5 +1,4 @@
-<div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');"
-     id="about-section">
+<div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');" id="about-section">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12 text-center testimony">

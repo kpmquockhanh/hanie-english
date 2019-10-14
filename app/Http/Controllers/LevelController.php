@@ -71,7 +71,7 @@ class LevelController extends Controller
             Storage::disk('s3')->put('level_images/'.$name, $resizedImg, 'public');
             $createData['image'] = 'level_images/'.$name;
         }
-
+//        dd($createData);
         Level::query()->create($createData);
         return redirect(route('levels.index'))->with('success', 'Created successfully!');
     }
@@ -108,7 +108,7 @@ class LevelController extends Controller
             $request,
             [
                 'title' => 'required',
-                'image' => 'required|image',
+                'image' => 'image',
                 'lesson_number' => 'numeric',
                 'desc' => 'required'
             ]
@@ -133,12 +133,10 @@ class LevelController extends Controller
             $resizedImg->resize(300, 300)->encode();
             Storage::disk('s3')->put('avatars/' . $name, $resizedImg, 'public');
             $updateData['image'] = 'avatars/' . $name;
-
             Storage::disk('s3')->delete($level->image);
-            $level->update($updateData);
-
-            return redirect(route('levels.index'))->with('success', 'Updated successfully!');
         }
+        $level->update($updateData);
+        return redirect(route('levels.index'))->with('success', 'Updated successfully!');
     }
 
     /**

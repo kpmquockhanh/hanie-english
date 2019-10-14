@@ -6,6 +6,7 @@ use App\Advisory;
 use App\Config;
 use App\ConfigTestLinks;
 use App\Course;
+use App\Feedback;
 use App\Job;
 use App\Level;
 use App\Phone;
@@ -19,12 +20,13 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $configs = Config::all()->keyBy('name');
-        $teachers = Teacher::all();
-        $levels = Level::all();
-
-//        $courses = Course::query()->take(4)->get();
-        return view('landing-page.index', compact('configs', 'teachers'));
+        $viewData = [
+            'levels' => Level::all(),
+            'configs' => Config::all()->keyBy('name'),
+            'teachers' => Teacher::all(),
+            'feedbacks' => Feedback::all()
+        ];
+        return view('landing-page.index')->with($viewData);
     }
 
     public function storePhone(Request $request)
