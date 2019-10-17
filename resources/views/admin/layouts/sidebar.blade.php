@@ -68,6 +68,12 @@
                     <span>Lesson levels</span>
                 </a>
             </li>
+            <li class="{{ request()->segment(2)==='education-programs'?'active':'' }}">
+                <a href="{{ route('education-programs.index') }}">
+                    <i class="fa fa-product-hunt"></i>
+                    <span>Education programs</span>
+                </a>
+            </li>
             <li class="{{ request()->segment(2)==='teachers'?'active':'' }}">
                 <a href="{{ route('teachers.index') }}">
                     <i class="fa fa-user"></i>

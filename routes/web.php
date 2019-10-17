@@ -47,6 +47,7 @@ Route::prefix('admin')->group(function () {
             'show'
         ]);
         Route::resource('feedback', 'FeedbackController');
+        Route::resource('education-programs', 'EducationProgramController');
         Route::resource('levels', 'LevelController');
         Route::resource('user-course', 'UserCourseController');
         Route::resource('lessons', 'LessonController');

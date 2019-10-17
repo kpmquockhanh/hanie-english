@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeed::class,
             ConfigSeed::class,
-            LinkTestSeed::class
+            LinkTestSeed::class,
+            EducationProgramSeeder::class
         ]);
     }
 }
