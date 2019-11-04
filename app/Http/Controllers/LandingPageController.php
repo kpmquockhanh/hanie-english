@@ -6,6 +6,7 @@ use App\Advisory;
 use App\Config;
 use App\ConfigTestLinks;
 use App\Course;
+use App\EducationProgram;
 use App\Feedback;
 use App\Job;
 use App\Level;
@@ -24,7 +25,8 @@ class LandingPageController extends Controller
             'levels' => Level::all(),
             'configs' => Config::all()->keyBy('name'),
             'teachers' => Teacher::all(),
-            'feedbacks' => Feedback::all()
+            'feedbacks' => Feedback::all(),
+            'education_programs' => EducationProgram::all(),
         ];
         return view('landing-page.index')->with($viewData);
     }
