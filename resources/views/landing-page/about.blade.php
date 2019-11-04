@@ -10,7 +10,7 @@
                                 Bộ video bài giảng
                             </div>
                             <div class="content text-black link">
-                                <a href="#contact" class="nav-link btn btn-primary btn-pill"><span>Đăng kí mua bộ video</span></a>
+                                <a href="#contact" class="nav-link btn btn-primary btn-pill" style="font-size: 10px;"><span>Đăng kí mua bộ video</span></a>
                             </div>
                         </div>
                     </div>
