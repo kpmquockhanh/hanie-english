@@ -30,13 +30,15 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
-        Route::get('/config', 'ConfigController@index')->name('admin.config');
-        Route::post('/config/update', 'ConfigController@update')->name('admin.config.update');
+        Route::get('config', 'ConfigController@index')->name('admin.config');
+        Route::post('config/update', 'ConfigController@update')->name('admin.config.update');
         Route::resource('teachers', 'TeacherController');
         Route::resource('phones', 'PhoneController');
         Route::resource('questions', 'QuestionController');
         Route::resource('answers', 'AnswerController');
         Route::resource('users', 'UserController');
+        Route::post('users/active', 'UserController@active')->name('users.active');
+        Route::post('users/ban', 'UserController@ban')->name('users.ban');
         Route::post('users/make-courses', 'UserController@makeCourses')->name('users.make-course');
         Route::resource('courses', 'CourseController');
         Route::resource('categories', 'CategoryController');

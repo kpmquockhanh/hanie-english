@@ -197,4 +197,37 @@ class UserController extends Controller
 
         return redirect(route('users.show', ['id' => $request->user_id]));
     }
+
+    public function active(Request $request) {
+        $user = User::query()->findOrFail($request->id);
+        try {
+            $user->update([
+                'status' => 1
+            ]);
+            return response()->json([
+                'status' => 1
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 0,
+                'error' => $e
+            ]);
+        }
+    }
+    public function ban(Request $request) {
+        $user = User::query()->findOrFail($request->id);
+        try {
+            $user->update([
+                'status' => 0
+            ]);
+            return response()->json([
+                'status' => 1
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 0,
+                'error' => $e
+            ]);
+        }
+    }
 }
