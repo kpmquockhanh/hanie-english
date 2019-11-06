@@ -21,7 +21,7 @@
             /*}*/
         </style>
 </head>
-<body class="hold-transition skin-green fixed">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
     @include('admin.layouts.header')
