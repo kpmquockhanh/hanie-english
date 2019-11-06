@@ -129,8 +129,8 @@
                             <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                             <p>
-                                {{ \Illuminate\Support\Facades\Auth::guard('user')->user()->name }} - Web Developer
-                                <small>Admin since {{ \Illuminate\Support\Facades\Auth::guard('user')->user()->created_at->format('M Y') }}</small>
+                                {{ \Illuminate\Support\Facades\Auth::guard('user')->user()->name }} - User
+                                <small>User since {{ \Illuminate\Support\Facades\Auth::guard('user')->user()->created_at->format('M Y') }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
