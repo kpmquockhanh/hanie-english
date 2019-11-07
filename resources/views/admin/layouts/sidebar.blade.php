@@ -86,6 +86,12 @@
                     <span>Phones</span>
                 </a>
             </li>
+            <li class="{{ request()->segment(2)==='commands'?'active':'' }}">
+                <a href="{{ route('command.index') }}">
+                    <i class="fa fa-terminal"></i>
+                    <span>Commands</span>
+                </a>
+            </li>
             <li class="header">COURSE SYSTEM</li>
             <li class="{{ request()->segment(2)==='courses'?'active':'' }}">
                 <a href="{{ route('courses.index') }}"><i class="fa fa-book"></i><span>Courses</span></a>
