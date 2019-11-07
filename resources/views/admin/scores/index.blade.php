@@ -11,7 +11,7 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">{{ ucfirst(request()->segment(2)) }} list
+            <h3 class="box-title">{{ ucfirst(request()->segment(2)) }}
 {{--                <a href="{{ route(request()->segment(2).'.create') }}" class="btn btn-xs btn-success" style="margin-left: 5px;">--}}
 {{--                    <i class="fa fa-plus"></i>--}}
 {{--                </a>--}}
