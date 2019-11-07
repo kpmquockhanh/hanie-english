@@ -58,6 +58,16 @@ Route::prefix('admin')->group(function () {
         Route::resource('histories', 'HistoryController');
         Route::get('profile', 'AdminController@profile')->name('admin.profile');
         Route::put('profile', 'AdminController@update');
+
+        Route::prefix('commands')->group(function () {
+            Route::get('/', 'CommandController@index')->name('command.index');
+            Route::post('clear-cache', 'CommandController@clearCache')->name('command.clearCache');
+            Route::post('clear-route-cache', 'CommandController@clearRouteCache')->name('command.clearRouteCache');
+//            Route::post('seed', 'CommandController@runSeed')->name('command.runSeed');
+//            Route::post('migrate', 'CommandController@migrate')->name('command.migrate');
+//            Route::post('fresh-migrate', 'CommandController@freshMigrate')->name('command.freshMigrate');
+            Route::post('clear-optimize', 'CommandController@clearOptimize')->name('command.clearOptimize');
+        });
     });
 });
 Route::prefix('user')->middleware('user.active')->group(function () {
