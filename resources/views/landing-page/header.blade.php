@@ -13,9 +13,9 @@
                     </ul>
                 </nav>
             </div>
-            <div class="ml-auto w-25">
+            <div class="ml-auto w-25 d-none d-md-block">
                 <nav class="site-navigation position-relative text-right" role="navigation">
-                    <a href="#contact" class="nav-link btn btn-pill btn-primary"><span>Liên hệ với chúng tôi ngay</span></a>
+                    <a href="#contact" class="nav-link btn btn-pill btn-primary"><span>Liên hệ với chúng tôi</span></a>
                 </nav>
                 <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span
                             class="icon-menu h3"></span></a>
