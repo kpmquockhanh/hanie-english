@@ -30,6 +30,14 @@
         autoplayTimeout: 3000,
         // autoplayHoverPause: true
     });
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        items: 3,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        // autoplayHoverPause: true
+    });
     $('body').on('click', '#active-about-model', function (e) {
         e.preventDefault();
         $('.model-container').fadeIn();

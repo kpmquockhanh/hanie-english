@@ -4,6 +4,7 @@
     <title>Hanie English</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('fav.ico') }}"/>
     <style>
         @font-face {
             font-family: Muli;
@@ -24,6 +25,7 @@
         <div class="site-mobile-menu-body"></div>
     </div>
     @include('landing-page.header')
+    @include('landing-page.banner')
     @include('landing-page.home')
     @include('landing-page.about')
     @include('landing-page.programs')
@@ -39,5 +41,5 @@
 @include('landing-page.script')
 
 </body>
-{{--@include('landing-page.script-fb')--}}
+@include('landing-page.script-fb')
 </html>

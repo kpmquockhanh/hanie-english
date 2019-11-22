@@ -1,7 +1,11 @@
 <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-            <div class="site-logo mr-auto w-25"><a href="#">{{ env('APP_NAME', 'Hanie') }}</a></div>
+            <div class="site-logo mr-auto w-25">
+                <a href="#">
+                    <img src="{{ asset('logo.png') }}" alt="" style="width: 33px;">
+                </a>
+            </div>
             <div class="mx-auto text-center">
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
