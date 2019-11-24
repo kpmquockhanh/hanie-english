@@ -26,7 +26,7 @@
 
     @include('admin.layouts.header')
     @include('admin.layouts.sidebar')
-
+{{--    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('fav.ico') }}"/>--}}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

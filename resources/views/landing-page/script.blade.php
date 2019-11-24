@@ -22,6 +22,20 @@
 <script src="{{ asset('lp/js/main.js') }}"></script>
 <script>
     $("img").lazyload();
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            items: 3,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            lazyLoad: true,
+            dots: false,
+            nav: false,
+            center: true
+            // autoplayHoverPause: true
+        });
+    });
     $('.carousel-overal').owlCarousel({
         loop: true,
         margin: 10,
@@ -30,13 +44,16 @@
         autoplayTimeout: 3000,
         // autoplayHoverPause: true
     });
-    $('.owl-carousel').owlCarousel({
+
+    $('.owl-carousel-banner').owlCarousel({
         loop: true,
         margin: 0,
         items: 3,
         autoplay: true,
         autoplayTimeout: 3000,
         lazyLoad: true,
+        nav: false,
+        center: true
         // autoplayHoverPause: true
     });
     $('body').on('click', '#active-about-model', function (e) {

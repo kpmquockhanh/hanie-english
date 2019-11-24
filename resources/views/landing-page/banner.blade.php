@@ -10,7 +10,7 @@
     }
 </style>
 <div class="banner-section" id="banner-section">
-    <div class="owl-carousel">
+    <div class="owl-carousel carousel-banner">
         <div class="bg-white h-100 align-self-stretch">
             <a href="#"><img src="https://picsum.photos/id/1010/500" alt="Image" class="img-fluid"></a>
         </div>
