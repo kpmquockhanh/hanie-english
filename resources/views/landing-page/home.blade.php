@@ -1,7 +1,7 @@
 <div class="intro-section" id="home-section">
     <div class="slide-1" style="background-image: url('lp/images/hero_1.jpg');" data-stellar-background-ratio="0.5">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row" style="padding-top: 20px;">
                 <div class="col-12">
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4">

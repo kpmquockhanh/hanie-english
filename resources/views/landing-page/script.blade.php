@@ -32,10 +32,11 @@
     });
     $('.owl-carousel').owlCarousel({
         loop: true,
-        margin: 10,
+        margin: 0,
         items: 3,
         autoplay: true,
         autoplayTimeout: 3000,
+        lazyLoad: true,
         // autoplayHoverPause: true
     });
     $('body').on('click', '#active-about-model', function (e) {
