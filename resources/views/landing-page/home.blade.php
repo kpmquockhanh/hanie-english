@@ -1,5 +1,5 @@
 <div class="intro-section" id="home-section">
-    <div class="slide-1" style="background-image: url('lp/images/hero_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="slide-1">
         <div class="container">
             <div class="row" style="padding-top: 20px;">
                 <div class="col-12">
@@ -10,7 +10,7 @@
                                 <p>{{ $configs['header_desc_1']->content }}</p>
                                 <p>{{ $configs['header_desc_2']->content }}</p>
                             </blockquote>
-                            <div data-aos="fade-up" class="site-section courses-entry-wrap" id="course-section"
+                            <div data-aos="fade-up" class="courses-entry-wrap" id="course-section"
                                  style="margin-top: 0; padding-top: 0;">
                                 <div class="row">
                                     <div class="owl-carousel carousel-overal col-12 nonloop-block-14">
@@ -32,7 +32,7 @@
                             <iframe class="d-none d-lg-block" height="370" src="{{ $configs['iframe_video']->content }}" frameborder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
-                            <form action="{{ route('landing.store.phone') }}" method="post" class="form-box">
+                            <form action="{{ route('landing.store.phone') }}" method="post" class="form-box"  style="margin-top: 10px">
                                 @csrf
                                 <h3 class="h4 text-black mb-4">Đăng kí khoá học</h3>
                                 <div class="form-group">

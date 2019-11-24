@@ -10,7 +10,7 @@
                                 Bộ video bài giảng
                             </div>
                             <div class="content text-black link">
-                                <a href="#contact" class="nav-link btn btn-primary btn-pill" style="font-size: 10px;"><span>Đăng kí mua bộ video</span></a>
+                                <a href="#contact" class="nav-link btn btn-info btn-pill" style="font-size: 10px;"><span>Đăng kí mua bộ video</span></a>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                                 Bạn sẽ cảm nhận được sự hiệu quả rõ rệt sau 24 ngày
                             </div>
                             <div class="content text-white link">
-                                    <a href="#home-section" class="nav-link btn btn-primary btn-pill"><span>Đăng kí khoá học</span></a>
+                                    <a href="#home-section" class="nav-link btn btn-info btn-pill"><span>Đăng kí khoá học</span></a>
                             </div>
                         </div>
                     </div>

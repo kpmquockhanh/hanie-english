@@ -10,6 +10,18 @@
             font-family: Muli;
             src: url({{ asset('lp/fonts/Muli.ttf') }});
         }
+        .site-wrap {
+            background-color: #efa189;
+        }
+        #contact a:hover {
+            color: #efa189;
+        }
+        .text-bluecus {
+            color: #17a2b8;
+        }
+        .site-section {
+            background-color: white;
+        }
     </style>
     @include('landing-page.style')
 </head>

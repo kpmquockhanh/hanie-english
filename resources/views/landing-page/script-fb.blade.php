@@ -20,7 +20,7 @@
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
      attribution=setup_tool
-     page_id="109948730410956"
+     page_id="{{ config('app.page_fb_id') }}"
      logged_in_greeting="Xin chào! Tôi có thể giúp gì bạn?"
      logged_out_greeting="Xin chào! Tôi có thể giúp gì bạn?">
 </div>
