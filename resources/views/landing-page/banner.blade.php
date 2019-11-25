@@ -8,17 +8,21 @@
     .banner-section {
         position: relative;
     }
+    .full-height {
+        width: unset !important;
+        height: 100vh !important;
+    }
 </style>
 <div class="banner-section" id="banner-section">
-    <div class="owl-carousel carousel-banner">
-        <div class="bg-white h-100 align-self-stretch">
-            <a href="#"><img src="https://picsum.photos/id/1010/500" alt="Image" class="img-fluid"></a>
+    <div class="owl-carousel owl-carousel-banner">
+        <div class="">
+            <img src="https://picsum.photos/id/1010/1000" alt="Image" class="img-fluid full-height">
         </div>
-        <div class="bg-white h-100 align-self-stretch">
-            <a href="#"><img src="https://picsum.photos/id/1059/500" alt="Image" class="img-fluid"></a>
+        <div class="">
+            <img src="https://picsum.photos/id/1059/1000" alt="Image" class="img-fluid full-height">
         </div>
-        <div class="bg-white h-100 align-self-stretch">
-            <a href="#"><img src="https://picsum.photos/id/1060/500" alt="Image" class="img-fluid"></a>
+        <div class="">
+            <img src="https://picsum.photos/id/1060/1000" alt="Image" class="img-fluid full-height">
         </div>
     </div>
     <div class="btn-course-regist">

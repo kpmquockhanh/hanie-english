@@ -1,12 +1,12 @@
-<div class="site-section courses-title" id="levels-section">
+<div class="d-flex align-items-center" id="levels-section" style="height: 100vh">
     <div class="container">
-        <div class="row mb-5 justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
-                <h2 class="text-white section-title">Các levels để giao tiếp thành thạo</h2>
+                <h2 class="text-white section-title m-0">Các levels để giao tiếp thành thạo</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="owl-carousel col-12 nonloop-block-14">
+        <div class="row" data-aos="fade-up">
+            <div class="owl-carousel col-12 mt-3">
                 @foreach ($levels as $level)
                     <div class="course bg-white h-100 align-self-stretch">
                         <figure class="m-0">
@@ -25,3 +25,11 @@
         </div>
     </div>
 </div>
+<style>
+    .owl-carousel .owl-item img {
+        border-radius: 5px 5px 0 0;
+    }
+    .course {
+        border-radius: 5px;
+    }
+</style>

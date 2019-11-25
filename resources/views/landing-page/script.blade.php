@@ -22,7 +22,28 @@
 <script src="{{ asset('lp/js/main.js') }}"></script>
 <script>
     $("img").lazyload();
-    $(document).ready(function(){
+    initCarousel();
+    function initCarousel () {
+
+        $('.carousel-overal').owlCarousel({
+            loop: true,
+            margin: 10,
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            // autoplayHoverPause: true
+        });
+        $('.owl-carousel-banner').owlCarousel({
+            loop: true,
+            margin: 0,
+            items: 3,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            lazyLoad: true,
+            nav: false,
+            center: true
+            // autoplayHoverPause: true
+        });
         $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
@@ -35,27 +56,7 @@
             center: true
             // autoplayHoverPause: true
         });
-    });
-    $('.carousel-overal').owlCarousel({
-        loop: true,
-        margin: 10,
-        items: 1,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        // autoplayHoverPause: true
-    });
-
-    $('.owl-carousel-banner').owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 3,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        lazyLoad: true,
-        nav: false,
-        center: true
-        // autoplayHoverPause: true
-    });
+    }
     $('body').on('click', '#active-about-model', function (e) {
         e.preventDefault();
         $('.model-container').fadeIn();

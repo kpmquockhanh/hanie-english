@@ -1,4 +1,4 @@
-<div class="site-section bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');" id="about-section">
+<div class="bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');" id="about-section">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12 text-center testimony">
@@ -22,9 +22,9 @@
                                     Tiếng anh trực tuyến 1-1 với gia sư riêng của bạn
                                 </div>
                             </div>
-                            <div class="content text-white desc">
-                                Bạn sẽ cảm nhận được sự hiệu quả rõ rệt sau 24 ngày
-                            </div>
+{{--                            <div class="content text-white desc">--}}
+{{--                                Bạn sẽ cảm nhận được sự hiệu quả rõ rệt sau 24 ngày--}}
+{{--                            </div>--}}
                             <div class="content text-white link">
                                     <a href="#home-section" class="nav-link btn btn-info btn-pill"><span>Đăng kí khoá học</span></a>
                             </div>
@@ -35,3 +35,10 @@
         </div>
     </div>
 </div>
+<style>
+    #about-section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+</style>
