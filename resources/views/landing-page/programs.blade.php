@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="200">
                         <h2 class="text-bluecus mb-4">Hình thức học</h2>
-                        <p class="text-black mb-4">Hình thức 1 gia sư theo sát 1 học viên, giải đáp mọi thắc mắc của học viên.</p>
+                        <p class="text-black mb-4">Hình thức <span class="text-pink">1 gia sư</span> theo sát <span class="text-pink">1 học viên</span>, giải đáp mọi thắc mắc của học viên.</p>
                     </div>
                 </div>
             </div>
@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-lg-7 mr-auto" data-aos="fade-up" data-aos-delay="200">
                         <h2 class="text-bluecus mb-4">Thời gian</h2>
-                        <p class="text-black mb-4">Thời gian dạy và học linh hoạt dựa vào khoảng thời gian phù hợp với học viên, mọi
-                            lúc mọi nơi, uy tín và đảm bảo chất lượng.</p>
+                        <p class="text-black mb-4">Thời gian dạy và học <span class="text-pink">linh hoạt</span> dựa vào khoảng thời gian <span class="text-pink">phù hợp</span> với học viên, <span class="text-pink">mọi
+                            lúc mọi nơi</span>, uy tín và đảm bảo chất lượng.</p>
                     </div>
                 </div>
             </div>
@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="200">
                         <h2 class="text-bluecus mb-4">Giảng viên</h2>
-                        <p class="text-black mb-4">Các gia sư online có trình độ và đã trải qua khóa training khắt khe về chuyên môn
-                            cũng như kỹ năng giảng dạy.</p>
+                        <p class="text-black mb-4">Các gia sư online có <span class="text-pink">trình độ</span> và đã trải qua khóa <span class="text-pink">training khắt khe</span> về chuyên môn
+                            cũng như <span class="text-pink">kỹ năng giảng dạy</span>.</p>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-lg-7 mr-auto" data-aos="fade-up" data-aos-delay="200">
                         <h2 class="text-bluecus mb-4">Phù hợp với</h2>
-                        <p class="text-black mb-4">Đối tượng học sinh: Người đi làm, du học sinh, …</p>
+                        <p class="text-black mb-4">Đối tượng học sinh: <span class="text-pink">Người đi làm, du học sinh, …</span></p>
                     </div>
                 </div>
             </div>

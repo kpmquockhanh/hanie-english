@@ -19,6 +19,9 @@
         .site-section {
             background-color: white;
         }
+        .text-pink {
+            color: #efa189;
+        }
     </style>
     @include('landing-page.style')
 </head>
