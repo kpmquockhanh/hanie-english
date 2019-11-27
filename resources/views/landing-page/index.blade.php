@@ -39,7 +39,7 @@
     @include('landing-page.header')
     @include('landing-page.banner')
     @include('landing-page.home')
-    @include('landing-page.about')
+{{--    @include('landing-page.about')--}}
     @include('landing-page.programs')
     @include('landing-page.levels')
     @include('landing-page.teachers')
