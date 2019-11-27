@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-lg-8 mb-4">
-                            <h1 data-aos="fade-up" data-aos-delay="100">Hanie English</br>Inspiring your English</h1>
+                            <h1>Hanie English</br>Inspiring your English</h1>
                             <blockquote data-aos="fade-up" data-aos-delay="200">
                                 <p class="text-white">{{ $configs['header_desc_1']->content }}</p>
                                 <p class="text-white">{{ $configs['header_desc_2']->content }}</p>
@@ -19,7 +19,7 @@
                             </blockquote>
                         </div>
                         <div class="col-lg-3">
-                            <div class="display-2 text-white d-none d-lg-block" data-aos="fade-up" >Giới thiệu</div>
+                            <div class="display-2 text-white d-none d-lg-block" >Giới thiệu</div>
                         </div>
 
 {{--                        <div class="col-lg-6 ml-auto pt-6" data-aos="fade-up" data-aos-delay="500" id="form-hidden">--}}

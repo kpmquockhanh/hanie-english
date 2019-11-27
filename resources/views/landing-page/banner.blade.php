@@ -16,13 +16,13 @@
 <div class="banner-section" id="banner-section">
     <div class="owl-carousel owl-carousel-banner">
         <div class="">
-            <img src="https://picsum.photos/id/1010/1000" alt="Image" class="img-fluid full-height">
+            <img src="https://picsum.photos/id/1010/1000" alt="Image" class="img-fluid">
         </div>
         <div class="">
-            <img src="https://picsum.photos/id/1059/1000" alt="Image" class="img-fluid full-height">
+            <img src="https://picsum.photos/id/1059/1000" alt="Image" class="img-fluid">
         </div>
         <div class="">
-            <img src="https://picsum.photos/id/1060/1000" alt="Image" class="img-fluid full-height">
+            <img src="https://picsum.photos/id/1060/1000" alt="Image" class="img-fluid">
         </div>
     </div>
     <div class="btn-course-regist">
