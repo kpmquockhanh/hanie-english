@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@section('style')
+    <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+@stop
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
@@ -15,6 +18,14 @@
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" name="title" class="form-control" placeholder="Title" value="{{ old('title', $level->title) }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Document link</label>
+                            <select class="form-control config_test_link_id" name="config_test_link_id" hidden>
+                                @if ($level->testLink)
+                                    <option value="{{ $level->testLink->id }}">{{ $level->testLink->label }}</option>
+                                @endif
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Lesson number</label>
@@ -47,6 +58,8 @@
 @stop
 @section('script')
     <script src="{{ asset('node_modules//ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
+{{--    <script src="{{ asset('node_modules/axios/dist/axios.min.js') }}"></script>--}}
     <script>
         CKEDITOR.replace('description');
         function readURL(input) {
@@ -68,6 +81,26 @@
         $('.dash-circle').click(function (e) {
             e.preventDefault();
             $('#image').trigger('click');
+        });
+
+        $('.config_test_link_id').select2({
+            placeholder: 'Select an option',
+            allowClear: true,
+            width: 'resolve',
+            ajax: {
+                url: "{{ route('test-link.index') }}",
+                dataType: 'json',
+                quietMillis: 250,
+                delay: 250,
+                data: function (params) {
+                    const query = {
+                        q: params.term,
+                    };
+
+                    return query;
+                },
+                cache: true
+            },
         });
     </script>
 @stop

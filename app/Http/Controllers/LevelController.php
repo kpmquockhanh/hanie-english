@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ConfigTestLinks;
 use App\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class LevelController extends Controller
      */
     public function index(Request $request)
     {
-        $levels = Level::query()->paginate(10);
+        $levels = Level::with('testLink')->paginate(10);
         return view('admin.levels.index', compact('levels'));
     }
 
@@ -28,7 +29,10 @@ class LevelController extends Controller
      */
     public function create()
     {
-        return view('admin.levels.create');
+        $viewData = [
+            'testlink' => ConfigTestLinks::all()
+        ];
+        return view('admin.levels.create')->with($viewData);
     }
 
     /**
@@ -43,6 +47,7 @@ class LevelController extends Controller
             [
                 'title' => 'required',
                 'image' => 'required|image',
+                'config_test_link_id' => 'numeric',
                 'lesson_number' => 'numeric',
                 'desc' => 'required'
             ]
@@ -51,6 +56,7 @@ class LevelController extends Controller
         $createData = $request->only([
             'title',
             'lesson_number',
+            'config_test_link_id',
             'duration_by_week',
             'desc'
         ]);
@@ -109,6 +115,7 @@ class LevelController extends Controller
             [
                 'title' => 'required',
                 'image' => 'image',
+                'config_test_link_id' => 'numeric',
                 'lesson_number' => 'numeric',
                 'desc' => 'required'
             ]
@@ -117,6 +124,7 @@ class LevelController extends Controller
         $updateData = $request->only([
             'title',
             'lesson_number',
+            'config_test_link_id',
             'duration_by_week',
             'desc'
         ]);

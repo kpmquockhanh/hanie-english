@@ -3,7 +3,7 @@
         <span class="icon-close" id="btn-close-model"></span>
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <h3 class="section-title mt-3" style="font-size: 2rem;">Nhận hỗ trợ tư vẫn thông tin miễn phí</h3>
+                <h3 class="section-title mt-3" style="font-size: 2rem;">Nhận hỗ trợ tư vẫn thông tin miễn phí <span id="level-name-filled"></span></h3>
 {{--                <p class="mb-5">--}}
 {{--                    Nếu bạn quan tâm tới việc  --}}
 {{--                </p>--}}
@@ -24,6 +24,11 @@
                 <div class="form-group row">
                     <div class="col-md-12">
                         <input type="email" class="form-control" placeholder="Email" name="email" id="ad-email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="level_id" id="ad-level" hidden>
                     </div>
                 </div>
                 <div class="form-group row">

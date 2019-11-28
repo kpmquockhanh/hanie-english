@@ -228,31 +228,31 @@ jQuery(document).ready(function($) {
 	};
 	siteCarousel();
 
-	var siteStellar = function() {
-		$(window).stellar({
-	    responsive: false,
-	    parallaxBackgrounds: true,
-	    parallaxElements: true,
-	    horizontalScrolling: false,
-	    hideDistantElements: false,
-	    scrollProperty: 'scroll'
-	  });
-	};
-	siteStellar();
+	// var siteStellar = function() {
+	// 	$(window).stellar({
+	//     responsive: false,
+	//     parallaxBackgrounds: true,
+	//     parallaxElements: true,
+	//     horizontalScrolling: false,
+	//     hideDistantElements: false,
+	//     scrollProperty: 'scroll'
+	//   });
+	// };
+	// siteStellar();
 
-	var siteCountDown = function() {
-
-		$('#date-countdown').countdown('2020/10/10', function(event) {
-		  var $this = $(this).html(event.strftime(''
-		    + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
-		    + '<span class="countdown-block"><span class="label">%d</span> days </span>'
-		    + '<span class="countdown-block"><span class="label">%H</span> hr </span>'
-		    + '<span class="countdown-block"><span class="label">%M</span> min </span>'
-		    + '<span class="countdown-block"><span class="label">%S</span> sec</span>'));
-		});
-				
-	};
-	siteCountDown();
+	// var siteCountDown = function() {
+	//
+	// 	$('#date-countdown').countdown('2020/10/10', function(event) {
+	// 	  var $this = $(this).html(event.strftime(''
+	// 	    + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
+	// 	    + '<span class="countdown-block"><span class="label">%d</span> days </span>'
+	// 	    + '<span class="countdown-block"><span class="label">%H</span> hr </span>'
+	// 	    + '<span class="countdown-block"><span class="label">%M</span> min </span>'
+	// 	    + '<span class="countdown-block"><span class="label">%S</span> sec</span>'));
+	// 	});
+	//
+	// };
+	// siteCountDown();
 
 	var siteDatePicker = function() {
 
@@ -294,11 +294,11 @@ jQuery(document).ready(function($) {
 
   		var st = $(this).scrollTop();
 
-  		if (st > 100) {
-  			$('.js-sticky-header').addClass('shrink');
-  		} else {
-  			$('.js-sticky-header').removeClass('shrink');
-  		}
+  		// if (st > 100) {
+  		// 	$('.js-sticky-header').addClass('shrink');
+  		// } else {
+  		// 	$('.js-sticky-header').removeClass('shrink');
+  		// }
 
   	}) 
 

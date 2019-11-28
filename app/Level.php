@@ -9,6 +9,7 @@ class Level extends Model
     protected $fillable = [
         'title',
         'image',
+        'config_test_link_id',
         'lesson_number',
         'duration_by_week',
         'desc',
@@ -18,5 +19,9 @@ class Level extends Model
     public function getUrlImageAttribute () {
         $url = env('AWS_URL');
         return "$url/$this->image";
+    }
+
+    public function testLink() {
+        return $this->hasOne(ConfigTestLinks::class, 'id', 'config_test_link_id');
     }
 }

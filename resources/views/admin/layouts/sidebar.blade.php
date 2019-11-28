@@ -86,6 +86,12 @@
                     <span>Phones</span>
                 </a>
             </li>
+            <li class="{{ request()->segment(2)==='test-link'?'active':'' }}">
+                <a href="{{ route('test-link.index') }}">
+                    <i class="fa fa-link"></i>
+                    <span>Test links</span>
+                </a>
+            </li>
             <li class="{{ request()->segment(2)==='commands'?'active':'' }}">
                 <a href="{{ route('command.index') }}">
                     <i class="fa fa-terminal"></i>

@@ -1,9 +1,9 @@
-<header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+<header class="site-navbar py-2 js-sticky-header site-navbar-target" role="banner">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
             <div class="site-logo mr-auto">
                 <a href="#">
-                    <img src="{{ asset('logo.png') }}" alt="" style="width: 33px;">
+                    <img src="{{ asset('logo.png') }}" alt="" style="width: 25px;">
                 </a>
             </div>
             <div class="mx-auto text-center">
@@ -19,7 +19,7 @@
             </div>
             <div class="ml-auto d-none d-md-block">
                 <nav class="site-navigation position-relative text-right" role="navigation">
-                    <a href="https://www.facebook.com/hanieenglish/" target="_blank" class="nav-link" style="font-size: 33px;" id="fb-link">
+                    <a href="https://www.facebook.com/hanieenglish/" target="_blank" class="nav-link" style="font-size: 25px;" id="fb-link">
                         <i class="fab fa-facebook-square"></i>
                     </a>
                 </nav>

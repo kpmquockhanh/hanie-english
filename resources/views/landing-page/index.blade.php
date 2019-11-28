@@ -53,5 +53,5 @@
 @include('landing-page.script')
 
 </body>
-@include('landing-page.script-fb')
+{{--@include('landing-page.script-fb')--}}
 </html>

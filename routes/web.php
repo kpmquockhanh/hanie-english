@@ -56,6 +56,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('examinations', 'ExaminationController');
         Route::resource('scores', 'ScoreController');
         Route::resource('histories', 'HistoryController');
+        Route::resource('test-link', 'TestLinkController');
         Route::get('profile', 'AdminController@profile')->name('admin.profile');
         Route::put('profile', 'AdminController@update');
 
@@ -90,9 +91,5 @@ Route::prefix('user')->middleware('user.active')->group(function () {
     });
 
 });
-
-
-//$this->get('logout', 'Auth\LoginController@logout');
-//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

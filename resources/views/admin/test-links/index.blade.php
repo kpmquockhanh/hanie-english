@@ -24,37 +24,22 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
-                        <th>Image</th>
-                        <th>Document link</th>
-                        <th>Lesson number</th>
-                        <th>Duration by week</th>
+                        <th>Label</th>
+                        <th>Link</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @if (!$levels->count())
+                @if (!$testLinks->count())
                     <tr>
                         <td colspan="6" class="text-center">No data</td>
                     </tr>
                 @endif
-                @foreach ($levels as $item)
+                @foreach ($testLinks as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->title }}</td>
-                        <td>
-                            <img src="{{ $item->url_image }}" alt="" style="height: 60px;">
-                        </td>
-
-                        <td>
-                            @if ($item->testLink)
-                                <a href="{{ route('test-link.edit', $item->testLink->id) }}">{{ $item->testLink->label }}</a>
-                            @else
-                                ...
-                            @endif
-                        </td>
-                        <td>{{ $item->lesson_number }}</td>
-                        <td>{{ $item->duration_by_week }}</td>
+                        <td>{{ $item->label }}</td>
+                        <td>{{ $item->link }}</td>
                         <td>
                             <a href="{{ route(request()->segment(2).'.edit', ['id' => $item->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route(request()->segment(2).'.destroy', ['id' => $item->id]) }}" style="display: inline;" method="post">
@@ -69,20 +54,17 @@
                 <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
-                        <th>Image</th>
-                        <th>Document link</th>
-                        <th>Lesson number</th>
-                        <th>Duration by week</th>
+                        <th>Label</th>
+                        <th>Link</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
             </table>
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-            {{ $levels->links() }}
-        </div>
+{{--        <!-- /.box-body -->--}}
+{{--        <div class="box-footer">--}}
+{{--            {{ $testLinks->links() }}--}}
+{{--        </div>--}}
     </div>
     <!-- /.box -->
 @stop

@@ -72,7 +72,8 @@ class LandingPageController extends Controller
             $this->validate($request, [
                 'name' => 'required',
                 'phone' => 'required|numeric',
-                'email' => 'email|required'
+                'email' => 'email|required',
+                'course_id' => 'numeric'
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -88,11 +89,11 @@ class LandingPageController extends Controller
                 'email'
             ])
         );
-        $links = ConfigTestLinks::all();
+        $level = Level::with('testLink')->findOrFail($request->levelId);
         return response()->json([
             'status' => true,
             'code' => 200,
-            'links' => $links
+            'link' => $level->testLink
         ]);
 
     }

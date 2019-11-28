@@ -18,6 +18,9 @@
                             <div>
                                 {!! $level->desc !!}
                             </div>
+                            <input type="button" class="btn btn-course btn-sm btn-info btn-pill" value="Tìm hiểu khoá học" id="active-about-model"
+                                   data-name="{{ $level->title }}"
+                                   data-id="{{ $level->id }}">
                         </div>
                     </div>
                 @endforeach
@@ -31,5 +34,9 @@
     }
     .course {
         border-radius: 5px;
+    }
+    .btn-course {
+        font-size: 9px;
+        padding: 9px 14px;
     }
 </style>
