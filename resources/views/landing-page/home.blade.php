@@ -19,7 +19,7 @@
                             </blockquote>
                         </div>
                         <div class="col-lg-3">
-                            @if ($configs['image_landing_home'])
+                            @if (isset($configs['image_landing_home']))
                                 <img src="{{ $configs['image_landing_home']->imageUrl }}" alt="" style="border-radius: 5px;">
                                 @else
                                 Vui lòng config ảnh trong admin!
