@@ -4,13 +4,13 @@
 @section('page-header', 'Config landing page')
 @section('option-des', 'Chỉnh sửa cấu hình trang landing')
 @section('content')
-    <form action="{{ route('admin.config.update') }}" method="post">
+    <form action="{{ route('admin.config.update') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="data-table-list">
                     <div class="col-lg-12">
-                        <button class="btn btn-success" style="margin-top: 10px;">Update</button>
+                        <button class="btn btn-success" style="margin: 10px 0;">Update</button>
                     </div>
                     @foreach($configs as $config)
                         <div class="col-lg-6">
@@ -38,19 +38,25 @@
                                         <div class="cmp-tb-hd bsc-smp-sm">
                                             <label>{{ $config->name }}</label>
                                         </div>
-                                        @foreach($configs as $config)
-                                            @endforeach
                                     </div>
                                 @break
                             @endswitch
                         </div>
                     @endforeach
-
-                    <div class="col-lg-12">
-                        <button class="btn btn-success" style="margin-top: 10px;">Update</button>
-                    </div>
                 </div>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12">
+                    <div class="cmp-tb-hd bsc-smp-sm">
+                        <label>Home image</label>
+                    </div>
+                    <div class="dash-circle" style="display: flex; justify-content: center;">
+                        <img id="preview-img" src="{{ $homeImg ? $homeImg->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Home+image' }}" alt="" style="height: 200px; border-radius: 5px; cursor: pointer">
+                    </div>
+                    <input type="file" id="image" name="image_landing_home" hidden style="display: none;"/>
+                </div>
             </div>
         </div>
     </form>
@@ -72,5 +78,29 @@
         @endforeach
         //     //bootstrap WYSIHTML5 - text editor
         // })
+    </script>
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#preview-img').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#image").change(function() {
+            readURL(this);
+        });
+        $('.dash-circle').click(function (e) {
+            e.preventDefault();
+            $('#image').trigger('click');
+        });
+
     </script>
 @stop

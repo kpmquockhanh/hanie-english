@@ -19,7 +19,12 @@
                             </blockquote>
                         </div>
                         <div class="col-lg-3">
-                            <div class="display-2 text-white d-none d-lg-block" >Giới thiệu</div>
+                            @if ($configs['image_landing_home'])
+                                <img src="{{ $configs['image_landing_home']->imageUrl }}" alt="" style="border-radius: 5px;">
+                                @else
+                                Vui lòng config ảnh trong admin!
+                            @endif
+{{--                            <div class="display-2 text-white d-none d-lg-block" >Giới thiệu</div>--}}
                         </div>
 
 {{--                        <div class="col-lg-6 ml-auto pt-6" data-aos="fade-up" data-aos-delay="500" id="form-hidden">--}}

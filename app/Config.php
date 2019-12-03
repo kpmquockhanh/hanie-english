@@ -47,4 +47,12 @@ class Config extends Model
     protected static function recordDelete($model) {
         History::makeHistory($model, 'delete');
     }
+
+    public function getImageUrlAttribute () {
+        if ($this->type === 'image') {
+            $url = env('AWS_URL');
+            return "$url/$this->content";
+        }
+        return null;
+    }
 }
