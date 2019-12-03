@@ -27,6 +27,7 @@ class LandingPageController extends Controller
             'teachers' => Teacher::all(),
             'feedbacks' => Feedback::all(),
             'education_programs' => EducationProgram::all(),
+            'bannerImgs' => Config::query()->where('name', 'like', 'banner_image_%')->get()
         ];
         return view('landing-page.index')->with($viewData);
     }

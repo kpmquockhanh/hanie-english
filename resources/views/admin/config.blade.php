@@ -48,14 +48,31 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="cmp-tb-hd bsc-smp-sm col-lg-12">
+                    <label>Banner images</label>
+                </div>
+                @for ($i = 0; $i < 3; $i++)
+                    <div class="col-lg-4">
+                        <div class="dash-circle" style="display: flex; justify-content: center;">
+                            <img class="preview-img" src="{{ isset($bannerImgs[$i]) ? $bannerImgs[$i]->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Banner+image' }}" alt="" style="width: 100%; border-radius: 5px; cursor: pointer">
+                        </div>
+                        <input type="file" class="image-upload" name="image_banner[]" hidden style="display: none;"/>
+                    </div>
+                @endfor
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="col-lg-12">
                     <div class="cmp-tb-hd bsc-smp-sm">
                         <label>Home image</label>
                     </div>
                     <div class="dash-circle" style="display: flex; justify-content: center;">
-                        <img id="preview-img" src="{{ $homeImg ? $homeImg->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Home+image' }}" alt="" style="height: 200px; border-radius: 5px; cursor: pointer">
+                        <img class="preview-img" src="{{ $homeImg ? $homeImg->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Home+image' }}" alt="" style="height: 200px; border-radius: 5px; cursor: pointer">
                     </div>
-                    <input type="file" id="image" name="image_landing_home" hidden style="display: none;"/>
+                    <input type="file" class="image-upload" name="image_landing_home" hidden style="display: none;"/>
                 </div>
             </div>
         </div>
@@ -82,24 +99,22 @@
 
     <script>
         function readURL(input) {
-
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#preview-img').attr('src', e.target.result);
-                }
-
+                    $(input).siblings('.dash-circle').find('.preview-img').attr('src', e.target.result);
+                };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        $("#image").change(function() {
+        $(".image-upload").change(function() {
             readURL(this);
         });
         $('.dash-circle').click(function (e) {
             e.preventDefault();
-            $('#image').trigger('click');
+            $(this).siblings('.image-upload').trigger('click');
         });
 
     </script>

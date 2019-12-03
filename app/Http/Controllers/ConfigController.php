@@ -13,7 +13,10 @@ class ConfigController extends Controller
     {
         $configs = Config::all();
         $homeImg = $configs->where('name', 'image_landing_home')->first();
-        return view('admin.config', compact('configs', 'homeImg'));
+        $bannerImgs = collect($configs->filter(function ($item) {
+            return stristr($item->name, 'banner_image_');
+        })->values());
+        return view('admin.config', compact('configs', 'homeImg', 'bannerImgs'));
     }
 
     public function update(Request $request)
@@ -33,16 +36,18 @@ class ConfigController extends Controller
         {
             Config::query()->where('name', $name)->update(['content' => $content]);
         }
+
+        $this->uploadBannerImages($request);
+        $this->uploadLandingImg($request);
+
+        return redirect(route('admin.config'));
+    }
+
+    private function uploadLandingImg (Request $request) {
         if ($image = $request->file('image_landing_home')) {
             $name = time().'.'.$image->getClientOriginalExtension();
             // resizing an uploaded file
-            $resizedImg = Image::make($image);
-            if ($resizedImg->width() < $resizedImg->height()) {
-                $resizedImg->crop($resizedImg->width(), $resizedImg->width());
-            } else {
-                $resizedImg->crop($resizedImg->height(), $resizedImg->height());
-            }
-            $resizedImg->resize(500, 500)->encode();
+            $resizedImg = $this->resizeImg($image);
             Storage::disk('s3')->put('landing_page/'.$name, $resizedImg, 'public');
 
             $homeImg = Config::query()->where('name', 'image_landing_home')->first();
@@ -62,7 +67,43 @@ class ConfigController extends Controller
                 ]);
             }
         }
+    }
 
-        return redirect(route('admin.config'));
+    private function uploadBannerImages(Request $request) {
+        if ($images = $request->file('image_banner')) {
+            foreach ($images as $index => $image) {
+                $name = time().'.'.$image->getClientOriginalExtension();
+                // resizing an uploaded file
+                $resizedImg = $this->resizeImg($image);
+                Storage::disk('s3')->put('landing_page/'.$name, $resizedImg, 'public');
+
+                $bannerImg = Config::query()->where('name', "banner_image_$index")->first();
+
+                if (!$bannerImg) {
+                    Config::query()->create([
+                        'name' => "banner_image_$index",
+                        'content' => 'landing_page/'.$name,
+                        'type' => 'image',
+                        'show' => 1,
+                    ]);
+                } else {
+                    Storage::disk('s3')->delete($bannerImg->content);
+
+                    $bannerImg->update([
+                        'content' => 'landing_page/'.$name,
+                    ]);
+                }
+            }
+        }
+    }
+
+    private function resizeImg($image) {
+        $resizedImg = Image::make($image);
+        if ($resizedImg->width() < $resizedImg->height()) {
+            $resizedImg->crop($resizedImg->width(), $resizedImg->width());
+        } else {
+            $resizedImg->crop($resizedImg->height(), $resizedImg->height());
+        }
+        return $resizedImg->resize(500, 500)->encode();
     }
 }

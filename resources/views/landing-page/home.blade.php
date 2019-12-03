@@ -22,7 +22,10 @@
                             @if (isset($configs['image_landing_home']))
                                 <img src="{{ $configs['image_landing_home']->imageUrl }}" alt="" style="border-radius: 5px;">
                                 @else
-                                Vui lòng config ảnh trong admin!
+                                <div class="display-2 text-white d-none d-lg-block" >Vui lòng config ảnh trong admin! <a
+                                            href="{{ route('admin.config') }}">tại đây</a>
+                                </div>
+
                             @endif
 {{--                            <div class="display-2 text-white d-none d-lg-block" >Giới thiệu</div>--}}
                         </div>

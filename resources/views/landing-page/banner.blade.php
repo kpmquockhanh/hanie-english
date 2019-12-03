@@ -15,15 +15,11 @@
 </style>
 <div class="banner-section" id="banner-section">
     <div class="owl-carousel owl-carousel-banner">
-        <div class="">
-            <img src="https://picsum.photos/id/1010/1000" alt="Image" class="img-fluid">
-        </div>
-        <div class="">
-            <img src="https://picsum.photos/id/1059/1000" alt="Image" class="img-fluid">
-        </div>
-        <div class="">
-            <img src="https://picsum.photos/id/1060/1000" alt="Image" class="img-fluid">
-        </div>
+        @foreach ($bannerImgs as $banner)
+            <div class="">
+                <img src="{{ $banner->imageUrl }}" alt="Image" class="img-fluid">
+            </div>
+        @endforeach
     </div>
     <div class="btn-course-regist">
         <a href="#" class="btn btn-pill btn-info">Đăng kí khoá học</a>
