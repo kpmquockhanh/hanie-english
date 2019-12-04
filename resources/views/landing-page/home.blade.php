@@ -11,7 +11,7 @@
                                 <p class="text-white">{{ $configs['header_desc_2']->content }}</p>
                                 @foreach ($education_programs as $item)
                                     <div>
-                                        <div class="display-5">{{ $item->title }}</div>
+                                        <div class="display-5 text-white" style="font-size: 24px;">{{ $item->title }}</div>
                                         <p class="text-white">{!! $item->content !!}</p>
                                     </div>
 

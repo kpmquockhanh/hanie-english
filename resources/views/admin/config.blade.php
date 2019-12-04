@@ -54,7 +54,7 @@
                 @for ($i = 0; $i < 3; $i++)
                     <div class="col-lg-4">
                         <div class="dash-circle" style="display: flex; justify-content: center;">
-                            <img class="preview-img" onerror="{{ 'https://dummyimage.com/500/000000/fff.jpg&text=Banner+image' }}" src="{{ isset($bannerImgs[$i]) ? $bannerImgs[$i]->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Banner+image' }}" alt="" style="width: 100%; border-radius: 5px; cursor: pointer">
+                            <img class="preview-img" onerror="this.src='https://dummyimage.com/500/000000/fff.jpg&text=Error+image';" src="{{ isset($bannerImgs[$i]) ? $bannerImgs[$i]->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Banner+image' }}" alt="" style="width: 100%; border-radius: 5px; cursor: pointer">
                         </div>
                         <input type="file" class="image-upload" name="image_banner[]" hidden style="display: none;"/>
                     </div>
