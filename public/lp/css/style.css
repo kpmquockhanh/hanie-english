@@ -1628,7 +1628,7 @@ h5 {
     border-radius: 6px;
     overflow: hidden;
     position: relative;
-    margin: 1.5rem;
+    height: 100%;
 }
 
 .card h1 {
@@ -1698,6 +1698,7 @@ h5 {
     top: 110px;
     width: 100%;
     padding: 0 1rem;
+    height: calc(100% - 110px);
 }
 
 .card .additional .more-info h1 {

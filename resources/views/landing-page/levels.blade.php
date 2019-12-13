@@ -9,8 +9,8 @@
             <div class="d-flex justify-content-center w-100">
                 <div class="row py-4">
                     @foreach ($levels as $index => $level)
-                        <div class="col-lg-6">
-                            <div class="card {{ $index % 3 == 0 ?: 'green' }} mb-3 mx-auto">
+                        <div class="col-lg-6 mb-3">
+                            <div class="card {{ $index % 3 == 0 ? '' : 'green' }} mx-auto">
                                 <div class="additional">
                                     <div class="user-card">
                                         <h4 class="text-white d-flex justify-content-center align-items-center h-100">
@@ -23,7 +23,7 @@
                                             <div class="coords">
                                                 {!! $level->desc !!}
                                             </div>
-                                            <div class="" style="position: absolute; bottom: -45px; width: 70%; left: 15%;">
+                                            <div class="" style="position: absolute; width: 70%; left: 15%;">
                                                 <input type="button" class="btn btn-course btn-sm btn-info btn-pill w-100" value="Tìm hiểu khoá học" id="active-about-model"
                                                        data-name="{{ $level->title }}"
                                                        data-id="{{ $level->id }}">

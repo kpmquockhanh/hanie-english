@@ -54,7 +54,9 @@
                 @for ($i = 0; $i < 3; $i++)
                     <div class="col-lg-4">
                         <div class="dash-circle" style="display: flex; justify-content: center;">
-                            <img class="preview-img" onerror="this.src='https://dummyimage.com/500/000000/fff.jpg&text=Error+image';" src="{{ isset($bannerImgs[$i]) ? $bannerImgs[$i]->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Banner+image' }}" alt="" style="width: 100%; border-radius: 5px; cursor: pointer">
+                            <img class="preview-img" onerror="this.src='https://dummyimage.com/500/000000/fff.jpg&text=Error+image';"
+                                 src="{{ isset($bannerImgs[$i]) ? $bannerImgs[$i]->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Banner+image' }}"
+                                 alt="" style="width: 100%; border-radius: 5px; cursor: pointer">
                         </div>
                         <input type="file" class="image-upload" name="image_banner[]" hidden style="display: none;"/>
                     </div>
@@ -88,22 +90,22 @@
 @endsection
 @section('script')
     <!-- CK Editor -->
-    <script src="{{ asset('node_modules//ckeditor/ckeditor.js') }}"></script>
-    <script>
-        // $(function () {
-        //     // Replace the <textarea id="editor1"> with a CKEditor
-        //     // instance, using default configuration.
-        CKEDITOR.config.extraAllowedContent = 'iframe[*]';
-        CKEDITOR.config.extraPlugins = 'sourcedialog';
-        CKEDITOR.config.startupMode = 'source';
-        @foreach($configs as $config)
-            @if ($config->type == 'html')
-                CKEDITOR.replace('{{ $config->name }}');
-            @endif
-        @endforeach
-        //     //bootstrap WYSIHTML5 - text editor
-        // })
-    </script>
+{{--    <script src="{{ asset('node_modules//ckeditor/ckeditor.js') }}"></script>--}}
+{{--    <script>--}}
+{{--        // $(function () {--}}
+{{--        //     // Replace the <textarea id="editor1"> with a CKEditor--}}
+{{--        //     // instance, using default configuration.--}}
+{{--        CKEDITOR.config.extraAllowedContent = 'iframe[*]';--}}
+{{--        CKEDITOR.config.extraPlugins = 'sourcedialog';--}}
+{{--        CKEDITOR.config.startupMode = 'source';--}}
+{{--        @foreach($configs as $config)--}}
+{{--            @if ($config->type == 'html')--}}
+{{--                CKEDITOR.replace('{{ $config->name }}');--}}
+{{--            @endif--}}
+{{--        @endforeach--}}
+{{--        //     //bootstrap WYSIHTML5 - text editor--}}
+{{--        // })--}}
+{{--    </script>--}}
 
     <script>
         function readURL(input) {
