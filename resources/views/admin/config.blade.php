@@ -64,15 +64,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12">
                 <div class="col-lg-12">
                     <div class="cmp-tb-hd bsc-smp-sm">
                         <label>Home image</label>
                     </div>
-                    <div class="dash-circle" style="display: flex; justify-content: center;">
-                        <img class="preview-img" src="{{ $homeImg ? $homeImg->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Home+image' }}" alt="" style="height: 200px; border-radius: 5px; cursor: pointer">
+                    <div class="col-lg-6">
+                        <div class="dash-circle" style="display: flex; justify-content: center;">
+                            <img class="preview-img" src="{{ $homeImg1 ? $homeImg1->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Home+image' }}" alt="" style="max-width: 100%; border-radius: 5px; cursor: pointer">
+                        </div>
+                        <input type="file" class="image-upload" name="image_landing_home1" hidden style="display: none;"/>
                     </div>
-                    <input type="file" class="image-upload" name="image_landing_home" hidden style="display: none;"/>
+                    <div class="col-lg-6">
+                        <div class="dash-circle" style="display: flex; justify-content: center;">
+                            <img class="preview-img" src="{{ $homeImg2 ? $homeImg2->imageUrl : 'https://dummyimage.com/500/000000/fff.jpg&text=Home+image' }}" alt="" style="max-width: 100%; border-radius: 5px; cursor: pointer">
+                        </div>
+                        <input type="file" class="image-upload" name="image_landing_home2" hidden style="display: none;"/>
+                    </div>
                 </div>
             </div>
         </div>

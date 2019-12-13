@@ -12,11 +12,12 @@ class ConfigController extends Controller
     public function index()
     {
         $configs = Config::all();
-        $homeImg = $configs->where('name', 'image_landing_home')->first();
+        $homeImg1 = $configs->where('name', 'image_landing_home1')->first();
+        $homeImg2 = $configs->where('name', 'image_landing_home2')->first();
         $bannerImgs = collect($configs->filter(function ($item) {
             return stristr($item->name, 'banner_image_');
         })->values());
-        return view('admin.config', compact('configs', 'homeImg', 'bannerImgs'));
+        return view('admin.config', compact('configs', 'homeImg1', 'bannerImgs', 'homeImg2'));
     }
 
     public function update(Request $request)
@@ -29,7 +30,10 @@ class ConfigController extends Controller
             'iframe_video',
             'html_section_1',
             'html_section_2',
-            'html_section_3'
+            'html_section_3',
+            'fb_link',
+            'yt_link',
+            'ig_link',
         ]);
 
         foreach($configs as $name => $content)
@@ -44,17 +48,40 @@ class ConfigController extends Controller
     }
 
     private function uploadLandingImg (Request $request) {
-        if ($image = $request->file('image_landing_home')) {
+        if ($image = $request->file('image_landing_home1')) {
             $name = time().'.'.$image->getClientOriginalExtension();
             // resizing an uploaded file
             $resizedImg = $this->resizeImg($image);
             Storage::disk('s3')->put('landing_page/'.$name, $resizedImg, 'public');
 
-            $homeImg = Config::query()->where('name', 'image_landing_home')->first();
+            $homeImg = Config::query()->where('name', 'image_landing_home1')->first();
 
             if (!$homeImg) {
                 Config::query()->create([
-                    'name' => 'image_landing_home',
+                    'name' => 'image_landing_home1',
+                    'content' => 'landing_page/'.$name,
+                    'type' => 'image',
+                    'show' => 1,
+                ]);
+            } else {
+                Storage::disk('s3')->delete($homeImg->content);
+
+                $homeImg->update([
+                    'content' => 'landing_page/'.$name,
+                ]);
+            }
+        }
+        if ($image = $request->file('image_landing_home2')) {
+            $name = time().'.'.$image->getClientOriginalExtension();
+            // resizing an uploaded file
+            $resizedImg = $this->resizeImg($image);
+            Storage::disk('s3')->put('landing_page/'.$name, $resizedImg, 'public');
+
+            $homeImg = Config::query()->where('name', 'image_landing_home2')->first();
+
+            if (!$homeImg) {
+                Config::query()->create([
+                    'name' => 'image_landing_home2',
                     'content' => 'landing_page/'.$name,
                     'type' => 'image',
                     'show' => 1,

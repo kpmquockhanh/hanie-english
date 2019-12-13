@@ -36,7 +36,7 @@
         </div>
         <div class="site-mobile-menu-body"></div>
     </div>
-    @include('landing-page.header')
+    @include('landing-page.header', ['social_links' => $social_links])
     @include('landing-page.banner')
     @include('landing-page.home')
 {{--    @include('landing-page.about')--}}

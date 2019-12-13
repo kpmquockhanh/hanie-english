@@ -3,7 +3,13 @@
         <div class="row">
             <div class="col-md-4">
                 <h3>About HANIE ENGLISH.</h3>
-                <p>Địa chỉ: Tầng 6 số nhà 22 ngõ 79/14 Dương Quảng Hàm, Cầu Giấy, Hà Nội</p>
+                <p>Địa chỉ:</p>
+                <p class="ml-1">
+                    - Cơ sở 2 : Ngõ 48, Lê Trọng Tấn, Hà đông.
+                </p>
+                <p class="ml-1">
+                    - Cơ sở 1: Số 4, ngõ 67, Đình thôn, Mỹ Đình 1.
+                </p>
                 <p><span class="icon icon-phone"></span> Hotline: 0918199264</p>
                 <p><span class="icon icon-add_box"></span> hanie.english.edu@gmail.com</p>
             </div>
