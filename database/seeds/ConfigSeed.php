@@ -11,7 +11,7 @@ class ConfigSeed extends Seeder
      */
     public function run()
     {
-        \App\Config::query()->create([
+        \App\Config::query()->insert([
             [
                 'type' => 'text',
                 'show' => true,
