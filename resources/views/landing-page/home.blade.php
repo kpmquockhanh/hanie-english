@@ -24,6 +24,15 @@
                                 </div>
                             </div>
                             <div class="row">
+
+                                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="200">
+                                    @foreach ($education_programs as $item)
+                                        <div>
+                                            <div class="display-5 text-white" style="font-size: 24px;">{{ $item->title }}</div>
+                                            <p class="text-white">{!! $item->content !!}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="col-lg-5 mb-2 d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
                                     @if (isset($configs['image_landing_home2']))
                                         <img src="{{ $configs['image_landing_home2']->imageUrl }}" alt="" class="img-fluid" style="border-radius: 5px;">
@@ -32,14 +41,6 @@
                                             Vui lòng config ảnh trong admin! <a href="{{ route('admin.config') }}">tại đây</a>
                                         </div>
                                     @endif
-                                </div>
-                                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="200">
-                                    @foreach ($education_programs as $item)
-                                        <div>
-                                            <div class="display-5 text-white" style="font-size: 24px;">{{ $item->title }}</div>
-                                            <p class="text-white">{!! $item->content !!}</p>
-                                        </div>
-                                    @endforeach
                                 </div>
                             </div>
                         </div>

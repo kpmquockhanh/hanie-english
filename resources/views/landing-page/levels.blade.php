@@ -7,10 +7,10 @@
         </div>
         <div class="row" data-aos="fade-up">
             <div class="d-flex justify-content-center w-100">
-                <div class="row py-4">
+                <div class="row py-4 w-100">
                     @foreach ($levels as $index => $level)
                         <div class="col-lg-6 mb-3">
-                            <div class="card {{ $index % 3 == 0 ? '' : 'green' }} mx-auto">
+                            <div class="card {{ $index % 3 == 0 ? '' : 'green' }}">
                                 <div class="additional">
                                     <div class="user-card">
                                         <h4 class="text-white d-flex justify-content-center align-items-center h-100">
@@ -18,15 +18,10 @@
                                         </h4>
                                     </div>
                                     <div class="more-info">
-                                        <div class="position-relative h-100">
+                                        <div class="h-100">
                                             <div class="title">{{ $level->title }}</div>
                                             <div class="coords">
                                                 {!! $level->desc !!}
-                                            </div>
-                                            <div class="" style="position: absolute; width: 70%; left: 15%;">
-                                                <input type="button" class="btn btn-course btn-sm btn-info btn-pill w-100" value="Tìm hiểu khoá học" id="active-about-model"
-                                                       data-name="{{ $level->title }}"
-                                                       data-id="{{ $level->id }}">
                                             </div>
                                         </div>
 
@@ -35,6 +30,12 @@
                                 <div class="general">
                                     <div class="title">{{ $level->title }}</div>
                                     <div style="margin: 0 1rem;">{!! $level->desc !!}</div>
+                                    <div class="special-link">
+                                        <input type="button" class="btn btn-course btn-sm btn-info btn-pill w-100" value="Tìm hiểu khoá học" id="active-about-model"
+                                               data-name="{{ $level->title }}"
+                                               data-id="{{ $level->id }}"
+                                                style="cursor:pointer;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -92,5 +93,12 @@
     }
     .title {
         font-size: 40px;
+    }
+    .special-link {
+        position: absolute;
+        width: 70%;
+        left: 15%;
+        bottom: 10px;
+        z-index: 999;
     }
 </style>

@@ -22,6 +22,6 @@
         @endforeach
     </div>
     <div class="btn-course-regist">
-        <a href="#" class="btn btn-pill btn-info">Đăng kí khoá học</a>
+        <a href="#" class="btn btn-pill btn-info p-2">Đăng kí khoá học</a>
     </div>
 </div>
