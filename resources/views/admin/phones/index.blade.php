@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('page-header', 'Phones')
-@section('option-des', 'Danh sách số điện thoại')
+@section('option-des', 'Phones')
 @section('style')
     <style>
         td {
@@ -15,14 +15,16 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
+            @include('admin.layouts.flash-message')
+            @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Phone number</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone number</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$phones->count())
@@ -36,8 +38,8 @@
                         <td>{{ $phone->name }}</td>
                         <td>{{ $phone->phone_number }}</td>
                         <td>
-                            {{--                                            <a href="{{ route('phones.edit', ['id' => $phone->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>--}}
-                            <form action="{{ route('phones.destroy', ['id' => $phone->id]) }}" style="display: inline;" method="post">
+                            <a href="{{ route('phones.edit', $phone->id) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route('phones.destroy', $phone->id) }}" style="display: inline;" method="post">
                                 @csrf
                                 <input type="text" name="_method" value="delete" hidden>
                                 <button type="submit" class="btn-sm btn-danger"><i class="fa fa-trash"></i></button>
@@ -47,12 +49,12 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Phone number</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone number</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>

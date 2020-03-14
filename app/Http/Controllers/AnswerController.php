@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AnswerController extends Controller
@@ -13,10 +14,27 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $answers = Answer::all();
+        $query = $request->q;
+        $except = $request->e;
+        $answers = Answer::query()->orderByDesc('id');
+        if ($request->ajax()) {
+            $answers->select([
+                'id',
+                'content as text'
+            ]);
+            if ($except != null) {
+                $answers->whereKeyNot($except);
+            }
+            if (!$query) {
+                return response()->json(['results' => $answers->get()]);
+            }
 
+            $answers->where('content', 'like', "%$query%");
+            return response()->json(['results' => $answers->get()]);
+        }
+        $answers = $answers->paginate(10);
         return view('admin.answers.index', compact('answers'));
     }
 
@@ -41,14 +59,20 @@ class AnswerController extends Controller
         $this->validate(
             $request,
             [
-                'content' => 'required'
+                'content' => 'required|max:100'
             ]
         );
 
         $createData = $request->only(['content']);
+        $createData['created_by'] = Auth::id();
 
         Answer::query()->create($createData);
 
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+            ]);
+        }
         return redirect(route('answers.index'))->with('success', 'Created successfully!');
     }
 
@@ -86,11 +110,12 @@ class AnswerController extends Controller
         $this->validate(
             $request,
             [
-                'content' => 'required'
+                'content' => 'required|max:100'
             ]
         );
 
         $updateData = $request->only(['content']);
+        $updateData['created_by'] = Auth::id();
 
         if ($answer->content === $request->get('content')) {
             return redirect(route('answers.index'))->with('info', 'Updated successfully! No changes');
@@ -110,6 +135,7 @@ class AnswerController extends Controller
     {
         try {
             $answer->delete();
+
             return redirect(route('answers.index'))->with('success', 'Deleted successfully!');
         } catch (\Exception $e) {
             return redirect(route('answers.index'))->with('error', 'Deleted error!');

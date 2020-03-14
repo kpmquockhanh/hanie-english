@@ -14,7 +14,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        dd(123123);
     }
 
     /**
@@ -24,7 +24,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

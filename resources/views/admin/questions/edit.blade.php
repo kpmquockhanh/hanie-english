@@ -2,10 +2,10 @@
 @section('style')
     <style>
         .dash-circle{
-            width: 20vw;
-            height: 20vw;
+            width: 10vw;
+            height: 10vw;
             background: #eee;
-            margin: auto;
+            margin: 20px auto;
             border-radius: 50%;
             /* border: 3px dashed white; */
             box-sizing: border-box;
@@ -17,91 +17,87 @@
             box-shadow: 1px 1px 5px;
         }
     </style>
+    <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 @stop
 @section('content')
-    <div class="container">
-        <form action="{{ route('teachers.update', ['id' => $teacher->id]) }}" method="post" class="" enctype="multipart/form-data">
-            @csrf
-            <input type="text" name="_method" value="PUT" hidden>
-            <div class="row">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    @if ($errors->first())
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
-                                <div class="alert alert-danger">{{ $errors->first() }}</div>
-                            </div>
-                        </div>
-                    @endif
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <i class="notika-icon notika-support"></i>
-                            </div>
-                            <div class="nk-int-st">
-                                <input type="text" name="name" class="form-control" placeholder="Your Teacher's Name" value="{{ $teacher->name }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <i class="notika-icon notika-next"></i>
-                            </div>
-                            <div class="nk-int-st">
-                                <input type="text" class="form-control" placeholder="Words" name="word" value="{{ $teacher->word }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <i class="notika-icon notika-star"></i>
-                            </div>
-                            <div class="nk-int-st">
-                                <input type="text" class="form-control" placeholder="Position" name="position" value="{{ $teacher->position }}">
-                            </div>
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ ucfirst((request()->segment(3)?request()->segment(3).' ':'').request()->segment(2)) }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <form action="{{ route(request()->segment(2).'.update', ['id' => $question->id]) }}" method="post" class="" enctype="multipart/form-data">
+            <div class="box-body">
+                @include('admin.layouts.error-message')
+                @csrf
+                {{ method_field('PUT') }}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Categories</label>
+                            <select multiple class="form-control categories" name="categories[]" hidden>
+                                @foreach ($question->categories as $category)
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <div class="dash-circle">
-                        <img id="preview-img" src="{{ asset($teacher->image)??asset('dashboard/img/avatar.svg') }}" alt="" style="width: 100%;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Content</label>
+                            <input type="text" name="content" class="form-control" placeholder="Content" value="{{ old('content', $question->content) }}">
+                        </div>
                     </div>
-                    <input type="file" id="image" name="image" hidden style="display: none;"/>
                 </div>
-            </div>
-            <div style="display: flex; justify-content: center">
-                <button type="submit" class="btn btn-success" style="margin-top: 20px; text-align: center">Update</button>
-                <a class="btn btn-warning" href="{{ route('teachers.index') }}" style="margin: 20px 0 0 10px; text-align: center; ">Back</a>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label>Right answer</label>
+                            <select class="form-control right-answer" name="right_answer_id" hidden>
+                                <option value="{{ $question->rightAnswer->id }}" selected>{{ $question->rightAnswer->content }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label>Wrong answers</label>
+                            <select multiple class="form-control wrong-answers" name="wrong_answer_ids[]" hidden>
+                                @foreach ($wrongAnswers as $wrongAnswer)
+                                    <option value="{{ $wrongAnswer->id }}" selected>{{ $wrongAnswer->content }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <label for="">Your answer not exists?</label>
+                        <div>
+                            <a href="{{ route('answers.create') }}" target="_blank" class="btn-sm btn-success">
+                                <i class="fa fa-plus"></i>
+                                Add a answer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Explain</label>
+                            <input type="text" name="explain" class="form-control" placeholder="Explain" value="{{ old('explain', $question->explain) }}">
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info" style="margin-top: 20px; text-align: center">Update</button>
+                <a class="btn btn-warning pull-right" href="{{ route(request()->segment(2).'.index') }}" style="margin: 20px 0 0 10px; text-align: center; ">Back</a>
+            </div>
         </form>
     </div>
 @stop
 @section('script')
-    <script>
-        function readURL(input) {
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#preview-img').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#image").change(function() {
-            readURL(this);
-        });
-        $('.dash-circle').click(function (e) {
-            e.preventDefault();
-            $('#image').trigger('click');
-        });
-
-    </script>
+    <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
+    @include('admin.questions.scripts')
 @stop

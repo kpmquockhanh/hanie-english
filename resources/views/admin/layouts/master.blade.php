@@ -2,19 +2,31 @@
 <html lang="vi">
 <head>
     @if (request()->segment(2))
-        <title>{{ env('APP_NAME') }} | @yield('title', ucfirst((request()->segment(3)?request()->segment(3).' ':'').request()->segment(2)))</title>
+        <title>{{ env('APP_NAME') }} | @yield('title', ucfirst((request()->segment(3)
+        ?request()->segment(4) === 'edit'
+            ?'Update '
+            :request()->segment(3)
+            .' ':'').request()->segment(2)))</title>
     @else
         <title>{{ env('APP_NAME') }}</title>
     @endif
     @include('admin.layouts.style')
     @yield('style')
+        <style>
+            .btn-sm {
+                display: inline-grid;
+            }
+            /*.box {*/
+            /*    overflow-x: auto;*/
+            /*}*/
+        </style>
 </head>
-<body class="hold-transition skin-green fixed">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
     @include('admin.layouts.header')
     @include('admin.layouts.sidebar')
-
+{{--    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('fav.ico') }}"/>--}}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
-
 @section('page-header', 'Teachers')
-@section('option-des', 'Danh sách giáo viên')
+@section('option-des', 'Teachers')
 @section('style')
     <style>
         td {
@@ -19,16 +18,19 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
+            @include('admin.layouts.flash-message')
+            @include('admin.layouts.error-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Words</th>
+                        <th>Image</th>
+                        <th>Position</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$teachers->count())
@@ -42,9 +44,10 @@
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->word }}</td>
                         <td>
-                            <img src="{{ $teacher->image }}" alt="" style="height: 60px;">
+                            <img src="{{ $teacher->url_image }}" alt="" style="height: 60px;">
                         </td>
                         <td>{{ $teacher->position }}</td>
+                        <td>{{ $teacher->admin->name }}</td>
                         <td>
                             <a href="{{ route('teachers.edit', ['id' => $teacher->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('teachers.destroy', ['id' => $teacher->id]) }}" style="display: inline;" method="post">
@@ -57,14 +60,15 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Words</th>
-                    <th>Image</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Words</th>
+                        <th>Image</th>
+                        <th>Position</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>

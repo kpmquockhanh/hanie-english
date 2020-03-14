@@ -1,67 +1,76 @@
-<!-- home
-================================================== -->
-<section id="home">
+<div class="intro-section" id="home-section">
+    <div class="slide-1">
+        <div class="container">
+            <div class="row" style="padding-top: 20px;">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-5 mb-2 d-flex align-items-center order-1 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                                    @if (isset($configs['image_landing_home1']))
+                                        <img src="{{ $configs['image_landing_home1']->imageUrl }}" alt="" class="" style="border-radius: 5px; height: 250px;">
+                                    @else
+                                        <div class="display-2 text-white d-none d-lg-block" >
+                                            Vui lòng config ảnh trong admin! <a href="{{ route('admin.config') }}">tại đây</a>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="200">
+                                    <h1>Hanie English</br>Inspiring your English</h1>
+                                    <blockquote data-aos="fade-up" data-aos-delay="200">
+                                        <p class="text-white">{{ $configs['header_desc_1']->content }}</p>
+                                        <p class="text-white">{{ $configs['header_desc_2']->content }}</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="row">
 
-    <div class="overlay"></div>
+                                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="200">
+                                    @foreach ($education_programs as $item)
+                                        <div>
+                                            <div class="display-5 text-white" style="font-size: 24px;">{{ $item->title }}</div>
+                                            <p class="text-white">{!! $item->content !!}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="col-lg-5 mb-2 d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
+                                    @if (isset($configs['image_landing_home2']))
+                                        <img src="{{ $configs['image_landing_home2']->imageUrl }}" alt="" class="img-fluid" style="border-radius: 5px;">
+                                    @else
+                                        <div class="display-2 text-white d-none d-lg-block" >
+                                            Vui lòng config ảnh trong admin! <a href="{{ route('admin.config') }}">tại đây</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="home-content-table">
-        <div class="home-content-tablecell">
-            <div class="row">
-                <div class="col-twelve">
-                    <h1 class="animate-intro">
-                        Hanie English
-                    </h1>
-                    <h1 class="animate-intro">
-                        Inspiring your English
-                    </h1>
-                    <h3 class="animate-intro">{{ $configs[0]->content }}</h3>
-                    <br>
-                    <h3 class="animate-intro">
-                        {{ $configs[1]->content }}
-                    </h3>
-                    {{--<h3 class="animate-intro">Sử dụng tiếng Anh góp phần nâng cao giá trị bản thân</h3>--}}
-                    <blockquote cite="">
-                        <p>
-                            {{ $configs[2]->content }}
-                        </p>
-                        <cite>
-                            <a>{{ $configs[3]->content }}</a>
-                        </cite>
-                    </blockquote>
-                    <div class="more animate-intro">
-                        <a class="button button-primary" href="https://www.facebook.com/Ngh%E1%BB%87-Thu%E1%BA%ADt-Chinh-Ph%E1%BB%A5c-Ti%E1%BA%BFng-Anh-1839176996210179/" target="_blank">
-                            Liên Hệ Với Chúng Tôi
-                        </a>
+{{--                        <div class="col-lg-6 ml-auto pt-6" data-aos="fade-up" data-aos-delay="500" id="form-hidden">--}}
+{{--                            <iframe class="d-none d-lg-block" height="370" src="{{ $configs['iframe_video']->content }}" frameborder="0"--}}
+{{--                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"--}}
+{{--                                    allowfullscreen></iframe>--}}
+{{--                            <form action="{{ route('landing.store.phone') }}" method="post" class="form-box"  style="margin-top: 10px">--}}
+{{--                                @csrf--}}
+{{--                                <h3 class="h4 text-black mb-4">Đăng kí khoá học</h3>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <input type="text" class="form-control" name="name" placeholder="Your name"--}}
+{{--                                           autocomplete="off">--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <input type="text" class="form-control" name="phone_number"--}}
+{{--                                           placeholder="Your phone number" autocomplete="off">--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <input type="submit" class="btn btn-primary btn-pill" value="Đăng kí">--}}
+{{--                                    <input type="button" class="btn btn-info btn-pill" value="Tìm hiểu khoá học" id="active-about-model">--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+
+{{--                        </div>--}}
                     </div>
+                </div>
 
-                </div> <!-- end col-twelve -->
-            </div> <!-- end row -->
-        </div> <!-- end home-content-tablecell -->
-    </div> <!-- end home-content-table -->
-
-    <ul class="home-social-list">
-        <li class="animate-intro fadeInUp animated">
-            <a href="https://www.facebook.com/Ngh%E1%BB%87-Thu%E1%BA%ADt-Chinh-Ph%E1%BB%A5c-Ti%E1%BA%BFng-Anh-1839176996210179/"><i class="fa fa-facebook-square"></i></a>
-        </li>
-        {{--<li class="animate-intro fadeInUp animated">--}}
-            {{--<a href="#"><i class="fa fa-twitter"></i></a>--}}
-        {{--</li>--}}
-        {{--<li class="animate-intro fadeInUp animated">--}}
-            {{--<a href="#"><i class="fa fa-instagram"></i></a>--}}
-        {{--</li>--}}
-        {{--<li class="animate-intro fadeInUp animated">--}}
-            {{--<a href="#"><i class="fa fa-behance"></i></a>--}}
-        {{--</li>--}}
-        {{--<li class="animate-intro fadeInUp animated">--}}
-            {{--<a href="#"><i class="fa fa-dribbble"></i></a>--}}
-        {{--</li>--}}
-    </ul>
-
-    <div class="scrolldown">
-        <a href="#about" class="scroll-icon smoothscroll">
-            Lăn xuống
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </a>
+            </div>
+        </div>
     </div>
-
-</section> <!-- end home -->
+</div>

@@ -1,4 +1,6 @@
 @extends('admin.layouts.master')
+@section('page-header', 'Teachers')
+@section('option-des', 'Create teacher')
 @section('style')
     <style>
         .dash-circle{
@@ -18,64 +20,62 @@
         }
     </style>
 @stop
-@section('page-header', 'Teachers')
-@section('option-des', 'Thêm giáo viên')
 @section('content')
-    <div class="container">
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Create teacher</h3>
+        </div>
         <form action="{{ route('teachers.store') }}" method="post" class="" enctype="multipart/form-data">
             @csrf
-            <div class="row">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    @if ($errors->first())
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="box-body">
+                <div class="row">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        @include('admin.layouts.flash-message')
+                        @include('admin.layouts.error-message')
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group ic-cmp-int">
-                                <div class="alert alert-danger">{{ $errors->first() }}</div>
+                                <div class="form-ic-cmp">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="nk-int-st">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Teacher's Name" value="{{ old('name') }}">
+                                </div>
                             </div>
                         </div>
-                    @endif
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <i class="notika-icon notika-support"></i>
-                            </div>
-                            <div class="nk-int-st">
-                                <input type="text" name="name" class="form-control" placeholder="Your Teacher's Name" value="{{ old('name') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <i class="notika-icon notika-next"></i>
-                            </div>
-                            <div class="nk-int-st">
-                                <input type="text" class="form-control" placeholder="Words" name="word" value="{{ old('word') }}">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <label for="words">Teacher's words</label>
+                                </div>
+                                <div class="nk-int-st">
+                                    <input type="text" class="form-control" placeholder="Words" name="word" value="{{ old('word') }}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <i class="notika-icon notika-star"></i>
-                            </div>
-                            <div class="nk-int-st">
-                                <input type="text" class="form-control" placeholder="Position" name="position" value="{{ old('position') }}">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <label for="position">Position</label>
+                                </div>
+                                <div class="nk-int-st">
+                                    <input type="text" class="form-control" placeholder="Position" name="position" value="{{ old('position') }}">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <div class="dash-circle">
-                        <img id="preview-img" src="{{ asset('dashboard/img/avatar.svg') }}" alt="" style="width: 100%;">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="dash-circle">
+                            <img id="preview-img" src="{{ asset('images/avatars/default-avatar.svg') }}" alt="" style="width: 100%;">
+                        </div>
+                        <input type="file" id="image" name="image" hidden style="display: none;"/>
                     </div>
-                    <input type="file" id="image" name="image" hidden style="display: none;"/>
                 </div>
             </div>
-            <div style="display: flex; justify-content: center">
+            <div class="box-footer">
                 <button type="submit" class="btn btn-success" style="margin-top: 20px; text-align: center">Create</button>
-                <a class="btn btn-warning" href="{{ route('teachers.index') }}" style="margin: 20px 0 0 10px; text-align: center; ">Back</a>
+                <a class="btn btn-warning pull-right" href="{{ route(request()->segment(2).'.index') }}" style="margin: 20px 0 0 10px; text-align: center; ">Back</a>
             </div>
 
         </form>

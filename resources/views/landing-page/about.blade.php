@@ -1,24 +1,44 @@
-<!-- about
-================================================== -->
-<section id="about">
-
-    <div class="row about-wrap">
-        <div class="col-full">
-
-            <div class="about-profile-bg"></div>
-
-            <div class="intro">
-                <h3 class="animate-this header-title">Giới Thiệu</h3>
-                <p class="lead animate-this"><span>Hanie English</span> Đào tạo giao tiếp từ cơ bản đến nâng cao, kết
-                    hợp củng cố kiến thức nền vững chắc theo tiêu chuẩn quốc tế. Hiệu quả rõ rệt sau 20 ngày.</p>
-                <p class="lead animate-this">Luyện tập 4 kỹ năng, ôn thi các chứng chỉ PET, KET, TOEIC, ESOL,…</p>
-            </div>
-            <div class="fluid-video-wrapper animate-this">
-                <div class="fluid-width-video-wrapper" style="padding-top: 56.2%;">
-                    {!! $configs[4]->content !!}
+<div class="bg-image overlay" style="background-image: url('lp/images/hero_1.jpg');" id="about-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 text-center testimony">
+                <div class="row">
+                    <div class="hexagon small col-lg-5">
+                        <div class="position-relative">
+                            <img src="{{ asset('images/hex-w.svg') }}" alt="">
+                            <div class="content text-black font-weight-bold" style="font-size: 3vw;">
+                                Bộ video bài giảng
+                            </div>
+                            <div class="content text-black link">
+                                <a href="#contact" class="nav-link btn btn-info btn-pill" style="font-size: 10px;"><span>Đăng kí mua bộ video</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hexagon big col-lg-7">
+                        <div class="position-relative">
+                            <img src="{{ asset('images/hex.svg') }}" alt="">
+                            <div class="content text-white font-weight-bold" style="font-size: 3vw;">
+                                <div>
+                                    Tiếng anh trực tuyến 1-1 với gia sư riêng của bạn
+                                </div>
+                            </div>
+{{--                            <div class="content text-white desc">--}}
+{{--                                Bạn sẽ cảm nhận được sự hiệu quả rõ rệt sau 24 ngày--}}
+{{--                            </div>--}}
+                            <div class="content text-white link">
+                                    <a href="#home-section" class="nav-link btn btn-info btn-pill"><span>Đăng kí khoá học</span></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div> <!-- end col-full  -->
-    </div> <!-- end about-wrap  -->
-
-</section> <!-- end about -->
+        </div>
+    </div>
+</div>
+<style>
+    #about-section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+</style>

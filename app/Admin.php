@@ -45,4 +45,58 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class, 'created_by');
+    }
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class, 'created_by');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'created_by');
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'created_by');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'created_by');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'created_by');
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'created_by');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'created_by');
+    }
+
+    public function examinations()
+    {
+        return $this->hasMany(Examination::class, 'created_by');
+    }
+
+    public function getUrlAvatarAttribute()
+    {
+        if ($this->avatar) {
+            $url = env('AWS_URL');
+            return "$url/$this->avatar";
+        }
+        return null;
+    }
 }

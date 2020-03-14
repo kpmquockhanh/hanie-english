@@ -28,5 +28,52 @@ class Video extends Model
         'path',
         'converted_for_download_at',
         'converted_for_stream_at',
+        'lesson_id'
     ];
+
+    public function lesson()
+    {
+        return $this->hasOne('App\Lesson');
+    }
+
+    public function getUrlPathAttribute()
+    {
+        $url = env('AWS_URL');
+
+        return "$url/$this->disk/$this->path";
+    }
+    public function getHlsPathAttribute()
+    {
+        $url = env('AWS_URL');
+        if (!$this->converted_for_stream_at) {
+            return null;
+        }
+        return "$url/$this->converted_for_stream_at";
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            self::recordCreated($model);
+        });
+        self::updated(function ($model) {
+            self::recordUpdated($model);
+        });
+        self::deleted(function ($model) {
+            self::recordDelete($model);
+        });
+    }
+
+    protected static function recordCreated($model) {
+        History::makeHistory($model, 'create');
+    }
+
+    protected static function recordUpdated($model) {
+        History::makeHistory($model, 'update');
+    }
+
+    protected static function recordDelete($model) {
+        History::makeHistory($model, 'delete');
+    }
 }

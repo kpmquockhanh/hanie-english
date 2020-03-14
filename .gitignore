@@ -2,5 +2,9 @@
 public/uploads/
 node_modules/
 public/bower_components/
+public/.DS_Store
 .DS_Store
 vendor/
+.env
+ public/package-lock.json
+composer.lock

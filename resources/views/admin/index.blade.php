@@ -2,7 +2,8 @@
 @section('style')
 @endsection
 @section('content')
-
+    @include('admin.layouts.error-message')
+    @include('admin.layouts.flash-message')
 @endsection
 @section('script')
 @stop

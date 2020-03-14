@@ -12,9 +12,22 @@ class UserCourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $userCourses = UserCourse::with('course');
+        if ($request->id) {
+            $userCourses->where('user_id', $request->id);
+            $courses = $userCourses->get()->map(function ($item) {
+                return [
+                    'id' => $item->course->id,
+                    'text' => $item->course->name,
+                ];
+            });
+
+            return response()->json(['results' => $courses]);
+
+        }
+        return null;
     }
 
     /**
@@ -35,7 +48,7 @@ class UserCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->user_id, $request->course_id);
     }
 
     /**

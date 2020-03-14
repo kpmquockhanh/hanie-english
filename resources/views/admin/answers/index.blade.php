@@ -20,13 +20,12 @@
             @include('admin.layouts.flash-message')
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Content</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Content</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @if (!$answers->count())
@@ -38,8 +37,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->content }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->updated_at }}</td>
+                        <td>{{ $item->admin->name }}</td>
                         <td>
                             <a href="{{ route('answers.edit', ['id' => $item->id]) }}" class="btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('answers.destroy', ['id' => $item->id]) }}" style="display: inline;" method="post">
@@ -52,17 +50,19 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>Content</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Content</th>
+                        <th>Created by</th>
+                        <th>Action</th>
+                    </tr>
                 </tfoot>
             </table>
         </div>
         <!-- /.box-body -->
+        <div class="box-footer">
+            {{ $answers->links() }}
+        </div>
     </div>
     <!-- /.box -->
 @stop

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -14,10 +17,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::query()->paginate(5);
+        $users = User::query();
 
+        if ($q = $request->q) {
+            $users->where('id', $q);
+            $users->orWhere('username', 'like', "%$q%");
+        }
+        $users = $users->paginate(5);
         return view('admin.users.index', compact('users'));
     }
 
@@ -42,10 +50,10 @@ class UserController extends Controller
         $this->validate(
             $request,
             [
-                'name' => 'required',
-                'username' => 'required|unique:users|alpha_dash',
-                'avatar' => 'required|image',
-                'password' => 'required|confirmed|min:8',
+                'name' => 'required|max:191',
+                'username' => 'required|unique:users|alpha_dash|max:191',
+                'avatar' => 'required|mimes:jpeg,jpg,png|max:2000',
+                'password' => 'required|confirmed|min:8|max:191',
             ]
         );
 
@@ -53,17 +61,17 @@ class UserController extends Controller
             'name',
             'username',
         ]);
+        $createData['created_by'] = Auth::id();
 
         if ($request->status === 'on') {
             $createData['status'] = 1;
         }
         $createData['password'] = Hash::make($request->get('password'));
 
-        if ($image = $request->file('avatar'))
-        {
-            $disk = 'uploads/users/';
+        if ($image = $request->file('avatar')) {
+            $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move($disk, $name);
+            Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');
             $createData['avatar'] = $disk.$name;
         }
         User::query()->create($createData);
@@ -79,7 +87,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $courses = UserCourse::with('course')
+            ->where('user_id', $user->id)
+            ->get()
+            ->map(function ($item) {
+                return $item->course;
+            });
+        return view('admin.users.show', compact('user', 'courses'));
     }
 
     /**
@@ -105,25 +119,29 @@ class UserController extends Controller
         $this->validate(
             $request,
             [
-//                    'name' => 'required',
-                'avatar' => 'image',
-                'password' => 'confirmed|min:8|nullable',
+                'name' => 'max:191',
+                'avatar' => 'mimes:jpeg,jpg,png|max:2000',
+                'password' => 'nullable|confirmed|min:8|max:191',
             ]
         );
 
         $updateData = $request->only([
-            'name',
+            'name'
         ]);
+        $updateData['created_by'] = Auth::id();
+        $updateData['status'] = 0;
+        if ($request->status === 'on') {
+            $updateData['status'] = 1;
+        }
         if ($request->get('password')) {
             $updateData['password'] = Hash::make($request->get('password'));
         }
 
-        if ($image = $request->file('avatar'))
-        {
-            $disk = 'uploads/users/';
+        if ($image = $request->file('avatar')) {
+            $disk = 'avatars/';
             $name = time().'.'.$image->getClientOriginalExtension();
-            $image->move($disk, $name);
-            File::delete($user->avatar);
+            Storage::disk('s3')->put($disk.$name, file_get_contents($image), 'public');
+            Storage::disk('s3')->delete($user->avatar);
             $updateData['avatar'] = $disk.$name;
         }
         $user->update($updateData);
@@ -141,9 +159,75 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+            Storage::disk('s3')->delete($user->avatar);
             return redirect(route('users.index'))->with('success', 'Deleted successfully!');
         } catch (\Exception $e) {
             return redirect(route('users.index'))->with('error', 'Deleted error!');
+        }
+    }
+
+    public function makeCourses(Request $request)
+    {
+        if (!$request->user_id) {
+            return redirect(route('users.show', ['id' => $request->user_id]));
+        }
+        if (!$request->courses || !count($request->courses)) {
+            UserCourse::query()->where('user_id', $request->user_id)->delete();
+            return redirect(route('users.show', ['id' => $request->user_id]));
+        }
+        $currentCourses = UserCourse::query()
+            ->where('user_id', $request->user_id)
+            ->get(['course_id'])
+            ->map(function ($item) {
+                return $item->course_id;
+            })->toArray();
+
+        $deleteCourses = array_diff($currentCourses, $request->courses);
+        $insertCourse = array_diff($request->courses, $currentCourses);
+
+        UserCourse::query()->whereIn('course_id', $deleteCourses)
+            ->where('user_id', $request->user_id)->delete();
+
+        foreach ($insertCourse as $course_id) {
+            UserCourse::query()->create([
+                'user_id' => $request->user_id,
+                'course_id' => $course_id
+            ]);
+        }
+
+        return redirect(route('users.show', ['id' => $request->user_id]));
+    }
+
+    public function active(Request $request) {
+        $user = User::query()->findOrFail($request->id);
+        try {
+            $user->update([
+                'status' => 1
+            ]);
+            return response()->json([
+                'status' => 1
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 0,
+                'error' => $e
+            ]);
+        }
+    }
+    public function ban(Request $request) {
+        $user = User::query()->findOrFail($request->id);
+        try {
+            $user->update([
+                'status' => 0
+            ]);
+            return response()->json([
+                'status' => 1
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 0,
+                'error' => $e
+            ]);
         }
     }
 }

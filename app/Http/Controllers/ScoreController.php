@@ -14,7 +14,9 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        //
+        $scores = Score::with('lesson', 'user')
+            ->paginate(15);
+        return view('admin.scores.index', compact('scores'));
     }
 
     /**

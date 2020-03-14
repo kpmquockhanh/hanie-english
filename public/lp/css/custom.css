@@ -1,0 +1,111 @@
+iframe {
+    width: 100%;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 554px) {
+    #form-hidden {
+        display: none;
+    }
+}
+
+.carousel-overal .owl-stage {
+    padding: 0 !important;
+}
+
+/*.carousel-overal .owl-item {*/
+/*    height: 100%;*/
+/*}*/
+#advisory {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999;
+}
+
+#course-section .owl-stage-outer {
+    border-radius: 7px;
+}
+
+#course-section .course {
+    border-radius: 7px;
+}
+
+#course-section p {
+    color: gray;
+}
+
+.hexagon .content {
+    position: absolute;
+    top: 6rem;
+    width: 25vw;
+    left: 50%;
+    margin-left: -13vw;
+}
+
+.hexagon.small .content {
+    top: 5rem;
+    width: 20vw;
+    margin-left: -10vw;
+}
+
+
+.hexagon .content.link {
+    bottom: 2rem;
+    width: 200px;
+    margin-left: -100px;
+    top: unset;
+}
+
+.hexagon .content.desc {
+    top: 24rem;
+}
+@media only screen and (max-width: 1300px) {
+    .hexagon .content.desc {
+        top: 19rem;
+    }
+}
+
+.hexagon.small {
+    margin-top: 4rem;
+    z-index: 9999;
+}
+
+.hexagon img {
+    width: 100%;
+}
+
+.model {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    margin-top: 150px;
+    z-index: 999;
+    width: 100%;
+}
+.model-container, .model-link-test-container {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: rgba(0,0,0,.5);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    padding: 0 1rem;
+}
+.model-link-test-container {
+    /*display: block;*/
+}
+#btn-close-model {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 3;
+}
+#loading {
+    display: none;
+}
+#loading-area {
+    text-align: center;
+}

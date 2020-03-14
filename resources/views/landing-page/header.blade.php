@@ -1,49 +1,52 @@
-<!-- header
-================================================== -->
-<header>
+<header class="site-navbar py-2 js-sticky-header site-navbar-target" role="banner">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center">
+            <div class="site-logo mr-auto">
+                <a href="#">
+                    <img src="{{ asset('logo.png') }}" alt="" style="width: 25px;">
+                </a>
+            </div>
+            <div class="mx-auto text-center">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+                    <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
+                        <li><a href="#about-section" class="nav-link">Giới thiệu</a></li>
+                        <li><a href="#home-section" class="nav-link">Trang chủ</a></li>
+                        <li><a href="#levels-section" class="nav-link">Khoá học</a></li>
+                        <li><a href="#teachers-section" class="nav-link">Giảng viên</a></li>
+                        <li><a href="#job-section" class="nav-link">Tuyển dụng</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ml-auto d-none d-md-block">
+                <nav class="site-navigation position-relative text-right" role="navigation" style="display: flex; justify-content: center;">
+                    @foreach ($social_links as $social_link)
+                        <a href="{{ $social_link->content }}" target="_blank" class="nav-link social-link" style="font-size: 25px;">
+                            @switch($social_link->name)
+                                @case('fb_link')
+                                    <i class="fab fa-facebook-square"></i>
+                                @break
+                                @case('ig_link')
+                                    <i class="fab fa-instagram"></i>
+                                @break
+                                @case('yt_link')
+                                    <i class="fab fa-youtube"></i>
+                                @break
+                            @endswitch
 
+                        </a>
 
-    <!--<div class="header-logo">-->
-    <!--<a href="">Hanie English</a>-->
-    <!--</div>-->
+                    @endforeach
 
-    <a id="header-menu-trigger" href="#0">
-        <span class="header-menu-text">Menu</span>
-        <span class="header-menu-icon"></span>
-    </a>
-
-    <nav id="menu-nav-wrap">
-
-        <a href="#0" class="close-button" title="close"><span>Close</span></a>
-
-        <h3>Hanie English.</h3>
-
-        <ul class="nav-list">
-            <li class="current"><a class="smoothscroll" href="#home" title="">Home</a></li>
-            <li><a class="smoothscroll" href="#about" title="">Giới Thiệu</a></li>
-            <li><a class="smoothscroll" href="#services" title="">Mô Hình</a></li>
-            <li><a class="smoothscroll" href="#courses" title="">Khóa Học</a></li>
-            <!--<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>-->
-        </ul>
-
-        <ul class="header-social-list">
-            <li>
-                <a href="https://www.facebook.com/Ngh%E1%BB%87-Thu%E1%BA%ADt-Chinh-Ph%E1%BB%A5c-Ti%E1%BA%BFng-Anh-1839176996210179/"><i class="fa fa-facebook-square"></i></a>
-            </li>
-            {{--<li>--}}
-                {{--<a href="#"><i class="fa fa-twitter"></i></a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="#"><i class="fa fa-instagram"></i></a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="#"><i class="fa fa-behance"></i></a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="#"><i class="fa fa-dribbble"></i></a>--}}
-            {{--</li>--}}
-        </ul>
-
-    </nav>  <!-- end #menu-nav-wrap -->
-
-</header> <!-- end header -->
+                </nav>
+                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right">
+                    <span class="icon-menu h3"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+    .social-link:hover {
+        color: #17a2b8;
+    }
+</style>
